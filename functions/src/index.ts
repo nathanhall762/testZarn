@@ -31,19 +31,16 @@ export const buildMe = onRequest(async (req, res) => {
     });
 });
 
-export const buildOnWritten = onDocumentWritten(
-  'projects/**',
-  async (event) => {
-    axios
-      .get(BUILD_URL.value())
-      .then((response) => {
-        info('Response:', response.data);
-      })
-      .catch((error) => {
-        info('Error Caught:', error.message);
-      });
-  }
-);
+export const buildOnWritten = onDocumentWritten('**/**', async (event) => {
+  axios
+    .get(BUILD_URL.value())
+    .then((response) => {
+      info('Response:', response.data);
+    })
+    .catch((error) => {
+      info('Error Caught:', error.message);
+    });
+});
 
 const createBuildTask = async (toRunTimestamp: number) => {
   const { v2beta3 } = await import('@google-cloud/tasks');
