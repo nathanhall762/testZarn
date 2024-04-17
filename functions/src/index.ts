@@ -31,7 +31,7 @@ export const buildMe = onRequest(async (req, res) => {
     });
 });
 
-export const buildOnWritten = onDocumentWritten('**/**', async (event) => {
+export const buildOnWritten = onDocumentWritten('**/*', async (event) => {
   axios
     .get(BUILD_URL.value())
     .then((response) => {
