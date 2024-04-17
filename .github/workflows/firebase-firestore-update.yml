@@ -1,0 +1,22 @@
+# automatic builds when firestore is updated
+
+name: Deploy to Firebase Hosting on Firestore update
+'on':
+  workflow_dispatch:  # Added for manual triggering
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: echo "${{ secrets.ENV_FILE }}" > .env
+      - run: npm i && npm run build
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_ZARN_SITE }}'
+          channelId: live
+          projectId: zarn-site
+        env:
+          FIREBASE_CLI_EXPERIMENTS: webframeworks
+
