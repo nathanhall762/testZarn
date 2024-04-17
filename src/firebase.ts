@@ -1,6 +1,12 @@
 import { initializeApp } from 'firebase/app';
 import type { DocumentData } from 'firebase/firestore';
-import { getFirestore, collection, getDocs, query, where } from 'firebase/firestore/lite';
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  query,
+  where,
+} from 'firebase/firestore/lite';
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -15,19 +21,27 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-export const getData = async (collectionName: string, category?: string): Promise<DocumentData[]> => {
+export const getData = async (
+  collectionName: string,
+  category?: string
+): Promise<DocumentData[]> => {
+  console.log('helloasdhflaidfhosdafj;asdlkjfasdlkfjsda;lkfjasdlkfj');
   let q;
 
   if (category) {
     // If a category filter is provided, create a query with a where filter
-    q = query(collection(db, collectionName), where('project_category', '==', category));
+    q = query(
+      collection(db, collectionName),
+      where('project_category', '==', category)
+    );
   } else {
     // If no category is provided, fetch all documents from the specified collection
     q = collection(db, collectionName);
   }
 
+  console.log('hello');
   const snapshot = await getDocs(q);
-  const data = snapshot.docs.map(doc => doc.data());
+  const data = snapshot.docs.map((doc) => doc.data());
   console.log(data);
 
   return data;
