@@ -1,0 +1,49 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero';
+import AboutCard from '../components/AboutCard';
+import StatsCard from '../components/StatsCard';
+
+import { getData } from '../firebase';
+import ProjectGallery from '../components/ProjectGallery';
+
+// const heroImageData = await getData('images');
+// const projectData = await getData('projects');
+---
+
+<Layout title='' metaDescription='this is my first astro page'>
+  <!-- <Hero
+    welcomeText='Welcome text'
+    tagline='Tagline. Be mindful about what hero images you use.'
+    backgroundImages={heroImageData.flatMap(image => image.hero_images)}
+    slideTime={5000}
+    client:load
+  /> -->
+  <AboutCard
+    aboutTitle='About Title Text'
+    aboutBody='This is the body of the about card. It can be as long as you want it to be. It will wrap to the next line if it is too long. This is the body of the about card. It can be as long as you want it to be. It will wrap to the next line if it is too long. This is the body of the about card. It can be as long as you want it to be. It will wrap to the next line if it is too long. This is the body of the about card. It can be as long as you want it to be. It will wrap to the next line if it is too long. This is the body of the about card. It can be as long as you want it to be. It will wrap to the next line if it is too long. This is the body of the about card. It can be as long as you want it to be. It will wrap to the next line if it is too long. This is the body of the about card. It can be as long as you want it to be. It will wrap to the next line if it is too long. This is the body of the about card. It can be as long as you want it to be. It will wrap to the next line if it is too long.'
+    linkText='See our work'
+    linkUrl='/commercials'
+  />
+  <!-- <ProjectGallery
+    projects={projectData}
+    galleryHeader='Explore our work'
+    client:idle
+  /> -->
+  <!-- <StatsCard
+    title='Hello Look at my Stats'
+    body=`3. 	Kevin DurantPHX	43
+    4. 	Jayson TatumBOS	39
+    5. 	Dejounte MurrayATL	35
+    Rebounds
+    1. 	Domantas SabonisSAC	21
+    2. 	Luka DoncicDAL	18
+    2. 	Joel EmbiidPHI	18
+    4. 	Giannis AntetokounmpoMIL	17
+    4. 	Nikola VucevicCHI	17
+    Assists
+    1. 	LaMelo BallCHA	13
+    1. 	Luka DoncicDAL	13`
+    client:visible
+  /> -->
+</Layout>
