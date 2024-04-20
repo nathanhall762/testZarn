@@ -1,3 +1,5 @@
+import ReactMarkdown from "react-markdown";
+
 interface AboutCardProps {
   aboutTitle: string;
   aboutBody: string;
@@ -18,11 +20,11 @@ const AboutCard: React.FC<AboutCardProps> = ({
           <h2 className='text-2xl text-black lg:text-4xl dark:text-white'>
             {aboutTitle}
           </h2>
-          <h3 className='line-clamp-3 text-lg text-black lg:text-2xl dark:text-white'>
+          <ReactMarkdown className='line-clamp-3 text-lg text-black lg:text-2xl dark:text-white'>
             {aboutBody}
-          </h3>
+          </ReactMarkdown>
           <a
-            className='text-lg text-tertiary underline lg:text-2xl'
+            className='text-lg text-primary underline lg:text-2xl hover:text-accent transition duration-300 ease-in-out'
             href={linkUrl}
           >
             {linkText}
