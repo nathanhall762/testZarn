@@ -25,7 +25,6 @@ export const getData = async (
   collectionName: string,
   category?: string
 ): Promise<DocumentData[]> => {
-  console.log('helloasdhflaidfhosdafj;asdlkjfasdlkfjsda;lkfjasdlkfj');
   let q;
 
   if (category) {
@@ -39,10 +38,8 @@ export const getData = async (
     q = collection(db, collectionName);
   }
 
-  console.log('hello');
   const snapshot = await getDocs(q);
   const data = snapshot.docs.map((doc) => doc.data());
-  console.log(data);
 
   return data;
 };

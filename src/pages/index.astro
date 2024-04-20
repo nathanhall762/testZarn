@@ -2,13 +2,12 @@
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero';
 import AboutCard from '../components/AboutCard';
-// import StatsCard from '../components/StatsCard';
+import BulletStatsCard from '../components/BulletStatsCard';
+import TextImagecard from '../components/TextImageCard';
 
 import { getData } from '../firebase';
-import ProjectGallery from '../components/ProjectGallery';
+// import ProjectGallery from '../components/ProjectGallery';
 
-// const heroImageData = await getData('images');
-// const projectData = await getData('projects');
 const data = await getData('homepage');
 const homePageData = data[0];
 ---
@@ -27,25 +26,17 @@ const homePageData = data[0];
     linkText={homePageData.about.about_link_text}
     linkUrl='/commercials'
   />
-  <!-- <ProjectGallery
-    projects={projectData}
-    galleryHeader='Explore our work'
-    client:idle
-  /> -->
-  <!-- <StatsCard
-    title='Hello Look at my Stats'
-    body=`3. 	Kevin DurantPHX	43
-    4. 	Jayson TatumBOS	39
-    5. 	Dejounte MurrayATL	35
-    Rebounds
-    1. 	Domantas SabonisSAC	21
-    2. 	Luka DoncicDAL	18
-    2. 	Joel EmbiidPHI	18
-    4. 	Giannis AntetokounmpoMIL	17
-    4. 	Nikola VucevicCHI	17
-    Assists
-    1. 	LaMelo BallCHA	13
-    1. 	Luka DoncicDAL	13`
-    client:visible
-  /> -->
+  <BulletStatsCard
+    body={homePageData.stats.bullet_stats}
+    title={homePageData.stats.heading}
+    bg_image={homePageData.stats.background_image}
+    image_alt_text={homePageData.stats.image_alt_text}
+  />
+  <TextImagecard
+    title={homePageData.owner.subheading}
+    bodyText={homePageData.owner.body_text}
+    imageLink={homePageData.owner.picture}
+    imageAltText={homePageData.owner.image_alt_text}
+    reversed={true}
+  />
 </Layout>
