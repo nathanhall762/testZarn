@@ -4,12 +4,14 @@ import Hero from '../components/Hero';
 import AboutCard from '../components/AboutCard';
 import BulletStatsCard from '../components/BulletStatsCard';
 import TextImagecard from '../components/TextImageCard';
+import LuxuryBrandsCard from '../components/LuxuryBrandsCard';
 
 import { getData } from '../firebase';
 // import ProjectGallery from '../components/ProjectGallery';
 
 const data = await getData('homepage');
 const homePageData = data[0];
+console.log(homePageData.european_cars_services);
 ---
 
 <Layout title='' metaDescription='this is my first astro page'>
@@ -38,5 +40,11 @@ const homePageData = data[0];
     imageLink={homePageData.owner.picture}
     imageAltText={homePageData.owner.image_alt_text}
     reversed={true}
+  />
+  <LuxuryBrandsCard
+    bgImage={homePageData.european_car_services.background_image}
+    brands={homePageData.european_car_services.brands}
+    heading={homePageData.european_car_services.heading}
+    subheading={homePageData.european_car_services.subheading}
   />
 </Layout>
