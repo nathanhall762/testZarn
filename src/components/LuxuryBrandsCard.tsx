@@ -23,8 +23,8 @@ const LuxuryBrandsCard: React.FC<props> = ({
         <h2 className='lg:text-3xl text-2xl text-primary'>{heading}</h2>
         <div className='h-[2px] w-[30%] bg-white m-auto'></div>
         <div className='lg:gap-y-2 lg:grid lg:grid-cols-2 flex flex-col gap-2 py-8 w-[50%] m-auto'>
-          {brands.map((brand) => (
-            <a className='text-base' href={`/${brand}`}>
+          {brands.sort().map((brand) => (
+            <a className='text-base' href={`/${brand.toLowerCase()}`}>
               {brand}
             </a>
           ))}
