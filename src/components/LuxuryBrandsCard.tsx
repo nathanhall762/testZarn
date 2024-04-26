@@ -15,7 +15,7 @@ const LuxuryBrandsCard: React.FC<props> = ({
 }) => {
   return (
     <div
-      className='bg-cover bg-center z-0'
+      className='relative bg-cover bg-center z-0'
       style={{ backgroundImage: `url('${bgImage}')` }}
     >
       <div className='absolute size-full bg-dkbg1 opacity-70 z-10'></div>
