@@ -42,7 +42,7 @@ const Header: React.FC<HeaderProps> = ({ title, navs }) => {
           <a href='/'>{title}</a>
         </h2>
       </div>
-      <nav className='hidden items-center justify-center gap-16 align-middle lg:col-span-3 lg:flex'>
+      <nav className='hidden items-center justify-center gap-6 align-middle lg:col-span-3 lg:flex'>
         {navs.map((nav) => (
           <a
             className='text-bold text-base text-black transition duration-300 ease-in-out hover:text-accent dark:text-white'

@@ -33,7 +33,7 @@ const Footer: React.FC<Props> = ({
 }) => {
   const getIconFromSocialsType = (type: string) => iconMap[type as 'facebook' | 'twitter' | 'instagram'];
   return (
-    <footer className='bg-ltbg1 pb-8 pt-16 text-center text-black lg:px-48 dark:bg-dkbg1 dark:text-white'>
+    <footer className='bg-ltbg1 pb-8 pt-16 text-center text-black lg:px-10 dark:bg-dkbg1 dark:text-white'>
       <div className='flex flex-col items-center justify-evenly lg:flex-row lg:justify-between'>
         <div className='hidden lg:block'>
           {address && <p className='text-left'>{address}</p>}

@@ -14,9 +14,12 @@ const websiteName = 'Brand Name';
 const phone = '(918) 123-1234';
 const address = '1234 Main St, Tulsa, OK 74103';
 const navs = [
-  { link: '/commercials', name: 'COMMERCIALS' },
-  { link: '/food', name: 'FOOD' },
-  { link: '/events', name: 'EVENTS' },
+  { link: '/about', name: 'About Us' },
+  { link: '/our-services', name: 'Our Services' },
+  { link: '/repair', name: 'European Car Repair' },
+  { link: '/testimonials', name: 'Testimonials' },
+  { link: '/book', name: 'Book Appointment' },
+  { link: '/contact', name: 'Contact Us' },
 ];
 const socials = [
   { link: 'https://www.instagram.com/', type: 'instagram' },
@@ -26,13 +29,28 @@ const cta = 'Contact Us';
 ---
 
 <!doctype html>
-<html lang='en' class='bg-black font-sans font-light text-white'>
+<html
+  lang='en'
+  class='bg-black font-sans font-light text-white'>
   <head>
     <meta charset='UTF-8' />
-    <meta name='description' content={metaDescription} />
-    <meta name='viewport' content='width=device-width' />
-    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
-    <meta name='generator' content={Astro.generator} />
+    <meta
+      name='description'
+      content={metaDescription}
+    />
+    <meta
+      name='viewport'
+      content='width=device-width'
+    />
+    <link
+      rel='icon'
+      type='image/svg+xml'
+      href='/favicon.svg'
+    />
+    <meta
+      name='generator'
+      content={Astro.generator}
+    />
     <script>
       if (
         localStorage.theme === 'dark' ||
@@ -50,7 +68,7 @@ const cta = 'Contact Us';
     <title>{title ? `${title} - ${websiteName}` : websiteName}</title>
     <ViewTransitions />
   </head>
-  <body class="bg-ltbg2 dark:bg-dkbg2">
+  <body class='bg-ltbg2 dark:bg-dkbg2'>
     <Header
       title={websiteName}
       navs={navs.filter((nav) => nav.link !== '/')}
@@ -58,7 +76,7 @@ const cta = 'Contact Us';
       client:load
     />
     <main>
-      <slot  transition:animate={fade({ duration: '0.7s' })}/>
+      <slot transition:animate={fade({ duration: '0.7s' })} />
     </main>
     <Footer
       cta={cta}
@@ -69,51 +87,49 @@ const cta = 'Contact Us';
       socials={socials}
       client:idle
     />
-  </body>
+  </body><!-- custom animation keyframes and other global stuffs -->
+  <style is:global>
+    @tailwind base;
+
+    @layer base {
+      @keyframes fadeInUp {
+        0% {
+          opacity: 0;
+          transform: translateY(20vh);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .fade-in-up {
+        animation: fadeInUp 0.75s ease-out;
+      }
+      .card-zoom {
+        @apply relative overflow-hidden;
+      }
+      .card-zoom-image {
+        @apply absolute h-full w-full transform bg-cover bg-center transition-all duration-500 ease-in-out;
+      }
+      .card-zoom-text {
+        @apply absolute transform text-gray-50 transition-all duration-500 ease-in-out;
+      }
+      .zoom-in {
+        @apply scale-[1.25];
+      }
+    }
+
+    a {
+      @apply transition-transform duration-300 ease-in-out;
+    }
+
+    a:hover {
+      @apply scale-110;
+    }
+
+    strong {
+      font-weight: bold;
+    }
+  </style>
 </html>
-
-<!-- custom animation keyframes and other global stuffs -->
-<style is:global>
-  @tailwind base;
-
-  @layer base {
-    @keyframes fadeInUp {
-      0% {
-        opacity: 0;
-        transform: translateY(20vh);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .fade-in-up {
-      animation: fadeInUp 0.75s ease-out;
-    }
-    .card-zoom {
-      @apply relative overflow-hidden;
-    }
-    .card-zoom-image {
-      @apply absolute h-full w-full transform bg-cover bg-center transition-all duration-500 ease-in-out;
-    }
-    .card-zoom-text {
-      @apply absolute transform text-gray-50 transition-all duration-500 ease-in-out;
-    }
-    .zoom-in {
-      @apply scale-[1.25];
-    }
-  }
-
-  a {
-    @apply transition-transform duration-300 ease-in-out;
-  }
-
-  a:hover {
-    @apply scale-110;
-  }
-
-  strong {
-    font-weight: bold;
-  }
-</style>
