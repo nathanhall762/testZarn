@@ -1,6 +1,6 @@
 # automatic builds when firestore is updated
 
-name: Deploy to Firebase Hosting on Firestore update
+name: Deploy to Firebase Hosting on Firestore update, triggered by dispatch
 'on':
   workflow_dispatch:  # Added for manual triggering
 
