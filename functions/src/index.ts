@@ -7,12 +7,17 @@ import axios from 'axios';
 const OWNER = defineString('OWNER');
 const REPO = defineString('REPO');
 const BUILD_URL = defineString('BUILD_URL');
+const API_KEY = defineString('API_KEY');
 
 initializeApp();
 
 export const buildOnWritten = onDocumentWritten('**/*', async (event) => {
   axios
-    .post(BUILD_URL.value(), { owner: OWNER.value(), repo: REPO.value() })
+    .post(
+      BUILD_URL.value(),
+      { owner: OWNER.value(), repo: REPO.value() },
+      { headers: { 'x-api-key': API_KEY.value() } }
+    )
     .then((response) => {
       info('Response:', response.data);
     })
