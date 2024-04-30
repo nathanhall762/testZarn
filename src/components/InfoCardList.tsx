@@ -19,7 +19,7 @@ const InfoCardList: React.FC<Props> = ({ heading, cards }) => {
             <div
               style={{ backgroundImage: `url('${card.bgImage}')` }}
               aria-label={card.altImageText}
-              className='bg-cover h-[70vh] pt-80 max-w-80 m-auto hover:scale-110 transform transition-transform'
+              className='bg-cover h-[70vh] pt-80 max-w-80 m-auto lg:m-0 hover:scale-110 transform transition-transform'
             >
               <div className='bg-dkbg1 py-4 px-2 bg-opacity-70 size-full gap-4 flex flex-col'>
                 <h3 className='text-xl'>{card.heading}</h3>
