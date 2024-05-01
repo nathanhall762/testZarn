@@ -2,6 +2,7 @@
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { ViewTransitions, fade } from 'astro:transitions';
+import ContactSection from '../components/ContactSection';
 
 interface Props {
   title: string;
@@ -29,13 +30,28 @@ const cta = 'Contact Us';
 ---
 
 <!doctype html>
-<html lang='en' class='bg-black font-sans font-light text-white'>
+<html
+  lang='en'
+  class='bg-black font-sans font-light text-white'>
   <head>
     <meta charset='UTF-8' />
-    <meta name='description' content={metaDescription} />
-    <meta name='viewport' content='width=device-width' />
-    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
-    <meta name='generator' content={Astro.generator} />
+    <meta
+      name='description'
+      content={metaDescription}
+    />
+    <meta
+      name='viewport'
+      content='width=device-width'
+    />
+    <link
+      rel='icon'
+      type='image/svg+xml'
+      href='/favicon.svg'
+    />
+    <meta
+      name='generator'
+      content={Astro.generator}
+    />
     <script>
       if (
         localStorage.theme === 'dark' ||
@@ -63,6 +79,7 @@ const cta = 'Contact Us';
     <main>
       <slot transition:animate={fade({ duration: '0.7s' })} />
     </main>
+    <ContactSection />
     <Footer
       cta={cta}
       address={address}
