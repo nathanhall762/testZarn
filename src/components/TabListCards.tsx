@@ -43,7 +43,7 @@ const TabListCards: React.FC<Props> = ({ heading, cards, defaultCard }) => {
               {cards.map((card) => (
                 <div onClick={handleTabClick}>
                   <p
-                    className={`${selected === card.heading ? 'scale-110 text-primary' : 'hover:scale-110'}`}
+                    className={`${selected === card.heading ? 'scale-110 text-primary' : 'hover:scale-110'} transition-transform duration-300 ease-in-out hover:cursor-pointer`}
                   >
                     {card.heading}
                   </p>

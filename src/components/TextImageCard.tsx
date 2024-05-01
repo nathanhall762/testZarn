@@ -4,7 +4,7 @@ interface Props {
   title: string;
   imageLink: string;
   imageAltText: string;
-  bodyText: string;
+  ownerStats: string[];
   link?: string;
   linkText?: string;
   reversed?: boolean;
@@ -14,7 +14,7 @@ const TextImagecard: React.FC<Props> = ({
   title,
   imageLink,
   imageAltText,
-  bodyText,
+  ownerStats,
   link,
   linkText = 'See More',
   reversed = false,
@@ -29,9 +29,11 @@ const TextImagecard: React.FC<Props> = ({
         />
         <div className='flex flex-col justify-between bg-ltbg2 py-8  text-center text-black lg:col-span-2 lg:px-6 lg:py-8 dark:bg-dkbg1 dark:text-white transition-all'>
           <h3 className='text-lg lg:text-3xl pb-4 text-primary'>{title}</h3>
-          <ReactMarkdown className='text-base lg:text-lg lg:px-12 px-6 lg:text-left text-center'>
-            {bodyText.toUpperCase()}
-          </ReactMarkdown>
+          {ownerStats.map((stat) => (
+            <div className='text-base lg:text-lg lg:px-12 px-6 lg:text-left text-center'>
+              <p>{stat}</p>
+            </div>
+          ))}
           {link && (
             <a
               href={link}
