@@ -105,11 +105,18 @@ const defaultCard = {
     linkText={homePageData.about.about_link_text}
     linkUrl='/commercials'
   />
+  <InfoCardList heading='Info Cards' cards={fakeCards.slice(0, 3)} />
   <BulletStatsCard
     body={homePageData.stats.bullet_stats}
     title={homePageData.stats.heading}
     bg_image={homePageData.stats.background_image}
     image_alt_text={homePageData.stats.image_alt_text}
+  />
+  <TabListCards
+    heading='Tab List Cards'
+    cards={fakeCards}
+    defaultCard={defaultCard}
+    client:load
   />
   <TextImagecard
     title={homePageData.owner.heading}
@@ -117,14 +124,6 @@ const defaultCard = {
     imageLink={homePageData.owner.picture}
     imageAltText={homePageData.owner.image_alt_text}
     reversed={true}
-  />
-
-  <InfoCardList heading='Info Cards' cards={fakeCards.slice(0, 3)} />
-  <TabListCards
-    heading='Tab List Cards'
-    cards={fakeCards}
-    defaultCard={defaultCard}
-    client:load
   />
   <LuxuryBrandsCard
     bgImage={homePageData.european_car_services.background_image}
