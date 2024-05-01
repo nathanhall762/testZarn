@@ -41,12 +41,13 @@ const TabListCards: React.FC<Props> = ({ heading, cards, defaultCard }) => {
           <div className='lg:flex flex-row pt-8 lg:gap-32 w-full justify-center m-auto'>
             <div className='pb-4 grid grid-cols-4 lg:grid-cols-1 gap-2'>
               {cards.map((card) => (
-                <button
-                  onClick={handleTabClick}
-                  className={`${selected === card.heading && 'scale-125 text-primary'}`}
-                >
-                  {card.heading}
-                </button>
+                <div onClick={handleTabClick}>
+                  <p
+                    className={`${selected === card.heading ? 'scale-110 text-primary' : 'hover:scale-110'}`}
+                  >
+                    {card.heading}
+                  </p>
+                </div>
               ))}
             </div>
             <div>
