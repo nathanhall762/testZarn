@@ -7,6 +7,7 @@ import TextImagecard from '../components/TextImageCard';
 import LuxuryBrandsCard from '../components/LuxuryBrandsCard';
 import InfoCardList from '../components/InfoCardList';
 import TabListCards from '../components/TabListCards';
+import Accordion from '../components/Accordion';
 
 import { getData } from '../firebase';
 // import ProjectGallery from '../components/ProjectGallery';
@@ -82,6 +83,11 @@ const fakeCards = [
   },
 ];
 
+const faqs = Array(5).fill({
+  question: 'How many roads must a man walk down before you call him a man?',
+  answer: 'I would walk 500 miles, and I would walk 500 more',
+});
+
 const defaultCard = {
   heading: 'Default Card',
   bodyText:
@@ -131,4 +137,5 @@ const defaultCard = {
     heading={homePageData.european_car_services.heading}
     subheading={homePageData.european_car_services.subheading}
   />
+  <Accordion faqs={faqs} client:visible />
 </Layout>
