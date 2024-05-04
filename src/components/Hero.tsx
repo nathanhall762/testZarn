@@ -44,19 +44,22 @@ const Hero: React.FC<HeroProps> = ({
           style={{ backgroundImage: `url(${image})` }}
         />
       ))}
-      <div className='absolute bottom-0 z-10 px-4 pb-16 text-left lg:pb-32 lg:pl-16 lg:pr-64'>
-        <div className='fade-in-up'>
-          <h2 className='text-lg lg:text-2xl'>{welcomeText}</h2>
-          <h1 className='mt-12 text-3xl tracking-widest lg:mt-20 lg:text-5xl'>
+      <div className='absolute bottom-0 z-10 px-4 pb-8 text-left lg:pb-32 lg:pl-16 lg:pr-64'>
+        <div className='fade-in-up bg-dkbg1 bg-opacity-80 p-4 rounded-md lg:max-w-[50vw]'>
+          <h2 className='text-lg lg:text-2xl pb-4'>{welcomeText}</h2>
+          <h1 className='text-2xl tracking-widest lg:text-4xl pb-4 text-center lg:text-left lg:pb-8'>
             {tagline}
           </h1>
-        </div>
-        <div className='py-6 flex flex-row'>
-          <a href='/contact' className=''>
-                <button className='bg-other transform rounded-xl bg-primary px-4 py-2 text-lg text-white transition duration-300 ease-in-out hover:scale-110 hover:bg-accent'>
-                  CONTACT US
-                </button>
-              </a>
+          <div className='flex flex-col gap-4 lg:flex-row items-center lg:gap-32'>
+            <a href='/contact' className=''>
+              <button className='bg-other transform rounded-xl bg-primary px-4 py-2 text-lg text-white transition duration-300 ease-in-out hover:scale-110 hover:bg-accent'>
+                CONTACT US
+              </button>
+            </a>
+            <p className='lg:text-2xl text-lg text-primary'>
+              Call: (918) 123-1234
+            </p>
+          </div>
         </div>
       </div>
     </div>
