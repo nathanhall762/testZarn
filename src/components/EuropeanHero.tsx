@@ -10,7 +10,7 @@ interface SidekickProps {
   logos: string[];
 }
 
-const LuxuryHero: React.FC<SidekickProps> = ({
+const EuropeanHero: React.FC<SidekickProps> = ({
   welcomeText,
   tagline,
   backgroundImages,
@@ -39,8 +39,6 @@ const LuxuryHero: React.FC<SidekickProps> = ({
       return `${baseClasses} transform opacity-0`;
     }
   };
-
-  console.log(logos);
 
   return (
     <div className=''>
@@ -72,7 +70,7 @@ const LuxuryHero: React.FC<SidekickProps> = ({
       </div>
       <div className='p-8 grid grid-cols-2 lg:grid-cols-4 lg:px-32 gap-y-8 justify-items-center'>
         {logos.map((logo, index) => (
-          <a href={'/european-car-repair/123'}>
+          <a href={'/european-car-repair/mercedes'}>
             <Icon
               icon={logo}
               key={index}
@@ -85,4 +83,4 @@ const LuxuryHero: React.FC<SidekickProps> = ({
   );
 };
 
-export default LuxuryHero;
+export default EuropeanHero;

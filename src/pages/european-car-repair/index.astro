@@ -1,10 +1,10 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import AboutCard from '../components/AboutCard';
+import Layout from '../../layouts/Layout.astro';
+import AboutCard from '../../components/AboutCard';
 // import Sidekick from '../components/Sidekick';
-import LuxuryHero from '../components/LuxuryHero';
+import EuropeanHero from '../../components/LuxuryHero';
 
-import { getData } from '../firebase';
+import { getData } from '../../firebase';
 
 const aboutData = await getData('about_us');
 const homeData = await getData('homepage');
@@ -27,7 +27,7 @@ const logoIcons = [
   title='page title goes here'
   metaDescription='meta-description goes here'
 >
-  <LuxuryHero
+  <EuropeanHero
     welcomeText='Welcome to the home of the best products/services in the world!'
     tagline='We make products/services that you want to buy.'
     backgroundImages={bgpics}
