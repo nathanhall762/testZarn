@@ -1,18 +1,40 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import AboutCard from '../components/AboutCard';
-import Sidekick from '../components/Sidekick';
+// import Sidekick from '../components/Sidekick';
+import LuxuryHero from '../components/LuxuryHero';
+
+import { getData } from '../firebase';
+
+const aboutData = await getData('about_us');
+const homeData = await getData('homepage');
+const bgpics = homeData[0].hero.hero_images;
+const tulsaPic = aboutData[0].tulsa_pic;
+
+const logoIcons = [
+  'simple-icons:bmw',
+  'simple-icons:mercedes',
+  'simple-icons:audi',
+  'simple-icons:volvo',
+  'simple-icons:landrover',
+  'simple-icons:porsche',
+  'simple-icons:jaguar',
+  'simple-icons:volkswagen',
+];
 ---
 
 <Layout
   title='page title goes here'
-  metaDescription='meta-description goes here'>
-  <Sidekick
+  metaDescription='meta-description goes here'
+>
+  <LuxuryHero
     welcomeText='Welcome to the home of the best products/services in the world!'
     tagline='We make products/services that you want to buy.'
-    backgroundImages={['https://placehold.co/1900x1080']}
+    backgroundImages={bgpics}
+    tulsaPic={tulsaPic}
     slideTime={5000}
-    client:load
+    logos={logoIcons}
+    client:idle
   />
   <AboutCard
     aboutTitle='page title goes here'
