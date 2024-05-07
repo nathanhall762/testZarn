@@ -36,7 +36,7 @@ const Header: React.FC<HeaderProps> = ({ title, navs }) => {
   return (
     <header className='fixed top-0 z-50 w-screen transition-all duration-300 ease-in-out bg-transparent backdrop-blur-sm backdrop-brightness-200 backdrop-contrast-[.15] backdrop-saturate-0'>
       <div
-        className={`z-0 h-8 w-screen flex justify-around transition-all duration-1000 ${isScrolled ? 'h-0 opacity-0' : ''}`}>
+        className={`z-0 w-screen flex justify-around transition-all duration-1000 ${isScrolled ? 'h-0 opacity-0' : 'h-8'}`}>
         <a
           className='flex-grow flex hover:scale-100'
           href='tel:TELEPHONE_NUMBER_GOES_HERE'>
