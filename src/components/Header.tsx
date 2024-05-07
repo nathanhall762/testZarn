@@ -35,7 +35,7 @@ const Header: React.FC<HeaderProps> = ({ title, navs }) => {
   return (
     <header className='fixed top-0 z-50 w-screen transition-all duration-300 ease-in-out bg-transparent'>
       <div
-        className={`z-0 bg-dkbg1 w-screen flex justify-around items-center transition-all duration-300 border-b-[1px] border-mdbg1 transition-height ${isScrolled ? 'h-0 border-b-0' : 'h-8'}`}
+        className={`z-0 bg-dkbg1 w-screen flex justify-around items-center transition-all duration-300 border-mdbg1 overflow-hidden transition-height ${isScrolled ? 'h-0 border-b-0' : 'h-8 border-b-[1px]'}`}
       >
         <a
           className='flex-grow flex items-center hover:scale-100 border-r-[1px] border-mdbg1 h-full'
