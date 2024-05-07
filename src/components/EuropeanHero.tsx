@@ -52,7 +52,7 @@ const EuropeanHero: React.FC<SidekickProps> = ({
           </h2>
         </div>
       </div>
-      <div className='relative h-[40vh] overflow-auto'>
+      <div className='relative h-[50vh] overflow-auto'>
         {backgroundImages.map((image, index) => (
           <div
             key={image}
