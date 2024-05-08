@@ -1,23 +1,39 @@
 ---
+// pages/about/index.astro
 import Layout from '../../layouts/Layout.astro';
+import { getData } from '../../firebase';
+import mapContentToComponents from '../../utils/mapContentToComponents';
 import AboutCard from '../../components/AboutCard';
 import Sidekick from '../../components/Sidekick';
+import React from 'react';
+import type { DocumentData } from 'firebase/firestore';
+import Hero from '../../components/Hero';
+import InfoCardList from '../../components/InfoCardList';
+import BulletStatsCard from '../../components/BulletStatsCard';
+import TabListCards from '../../components/TabListCards';
+
+
+const data: DocumentData[] = await getData('pages', 'about');
+const pageData: DocumentData = data[0];
+console.log(`pageData`, pageData);
+export const components: Record<string, React.ComponentType<{ content: any }>> = {
+  hero_section: Hero,
+  sidekick_section: Sidekick,
+  welcome_message_section: AboutCard,
+  info_card_list: InfoCardList,
+  bullet_stats_card: BulletStatsCard,
+  tab_list_cards: TabListCards,
+};
 ---
 
-<Layout
-  title='page title goes here'
-  metaDescription='meta-description goes here'>
-  <Sidekick
-    welcomeText='Welcome to the home of the best products/services in the world!'
-    tagline='We make products/services that you want to buy.'
-    backgroundImages={['https://placehold.co/1900x1080']}
-    slideTime={5000}
-    client:load
-  />
-  <AboutCard
-    aboutTitle='About Us'
-    aboutBody='We are a team of highly skilled professionals who are dedicated to making the best products/services in the world. We have been in business for over 20 years and have worked with some of the biggest brands in the world. Our goal is to create commercials that are not only entertaining, but also effective in driving sales. We take pride in our work and are committed to delivering the highest quality commercials to our clients.'
-    linkText='Learn More'
-    linkUrl='/'
-  />
+<Layout title={pageData.title} metaDescription={pageData.seo_metadata.meta_description}>
+  <main>
+    {pageData.content.map((item: { type: string | number; value: any; }) => {
+      const Component = components[item.type];
+      if (!Component) {
+        throw new Error(`Component not found for type: ${item.type}`);
+      }
+      return <Component content={item.value} />;
+    })}
+  </main>
 </Layout>

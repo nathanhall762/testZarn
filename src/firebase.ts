@@ -23,15 +23,15 @@ const db = getFirestore(app);
 
 export const getData = async (
   collectionName: string,
-  category?: string
+  slug?: string
 ): Promise<DocumentData[]> => {
   let q;
 
-  if (category) {
+  if (slug) {
     // If a category filter is provided, create a query with a where filter
     q = query(
       collection(db, collectionName),
-      where('project_category', '==', category)
+      where('slug', '==', slug)
     );
   } else {
     // If no category is provided, fetch all documents from the specified collection

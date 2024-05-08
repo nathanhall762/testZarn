@@ -8,134 +8,28 @@ import LuxuryBrandsCard from '../components/LuxuryBrandsCard';
 import InfoCardList from '../components/InfoCardList';
 import TabListCards from '../components/TabListCards';
 import Accordion from '../components/Accordion';
+import { components } from './about/index.astro';
+import type { DocumentData } from 'firebase/firestore';
 
 import { getData } from '../firebase';
 // import ProjectGallery from '../components/ProjectGallery';
 
-const data = await getData('homepage');
-const homePageData = data[0];
-console.log(homePageData.european_cars_services);
+const data = await getData('pages', 'home');
+const pageData: DocumentData = data[0];
+console.log(`pageData`, pageData);
 
-const fakeCards = [
-  {
-    heading: 'Card 1',
-    bodyText:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut quam bibendum, lobortis eros at, volutpat velit.',
-    altImageText: 'blah',
-    bgImage: homePageData.european_car_services.background_image,
-    iconName: 'fa-solid fa-snowflake',
-  },
-  {
-    heading: 'Card 2',
-    bodyText:
-      'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed nec faucibus turpis.',
-    altImageText: 'blah',
-    bgImage: homePageData.european_car_services.background_image,
-    iconName: 'fa-solid fa-snowflake',
-  },
-  {
-    heading: 'Card 3',
-    bodyText:
-      'Fusce eget sapien a velit semper maximus. Nam consequat sem id lectus dictum, nec blandit justo luctus.',
-    altImageText: 'blah',
-    bgImage: homePageData.european_car_services.background_image,
-    iconName: 'fa-solid fa-snowflake',
-  },
-  {
-    heading: 'Card 4',
-    bodyText:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut quam bibendum, lobortis eros at, volutpat velit.',
-    altImageText: 'blah',
-    bgImage: homePageData.european_car_services.background_image,
-    iconName: 'fa-solid fa-snowflake',
-  },
-  {
-    heading: 'Card 5',
-    bodyText:
-      'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed nec faucibus turpis.',
-    altImageText: 'blah',
-    bgImage: homePageData.european_car_services.background_image,
-    iconName: 'fa-solid fa-snowflake',
-  },
-  {
-    heading: 'Card 6',
-    bodyText:
-      'Fusce eget sapien a velit semper maximus. Nam consequat sem id lectus dictum, nec blandit justo luctus.',
-    altImageText: 'blah',
-    bgImage: homePageData.european_car_services.background_image,
-    iconName: 'fa-solid fa-snowflake',
-  },
-  {
-    heading: 'Card 7',
-    bodyText:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut quam bibendum, lobortis eros at, volutpat velit.',
-    altImageText: 'blah',
-    bgImage: homePageData.european_car_services.background_image,
-    iconName: 'fa-solid fa-snowflake',
-  },
-  {
-    heading: 'Card 8',
-    bodyText:
-      'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed nec faucibus turpis.',
-    altImageText: 'blah',
-    bgImage: homePageData.european_car_services.background_image,
-    iconName: 'fa-solid fa-snowflake',
-  },
-];
-
-const faqs = Array(5).fill({
-  question: 'How many roads must a man walk down before you call him a man?',
-  answer: 'I would walk 500 miles, and I would walk 500 more',
-});
-
-const defaultCard = {
-  heading: 'Default Card',
-  bodyText:
-    'Fusce eget sapien a velit semper maximus. Nam consequat sem id lectus dictum, nec blandit justo luctus.',
-  altImageText: 'blah',
-  bgImage: homePageData.european_car_services.background_image,
-};
 ---
 
-<Layout title='' metaDescription='this is my first astro page'>
-  <Hero
-    welcomeText={homePageData.hero.hero_title}
-    tagline={homePageData.hero.hero_subtitle}
-    backgroundImages={homePageData.hero.hero_images}
-    slideTime={5000}
-    client:load
-  />
-  <AboutCard
-    aboutTitle={homePageData.about.about_title}
-    aboutBody={homePageData.about.about_body_text}
-    linkText={homePageData.about.about_link_text}
-    linkUrl='/commercials'
-  />
-  <InfoCardList heading='Info Cards' cards={fakeCards.slice(0, 3)} />
-  <BulletStatsCard
-    body={homePageData.stats.bullet_stats}
-    title={homePageData.stats.heading}
-    bg_image={homePageData.stats.background_image}
-    image_alt_text={homePageData.stats.image_alt_text}
-  />
-  <TabListCards
-    heading='Tab List Cards'
-    cards={fakeCards}
-    defaultCard={defaultCard}
-    client:load
-  />
-  <TextImagecard
-    title={homePageData.owner.heading}
-    ownerStats={homePageData.owner.owner_stats}
-    imageLink={homePageData.owner.picture}
-    imageAltText={homePageData.owner.image_alt_text}
-    reversed={true}
-  />
-  <LuxuryBrandsCard
-    bgImage={homePageData.european_car_services.background_image}
-    brands={homePageData.european_car_services.brands}
-    heading={homePageData.european_car_services.heading}
-    subheading={homePageData.european_car_services.subheading}
-  />
-  <Accordion faqs={faqs} client:visible />
+<Layout
+  title=''
+  metaDescription='this is my first astro page'>
+  <main>
+    {pageData.content.map((item: { type: string | number; value: any; }) => {
+      const Component = components[item.type];
+      if (!Component) {
+        throw new Error(`Component not found for type: ${item.type}`);
+      }
+      return <Component content={item.value} />;
+    })}
+  </main>
 </Layout>
