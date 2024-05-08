@@ -8,6 +8,7 @@ import LuxuryBrandsCard from '../components/LuxuryBrandsCard';
 import InfoCardList from '../components/InfoCardList';
 import TabListCards from '../components/TabListCards';
 import Accordion from '../components/Accordion';
+import ReviewCards from '../components/ReviewCards';
 
 import { getData } from '../firebase';
 // import ProjectGallery from '../components/ProjectGallery';
@@ -95,6 +96,54 @@ const defaultCard = {
   altImageText: 'blah',
   bgImage: homePageData.european_car_services.background_image,
 };
+
+const reviews = [
+  {
+    name: 'Alice',
+    body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vehicula justo nec mauris sagittis, nec congue ex vestibulum. Donec pulvinar justo nec diam sagittis.',
+    count: 5,
+    score: 4,
+    date: '2024-05-07',
+    profilePic: homePageData.owner.picture,
+    imageAltText: 'Image of Alice',
+  },
+  {
+    name: 'Bob',
+    body: 'Integer euismod sapien a dolor facilisis, id fringilla urna feugiat. Ut consequat lorem sit amet velit blandit ultrices.',
+    count: 10,
+    score: 3,
+    date: '2024-05-06',
+    profilePic: homePageData.owner.picture,
+    imageAltText: 'Image of Bob',
+  },
+  {
+    name: 'Charlie',
+    body: 'Duis vulputate augue in eros pulvinar, a hendrerit lectus varius. Morbi ultricies lacus nec sapien elementum, non vehicula est ultricies.',
+    count: 15,
+    score: 5,
+    date: '2024-05-05',
+    profilePic: homePageData.owner.picture,
+    imageAltText: 'Image of Charlie',
+  },
+  {
+    name: 'David',
+    body: 'Vestibulum congue lectus nec diam ultricies, in pharetra magna consequat. Nulla facilisi. Vestibulum rhoncus, libero nec venenatis scelerisque, libero justo fermentum enim, id finibus turpis neque at sapien.',
+    count: 20,
+    score: 2,
+    date: '2024-05-04',
+    profilePic: homePageData.owner.picture,
+    imageAltText: 'Image of David',
+  },
+  {
+    name: 'Eve',
+    body: 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut euismod tortor quis ligula lobortis, vitae sodales odio tincidunt.',
+    count: 25,
+    score: 1,
+    date: '2024-05-03',
+    profilePic: homePageData.owner.picture,
+    imageAltText: 'Image of Eve',
+  },
+];
 ---
 
 <Layout title='' metaDescription='this is my first astro page'>
@@ -138,4 +187,5 @@ const defaultCard = {
     subheading={homePageData.european_car_services.subheading}
   />
   <Accordion faqs={faqs} client:visible />
+  <ReviewCards heading='Read Our Reviews!' reviews={reviews} client:visible />
 </Layout>
