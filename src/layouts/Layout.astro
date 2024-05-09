@@ -3,13 +3,28 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { ViewTransitions, fade } from 'astro:transitions';
 import ContactSection from '../components/ContactSection';
+import type { DocumentData } from 'firebase/firestore';
+import AboutCard from '../components/AboutCard';
+import Accordion from '../components/Accordion';
+import BulletStatsCard from '../components/BulletStatsCard';
+import Hero from '../components/Hero';
+import InfoCardList from '../components/InfoCardList';
+import Sidekick from '../components/Sidekick';
+import TabListCards from '../components/TabListCards';
+import TextImagecard from '../components/TextImageCard';
+
+interface Item {
+  type: string;
+  value: any;
+}
 
 interface Props {
   title: string;
   metaDescription: string;
+  pageData: DocumentData;
 }
 
-const { title, metaDescription } = Astro.props;
+const { title, metaDescription, pageData } = Astro.props;
 
 const websiteName = 'Zarn Automotive';
 const phone = '(918) 123-1234';
@@ -77,7 +92,35 @@ const cta = 'Contact Us';
       client:load
     />
     <main>
-      <slot transition:animate={fade({ duration: '0.7s' })} />
+      {
+        pageData.content.map((item: Item) => {
+          switch (item.type) {
+            case 'hero_section':
+              return <Hero content={item.value} />;
+            case 'sidekick_section':
+              return <Sidekick content={item.value} />;
+            case 'welcome_message_section':
+              return <AboutCard content={item.value} />;
+            case 'info_card_list':
+              return <InfoCardList content={item.value} />;
+            case 'bullet_stats_card':
+              return <BulletStatsCard content={item.value} />;
+            case 'tab_list_cards':
+              return <TabListCards content={item.value} />;
+            case 'text_image_card':
+              return <TextImagecard content={item.value} />;
+            case 'accordion':
+              return (
+                <Accordion
+                  content={item.value}
+                  client:load
+                />
+              );
+            default:
+              return null;
+          }
+        })
+      }
     </main>
     <ContactSection />
     <Footer

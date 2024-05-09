@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 
 interface HeroProps {
-  welcomeText: string;
-  tagline: string;
-  backgroundImages: string[];
-  slideTime?: number;
+  content: {
+    heading: string;
+    subheading: string;
+    images: string[];
+    call_to_action_text?: string;
+    call_to_action_link?: string;
+  };
 }
 
 const Hero: React.FC<HeroProps> = ({
-  welcomeText,
-  tagline,
-  backgroundImages,
-  slideTime = 5000,
+  content: { heading: welcomeText, subheading: tagline, images: backgroundImages },
 }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -20,10 +20,10 @@ const Hero: React.FC<HeroProps> = ({
       setCurrentImageIndex((prevIndex) =>
         prevIndex === backgroundImages.length - 1 ? 0 : prevIndex + 1
       );
-    }, slideTime);
+    }, 5000);
 
     return () => clearInterval(timer);
-  }, [backgroundImages.length, slideTime]);
+  }, [backgroundImages.length, 5000]);
 
   const getImageClasses = (index: number) => {
     let baseClasses =

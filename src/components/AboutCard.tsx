@@ -1,17 +1,21 @@
 import ReactMarkdown from 'react-markdown';
 
 interface AboutCardProps {
-  aboutTitle: string;
-  aboutBody: string;
-  linkText: string;
-  linkUrl: string;
+  content: {
+    heading: string;
+    body_text: string;
+    link_text: string;
+    link_url: string;
+  };
 }
 
 const AboutCard: React.FC<AboutCardProps> = ({
-  aboutTitle,
-  aboutBody,
-  linkText,
-  linkUrl,
+  content: {
+    heading: aboutTitle,
+    body_text: aboutBody,
+    link_text: linkText,
+    link_url: linkUrl,
+  },
 }) => {
   return (
     <>
@@ -25,8 +29,7 @@ const AboutCard: React.FC<AboutCardProps> = ({
           </ReactMarkdown>
           <a
             className='hover:text-accent transition duration-300 ease-in-out'
-            href={linkUrl}
-          >
+            href={linkUrl}>
             <h3 className='text-xl text-primary underline lg:text-2xl hover'>
               {linkText}
             </h3>

@@ -1,9 +1,9 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '../../layouts/Layout.astro';
 import type { DocumentData } from 'firebase/firestore';
-import { getData } from '../firebase';
+import { getData } from '../../firebase';
 
-const data = await getData('pages', 'contact');
+const data = await getData('pages', 'auto-repair-estimates');
 const pageData: DocumentData = data[0];
 console.log(`pageData`, pageData);
 

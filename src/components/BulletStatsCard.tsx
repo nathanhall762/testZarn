@@ -1,15 +1,13 @@
 interface Props {
-  title: string;
-  body: string[];
-  bg_image: string;
-  image_alt_text: string;
+  content: {
+  heading: string;
+  body_text: string[];
+  image: string;
+  image_alt_text: string;}
 }
 
 const BulletStatsCard: React.FC<Props> = ({
-  body,
-  title,
-  bg_image,
-  image_alt_text,
+  content: { heading: title, body_text: body, image: bg_image, image_alt_text },
 }) => {
   console.log(bg_image, image_alt_text);
   return (
@@ -22,9 +20,7 @@ const BulletStatsCard: React.FC<Props> = ({
       >
         <h3 className='lg:text-3xl text-2xl text-primary pb-4'>{title}</h3>
         <div className='grid grid-cols-2 w-full gap-x-4 lg:gap-x-8 text-center items-center'>
-          {body.map((bullet) => (
-            <p className='lg:text-lg text-base py-2'>{bullet}</p>
-          ))}
+            <p className='lg:text-lg text-base py-2'>{body}</p>
         </div>
       </div>
     </div>
