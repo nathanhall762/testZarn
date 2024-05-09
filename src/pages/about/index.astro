@@ -1,39 +1,16 @@
 ---
-// pages/about/index.astro
 import Layout from '../../layouts/Layout.astro';
-import { getData } from '../../firebase';
-import mapContentToComponents from '../../utils/mapContentToComponents';
-import AboutCard from '../../components/AboutCard';
-import Sidekick from '../../components/Sidekick';
-import React from 'react';
 import type { DocumentData } from 'firebase/firestore';
-import Hero from '../../components/Hero';
-import InfoCardList from '../../components/InfoCardList';
-import BulletStatsCard from '../../components/BulletStatsCard';
-import TabListCards from '../../components/TabListCards';
+import { getData } from '../../firebase';
 
-
-const data: DocumentData[] = await getData('pages', 'about');
+const data = await getData('pages', 'about');
 const pageData: DocumentData = data[0];
 console.log(`pageData`, pageData);
-export const components: Record<string, React.ComponentType<{ content: any }>> = {
-  hero_section: Hero,
-  sidekick_section: Sidekick,
-  welcome_message_section: AboutCard,
-  info_card_list: InfoCardList,
-  bullet_stats_card: BulletStatsCard,
-  tab_list_cards: TabListCards,
-};
+
 ---
 
-<Layout title={pageData.title} metaDescription={pageData.seo_metadata.meta_description}>
-  <main>
-    {pageData.content.map((item: { type: string | number; value: any; }) => {
-      const Component = components[item.type];
-      if (!Component) {
-        throw new Error(`Component not found for type: ${item.type}`);
-      }
-      return <Component content={item.value} />;
-    })}
-  </main>
+<Layout
+  title={pageData.title}
+  metaDescription={pageData.seo_metadata.meta_description}
+  pageData={pageData}>
 </Layout>

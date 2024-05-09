@@ -1,18 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero';
-import AboutCard from '../components/AboutCard';
-import BulletStatsCard from '../components/BulletStatsCard';
-import TextImagecard from '../components/TextImageCard';
-import LuxuryBrandsCard from '../components/LuxuryBrandsCard';
-import InfoCardList from '../components/InfoCardList';
-import TabListCards from '../components/TabListCards';
-import Accordion from '../components/Accordion';
-import { components } from './about/index.astro';
 import type { DocumentData } from 'firebase/firestore';
-
 import { getData } from '../firebase';
-// import ProjectGallery from '../components/ProjectGallery';
 
 const data = await getData('pages', 'home');
 const pageData: DocumentData = data[0];
@@ -21,15 +10,7 @@ console.log(`pageData`, pageData);
 ---
 
 <Layout
-  title=''
-  metaDescription='this is my first astro page'>
-  <main>
-    {pageData.content.map((item: { type: string | number; value: any; }) => {
-      const Component = components[item.type];
-      if (!Component) {
-        throw new Error(`Component not found for type: ${item.type}`);
-      }
-      return <Component content={item.value} />;
-    })}
-  </main>
+  title={pageData.title}
+  metaDescription={pageData.seo_metadata.meta_description}
+  pageData={pageData}>
 </Layout>

@@ -2,10 +2,12 @@ import { Icon } from '@iconify/react/dist/iconify.js';
 import { useState } from 'react';
 
 interface Props {
-  faqs: { question: string; answer: string }[];
-}
+  content: { question_and_answer: { question: string; answer: string }[];
+}}
 
-const Accordion: React.FC<Props> = ({ faqs }) => {
+const Accordion: React.FC<Props> = ({
+  content: { question_and_answer: question_and_answer },
+ }) => {
   const [clicked, setClicked] = useState<number>();
 
   const handleClick = (index: number) => {
@@ -19,7 +21,7 @@ const Accordion: React.FC<Props> = ({ faqs }) => {
           FAQ's
         </h2>
         <div className='flex flex-col'>
-          {faqs.map((faq, index) => (
+          {question_and_answer.map((q_and_a_group, index) => (
             <div
               key={index}
               className='group cursor-pointer'
@@ -27,7 +29,7 @@ const Accordion: React.FC<Props> = ({ faqs }) => {
               <hr />
               <div className='lg:px-8 px-4 flex justify-between items-center pt-6'>
                 <p className='lg:text-lg text-base text-pretty group-hover:scale-[1.01] transition duration-300 ease-in-out'>
-                  {faq.question}
+                  {q_and_a_group.question}
                 </p>
                 <Icon
                   icon={'ep:arrow-up'}
@@ -44,7 +46,7 @@ const Accordion: React.FC<Props> = ({ faqs }) => {
                   className={`${
                     index === clicked ? 'scale-y-100 my-4' : 'scale-y-0 py-0'
                   } px-4 lg:px-8 py-4`}>
-                  {faq.answer}
+                  {q_and_a_group.answer}
                 </p>
               </div>
               <hr />
