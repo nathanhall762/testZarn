@@ -8,7 +8,9 @@ export default {
     },
     colors: {
       black: 'hsl(0, 0%, 5%)',
+      black2: 'hsl(0, 0%, 12%)',
       white: 'hsl(0, 0%, 96%)',
+      white2: 'hsl(0, 0%, 90%)',
       // primary: 'hsl(0, 76%, 47%)',
       // secondary: 'hsl(210, 100%, 15%)',
       // tertiary: 'hsl(342, 56%, 32%)',
@@ -73,7 +75,14 @@ export default {
         xxs: '48px',
       },
       transitionDuration: {
-        2000: '2000ms',
+        fast: '200ms',
+        md: '500ms',
+        slow: '2000ms',
+      },
+      scale: {
+        sm: '1.01',
+        md: '1.05',
+        lg: '1.1',
       },
     },
   },

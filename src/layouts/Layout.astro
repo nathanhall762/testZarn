@@ -30,9 +30,57 @@ const websiteName = 'Zarn Automotive';
 const phone = '(918) 123-1234';
 const address = '1234 Main St, Tulsa, OK 74103';
 const navs = [
-  { link: '/about', name: 'About Us' },
-  { link: '/services', name: 'Our Services' },
-  { link: '/european-car-repair', name: 'European Car Repair' },
+  { link: '/about', name: 'About Us', subpages: [
+    { link: '/our-team', name: 'Our Team' },
+    { link: '/faqs', name: 'FAQ' },
+    { link: '/care-tips', name: 'Care Tips' },
+    { link: '/why-choose-us', name: 'Why Choose Us'}
+  ]},
+  { link: '/services', name: 'Our Services', subpages: [
+    { link: '/ac-services', name: 'AC Services' },
+    { link: '/auto-repair-estimates', name: 'Auto Repair Estimates' },
+    { link: '/battery', name: 'Battery' },
+    {link: '/bg', name: 'BG Services' },
+    { link: '/brake-system', name: 'Brake System' },
+    { link: '/check-engine-light', name: 'Check Engine Light' },
+    { link: '/computer-diagnostics', name: 'Computer Diagnostics' },
+    { link: '/drivetrain', name: 'Drivetrain'},
+    { link: '/electrical-concerns', name: 'Electrical Concerns' },
+    { link: '/engine-cooling-system', name: 'Engine Cooling System'},
+    { link: '/engine-performance-repair', name: 'Engine Performance Repair' },
+    { link: '/fleet-services', name: 'Fleet Services' },
+    { link: '/fuel-system', name: 'Fuel System' },
+    { link: '/hybrid-electric-vehicles', name: 'Hybrid/Electric Vehicles' },
+    { link: '/inspections', name: 'Inspections' },
+    { link: '/courtesy-inspection', name: 'Courtesy Inspection' },
+    { link: '/preventative-maintenance', name: 'Preventative Maintenance' },
+    { link: '/oil-and-filter-change', name: 'Oil and Filter Change' },
+    { link: '/tune-ups', name: 'Tune-Ups' },
+    { link: '/steering-components', name: 'Steering Components' },
+    { link: '/suspension', name: 'Suspension'},
+    { link: '/transmission', name: 'Transmission' },
+  ]
+   },
+  { link: '/european-car-repair', name: 'European Car Repair', subpages: [
+    {link: '/mercedes', name: 'Mercedes' },
+    {link: '/volkswagen', name: 'Volkswagen' },
+    {link: '/acura', name: 'Acura' },
+    {link: '/bmw', name: 'BMW' },
+    {link: '/audi', name: 'Audi' },
+    {link: '/volvo', name: 'Volvo' },
+    {link: '/porsche', name: 'Porsche' },
+    {link: '/mini', name: 'Mini'},
+    {link: '/land-rover', name: 'Land Rover' },
+    {link: '/jaguar', name: 'Jaguar' },
+    {link: '/buick', name: 'Buick' },
+    {link: '/cadillac', name: 'Cadillac' },
+    {link: '/infiniti', name: 'Infiniti' },
+    {link: '/lexus', name: 'Lexus' },
+    {link: '/mazda', name: 'Mazda' },
+    {link: '/hyundai', name: 'Hyundai' },
+  ]
+
+   },
   { link: '/testimonials', name: 'Testimonials' },
   { link: '/book-appointment', name: 'Book Appointment' },
   { link: '/contact', name: 'Contact Us' },
@@ -76,7 +124,7 @@ const cta = 'Contact Us';
       cta={cta}
       client:load
     />
-    <main>
+    <main class="mt-[11vh]">
       {
         pageData.content.map((item: Item) => {
           switch (item.type) {
@@ -145,15 +193,43 @@ const cta = 'Contact Us';
       }
 
       a {
-        @apply transition-transform duration-300 ease-in-out;
+        @apply transition-transform duration-fast ease-in-out;
       }
 
       a:hover {
-        @apply scale-110;
+        @apply scale-md;
       }
 
       strong {
         font-weight: bold;
+      }
+
+      h1 {
+        @apply text-neutral-9 dark:text-neutral-1 text-3xl lg:text-4xl font-semibold mb-6;
+      }
+
+      h2 {
+        @apply text-neutral-9 dark:text-neutral-1 text-2xl lg:text-3xl font-semibold mb-4;
+      }
+
+      h3 {
+        @apply text-neutral-9 dark:text-neutral-1 text-xl lg:text-2xl font-semibold mb-4;
+      }
+
+      h4 {
+        @apply text-neutral-9 dark:text-neutral-1 text-lg lg:text-xl font-semibold mb-4;
+      }
+
+      h5 {
+        @apply text-neutral-9 dark:text-neutral-1 text-base lg:text-lg font-semibold mb-4;
+      }
+
+      h6 {
+        @apply text-neutral-9 dark:text-neutral-1 text-base lg:text-lg font-semibold mb-4;
+      }
+
+      p {
+        @apply text-neutral-8 dark:text-neutral-2 text-base lg:text-lg mb-4;
       }
     </style>
   </body><!-- custom animation keyframes and other global stuffs -->
