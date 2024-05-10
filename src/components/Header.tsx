@@ -44,7 +44,7 @@ const Header: React.FC<HeaderProps> = ({ title, navs }) => {
       className={`fixed top-0 z-50 w-screen bg-neutral-9 transition-all duration-md ease-in-out ${isScrolled ? 'h-[9vh]' : 'h-[13vh]'}`}
     >
       <div
-        className={`dark:bgdk1 text-xs transition-height flex w-screen overflow-hidden transition-all duration-md ${isScrolled ? 'h-0 border-b-0' : 'h-[4vh] border-b-[1px]'}`}
+        className={`dark:bgdk1 transition-height flex w-screen overflow-hidden text-xs transition-all duration-md ${isScrolled ? 'h-0 border-b-0' : 'h-[4vh] border-b-[1px]'}`}
       >
         <a
           className='border-mdbg1 flex h-full flex-grow items-center border-r-[1px] hover:scale-100'
@@ -90,12 +90,12 @@ const Header: React.FC<HeaderProps> = ({ title, navs }) => {
         </a>
       </div>
       <div
-        className={`relative top-0 h-[9vh] flex w-screen justify-between text-center align-middle shadow-2xl transition-all duration-md lg:grid lg:grid-cols-12`}
+        className={`relative top-0 flex h-[9vh] w-screen justify-between text-center align-middle shadow-2xl transition-all duration-md lg:grid lg:grid-cols-12`}
       >
-        <div className='items-center relative flex-grow justify-center lg:col-span-2 flex bg-dkbg1 border-r-[1px] border-mdbg1'>
-          <a href="/">
-            <div className='text-center text-black overflow-clip transition-all duration-fast hover:text-accent dark:text-white'>
-              <img src="/public/ZarnLogo.png" alt="" className='h-[8vh] py-2'/>
+        <div className='bg-dkbg1 border-mdbg1 relative flex flex-grow items-center justify-center border-r-[1px] lg:col-span-2'>
+          <a href='/'>
+            <div className='hover:text-accent overflow-clip text-center text-black transition-all duration-fast dark:text-white'>
+              <img src='/ZarnLogo.png' alt='' className='h-[8vh] py-2' />
             </div>
           </a>
         </div>
@@ -114,7 +114,7 @@ const Header: React.FC<HeaderProps> = ({ title, navs }) => {
                     <a
                       key={subpage.name}
                       href={`${nav.link}${subpage.link}`}
-                      className='bg:neutral-1 hover:text-primary-md2 min-w-[20vw] px-6 py-2 text-start text-sm text-black dark:bg-neutral-9 dark:text-white'
+                      className='bg:neutral-1 min-w-[20vw] px-6 py-2 text-start text-sm text-black hover:text-primary-md2 dark:bg-neutral-9 dark:text-white'
                     >
                       {subpage.name}
                     </a>
@@ -132,7 +132,7 @@ const Header: React.FC<HeaderProps> = ({ title, navs }) => {
           {isNavOpen ? <Icon icon={closeIcon} /> : <Icon icon={menuIcon} />}
         </div>
         <div
-          className={`absolute left-0 top-full z-50 w-full transform transition-transform duration-fast py-4 pt-0 shadow-md lg:hidden ${isNavOpen ? 'scale-y-100' : 'scale-y-0'} ${isScrolled ? 'h-[94vh]' : 'h-[90vh]'} origin-top transition-transform duration-fast ease-in-out`}
+          className={`absolute left-0 top-full z-50 w-full transform py-4 pt-0 shadow-md transition-transform duration-fast lg:hidden ${isNavOpen ? 'scale-y-100' : 'scale-y-0'} ${isScrolled ? 'h-[94vh]' : 'h-[90vh]'} origin-top transition-transform duration-fast ease-in-out`}
         >
           <nav className='flex h-full flex-col dark:bg-neutral-9'>
             {navs.map((nav, index) => (
@@ -154,9 +154,12 @@ const Header: React.FC<HeaderProps> = ({ title, navs }) => {
             </a>
           </nav>
         </div>
-        <div className='hidden px-4 lg:col-span-2 text-sm lg:flex lg:justify-around xl:col-span-3'>
+        <div className='hidden px-4 text-sm lg:col-span-2 lg:flex lg:justify-around xl:col-span-3'>
           <div className='group hidden cursor-pointer items-center justify-center gap-[1.4vw] self-center xl:flex'>
-            <a href="tel:TELEPHONE_NUMBER_GOES_HERE" className='group hidden cursor-pointer items-center justify-center gap-[1.4vw] self-center xl:flex'>
+            <a
+              href='tel:TELEPHONE_NUMBER_GOES_HERE'
+              className='group hidden cursor-pointer items-center justify-center gap-[1.4vw] self-center xl:flex'
+            >
               <Icon
                 icon='akar-icons:phone'
                 className='text-primary-md1 transition-all duration-fast group-hover:scale-lg group-hover:text-primary-md2'
