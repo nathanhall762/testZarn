@@ -39,6 +39,8 @@ export default {
     },
     extend: {
       spacing: {
+        '7xl': '1152px',
+        '6xl': '960px',
         '5xl': '768px',
         '4xl': '640px',
         '3xl': '512px',
@@ -51,6 +53,8 @@ export default {
         xxs: '48px',
       },
       maxHeight: {
+        '7xl': '1152px',
+        '6xl': '960px',
         '5xl': '768px',
         '4xl': '640px',
         '3xl': '512px',
@@ -63,6 +67,8 @@ export default {
         xxs: '48px',
       },
       maxWidth: {
+        '7xl': '1152px',
+        '6xl': '960px',
         '5xl': '768px',
         '4xl': '640px',
         '3xl': '512px',

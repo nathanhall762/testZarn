@@ -2,12 +2,12 @@ import { Icon } from '@iconify/react/dist/iconify.js';
 import { useState } from 'react';
 
 interface Props {
-  content: { question_and_answer: { question: string; answer: string }[];
-}}
+  content: { question_and_answer: { question: string; answer: string }[] };
+}
 
 const Accordion: React.FC<Props> = ({
   content: { question_and_answer: question_and_answer },
- }) => {
+}) => {
   const [clicked, setClicked] = useState<number>();
 
   const handleClick = (index: number) => {
@@ -16,8 +16,8 @@ const Accordion: React.FC<Props> = ({
 
   return (
     <>
-      <div className='lg:px-32 py-8 px-4'>
-        <h2 className='text-center text-2xl lg:text-3xl pb-8 text-primary'>
+      <div className='px-4 py-8 lg:px-32'>
+        <h2 className='text-primary pb-8 text-center text-2xl lg:text-3xl'>
           FAQ's
         </h2>
         <div className='flex flex-col'>
@@ -25,31 +25,35 @@ const Accordion: React.FC<Props> = ({
             <div
               key={index}
               className='group cursor-pointer'
-              onClick={() => handleClick(index)}>
-              <hr />
-              <div className='lg:px-8 px-4 flex justify-between items-center pt-6'>
-                <p className='lg:text-lg text-base text-pretty group-hover:scale-[1.01] transition duration-300 ease-in-out'>
+              onClick={() => handleClick(index)}
+            >
+              <hr className='text-neutral-1' />
+              <div className='flex items-center justify-between px-4 pt-6 lg:px-8'>
+                <p className='text-pretty text-base transition duration-300 ease-in-out group-hover:scale-[1.01] lg:text-lg'>
                   {q_and_a_group.question}
                 </p>
                 <Icon
                   icon={'ep:arrow-up'}
                   className={`${
                     index === clicked ? 'text-primary scale-110' : 'rotate-180'
-                  } lg:text-3xl text-5xl font-bold cursor-pointer group-hover:scale-125 group-hover:text-primary transition duration-300 ease-in-out`}></Icon>
+                  } group-hover:text-primary cursor-pointer text-5xl font-bold text-neutral-1 transition duration-300 ease-in-out group-hover:scale-125 lg:text-3xl`}
+                ></Icon>
               </div>
               <div
                 className={`${
-                  index === clicked ? 'scale-y-100 my-4' : 'scale-y-0 my-0'
-                } px-4 lg:px-8 transform origin-top transition-all duration-300 ease-in-out`}>
-                <hr />
+                  index === clicked ? 'my-4 scale-y-100' : 'my-0 scale-y-0'
+                } origin-top transform px-4 transition-all duration-300 ease-in-out lg:px-8`}
+              >
+                <hr className='text-neutral-1' />
                 <p
                   className={`${
-                    index === clicked ? 'scale-y-100 my-4' : 'scale-y-0 py-0'
-                  } px-4 lg:px-8 py-4`}>
+                    index === clicked ? 'my-4 scale-y-100' : 'scale-y-0 py-0'
+                  } px-4 py-4 lg:px-8`}
+                >
                   {q_and_a_group.answer}
                 </p>
               </div>
-              <hr />
+              <hr className='text-neutral-1' />
             </div>
           ))}
         </div>

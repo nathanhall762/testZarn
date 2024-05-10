@@ -138,9 +138,9 @@ const cta = 'Contact Us';
         pageData.content.map((item: Item) => {
           switch (item.type) {
             case 'hero_section':
-              return <Hero content={item.value} client:load />;
+              return <Hero content={item.value} client:idle />;
             case 'sidekick_section':
-              return <Sidekick content={item.value} />;
+              return <Sidekick content={item.value} client:idle />;
             case 'welcome_message_section':
               return <AboutCard content={item.value} />;
             case 'info_card_list':
@@ -148,11 +148,11 @@ const cta = 'Contact Us';
             case 'bullet_stats_card':
               return <BulletStatsCard content={item.value} />;
             case 'tab_list_cards':
-              return <TabListCards content={item.value} />;
+              return <TabListCards content={item.value} client:idle />;
             case 'text_image_card':
               return <TextImagecard content={item.value} />;
             case 'accordion':
-              return <Accordion content={item.value} client:load />;
+              return <Accordion content={item.value} client:idle />;
             default:
               return null;
           }
