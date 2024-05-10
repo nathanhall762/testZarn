@@ -31,7 +31,7 @@ const Hero: React.FC<HeroProps> = ({
 
   const getImageClasses = (index: number) => {
     let baseClasses =
-      'absolute z-0 top-0 w-full h-full bg-cover bg-center transition-all duration-2000 ease-in-out';
+      'absolute z-0 top-[13vh] w-full h-[87vh] bg-cover bg-center transition-all duration-2000 ease-in-out';
     if (index === currentImageIndex) {
       return `${baseClasses} transform opacity-100`;
     } else {
@@ -40,7 +40,7 @@ const Hero: React.FC<HeroProps> = ({
   };
 
   return (
-    <div className='h-screen content-end overflow-hidden shadow-inner'>
+    <div className='h-[87vh] content-end shadow-inner'>
       {backgroundImages.map((image, index) => (
         <div
           key={image}
@@ -48,9 +48,9 @@ const Hero: React.FC<HeroProps> = ({
           style={{ backgroundImage: `url(${image})` }}
         />
       ))}
-      <div className='absolute inset-0 bg-black opacity-30'></div>
+      <div className='absolute top-[13vh] w-full h-[87vh] inset-0 bg-black opacity-30'></div>
       <div className='relative z-10 text-left'>
-        <div className='fade-in-up  bg-opacity-80 px-4 py-16 shadow-md lg:px-32'>
+        <div className='fade-in-up  bg-opacity-80  px-4 py-16 shadow-md lg:px-32'>
           <h1 className='pb-4 text-xl text-neutral-2 lg:text-3xl lg:text-neutral-1'>
             {welcomeText}
           </h1>
@@ -68,26 +68,6 @@ const Hero: React.FC<HeroProps> = ({
             </p>
           </div>
         </div>
-      </div>
-      <div className='relative z-50'>
-        <button className='size-28 bg-primary-dk1'>Primary</button>
-        <button className='size-28 bg-primary-dk2'>Primary</button>
-        <button className='size-28 bg-primary-md1'>Primary</button>
-        <button className='size-28 bg-primary-md2'>Primary</button>
-        <button className='size-28 bg-primary-md3'>Primary</button>
-        <button className='size-28 bg-primary-lt1'>Primary</button>
-        <button className='size-28 bg-primary-lt2'>Primary</button>
-      </div>
-      <div className='relative z-50'>
-        <button className='size-28 bg-neutral-1'>Neutral</button>
-        <button className='size-28 bg-neutral-2'>Neutral</button>
-        <button className='size-28 bg-neutral-3'>Neutral</button>
-        <button className='size-28 bg-neutral-4'>Neutral</button>
-        <button className='size-28 bg-neutral-5'>Neutral</button>
-        <button className='size-28 bg-neutral-6'>Neutral</button>
-        <button className='size-28 bg-neutral-7'>Neutral</button>
-        <button className='size-28 bg-neutral-8'>Neutral</button>
-        <button className='size-28 bg-neutral-9'>Neutral</button>
       </div>
     </div>
   );

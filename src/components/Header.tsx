@@ -5,7 +5,14 @@ import closeIcon from '@iconify/icons-mdi/close';
 
 interface HeaderProps {
   title: string;
-  navs: { link: string; name: string }[];
+  navs: {
+    link: string;
+    name: string;
+    subpages?: {
+      link: string;
+      name: string;
+    }[];
+  }[];
   cta: string;
 }
 
@@ -33,80 +40,99 @@ const Header: React.FC<HeaderProps> = ({ title, navs }) => {
   };
 
   return (
-    <header className='bg-transparent fixed top-0 z-50 w-screen transition-all duration-300 ease-in-out'>
+    <header
+      className={`fixed top-0 z-50 h-[11vh] w-screen bg-neutral-9 transition-all duration-md ease-in-out ${isScrolled ? 'h-[9vh]' : 'h-[13vh]'}`}
+    >
       <div
-        className={`transition-height z-0 flex w-screen items-center justify-around overflow-hidden border-neutral-6 bg-neutral-9 transition-all duration-300 ${isScrolled ? 'h-0 border-b-0' : 'h-12 border-b-[1px]'}`}
+        className={`dark:bgdk1 text-xs transition-height flex w-screen overflow-hidden transition-all duration-md ${isScrolled ? 'h-0 border-b-0' : 'h-[4vh] border-b-[1px]'}`}
       >
-        <div className='flex h-full flex-grow items-center justify-center border-r-[1px] border-neutral-6 hover:scale-100'>
-          <a
-            className='group flex cursor-pointer justify-center gap-2 bg-neutral-9 lg:gap-4'
-            href='tel:TELEPHONE_NUMBER_GOES_HERE'
-          >
+        <a
+          className='border-mdbg1 flex h-full flex-grow items-center border-r-[1px] hover:scale-100'
+          href='tel:TELEPHONE_NUMBER_GOES_HERE'
+        >
+          <div className='group flex h-full flex-grow cursor-pointer items-center justify-center gap-2 lg:gap-4'>
             <Icon
               icon='akar-icons:phone'
-              className='text-primary-md1 transition-all duration-300 group-hover:scale-125'
+              className='text-primary-md1 transition-all duration-fast group-hover:scale-lg group-hover:text-primary-md2'
             />
-            <h3 className='text-center text-xs text-neutral-9 transition-all duration-300 group-hover:scale-110 group-hover:text-primary-md3 group-hover:underline dark:text-neutral-1'>
+            <span className=' text-black transition-all duration-fast group-hover:scale-md group-hover:underline dark:text-white'>
               (918) 123-1234
-            </h3>
-          </a>
-        </div>
-        <div className='flex h-full flex-grow items-center justify-center border-r-[1px] border-neutral-6 hover:scale-100'>
-          <a
-            className='group flex cursor-pointer justify-center bg-neutral-9 lg:gap-4'
-            href='mailto:EMAIL_ADDRESS_GOES_HERE'
-          >
+            </span>
+          </div>
+        </a>
+        <a
+          className='border-mdbg1 flex h-full flex-grow items-center border-r-[1px] hover:scale-100'
+          href='mailto:EMAIL_ADDRESS_GOES_HERE'
+        >
+          <div className='group flex h-full flex-grow cursor-pointer items-center justify-center gap-2 lg:gap-4'>
             <Icon
               icon='mdi:email'
-              className='text-primary-md1 transition-all duration-300 group-hover:scale-125'
+              className='text-primary-md1 transition-all duration-fast group-hover:scale-lg group-hover:text-primary-md2'
             />
-            <h3 className='hidden text-center text-xs text-neutral-9 transition-all duration-300 group-hover:scale-110 group-hover:text-primary-md3 group-hover:underline lg:inline dark:text-neutral-1'>
+            <span className='hidden text-center text-xs text-black transition-all duration-fast group-hover:scale-md group-hover:underline lg:inline dark:text-white'>
               Email@email.com
-            </h3>
-          </a>
-        </div>
-        <div className='flex h-full flex-grow items-center justify-center hover:scale-100'>
-          <a
-            className='group flex cursor-pointer justify-center bg-neutral-9 lg:gap-4'
-            href='/'
-          >
+            </span>
+          </div>
+        </a>
+        <a
+          className='flex h-full flex-grow items-center hover:scale-100'
+          href='/'
+        >
+          <div className='group flex h-full flex-grow cursor-pointer items-center justify-center lg:gap-4'>
             <Icon
               icon='mdi:map-marker'
-              className='text-primary-md1 transition-all duration-300 group-hover:scale-125'
+              className='text-primary-md1 transition-all duration-fast group-hover:scale-lg group-hover:text-primary-md2'
             />
-            <h3 className='hidden text-center text-xs text-neutral-9 transition-all duration-300 group-hover:scale-110 group-hover:text-primary-md3 group-hover:underline lg:inline dark:text-neutral-1'>
+            <span className='hidden text-center text-xs text-black transition-all duration-fast group-hover:scale-md group-hover:underline lg:inline dark:text-white'>
               1234 Address St
-            </h3>
-          </a>
-        </div>
+            </span>
+          </div>
+        </a>
       </div>
       <div
-        className={`relative top-0 flex h-12 w-screen justify-between text-center align-middle shadow-2xl transition-all duration-1000 lg:grid lg:grid-cols-12`}
+        className={`relative top-0 h-[9vh] flex w-screen justify-between text-center align-middle shadow-2xl transition-all duration-md lg:grid lg:grid-cols-12`}
       >
-        <div className='flex flex-grow items-center justify-center border-r-[1px] border-neutral-6  bg-neutral-9 lg:col-span-3'>
-          <h2 className='text-center text-2xl text-neutral-9 transition-all duration-300 hover:text-primary-md3 dark:text-neutral-1'>
-            <a href='/'>{title}</a>
-          </h2>
+        <div className='items-center relative flex-grow justify-center lg:col-span-2 flex bg-dkbg1 border-r-[1px] border-mdbg1'>
+          <a href="/">
+            <div className='text-center text-black overflow-clip transition-all duration-fast hover:text-accent dark:text-white'>
+              <img src="/public/ZarnLogo.png" alt="" className='h-[8vh] py-2'/>
+            </div>
+          </a>
         </div>
-        <nav className='hidden items-center justify-center gap-6 border-r-[1px] border-neutral-6 bg-neutral-9 align-middle  lg:col-span-6 lg:flex'>
+        <nav className='border-mdbg1 hidden items-center justify-center gap-[1.4vw] border-r-[1px] align-middle lg:col-span-8  lg:flex xl:col-span-7'>
           {navs.map((nav) => (
-            <a
-              className='text-bold text-base text-neutral-9 transition duration-300 ease-in-out hover:text-primary-md3 dark:text-neutral-1'
-              href={`${nav.link}`}
-              key={nav.name}
-            >
-              {nav.name}
-            </a>
+            <div key={nav.name} className='group relative'>
+              <a
+                className='text-bold text-sm text-black transition duration-fast ease-in-out hover:text-primary-md2 dark:text-white'
+                href={`${nav.link}`}
+              >
+                {nav.name}
+              </a>
+              {nav.subpages && (
+                <div className='w-fit-content pointer-events-none absolute left-0 top-full flex max-h-[70vh] translate-x-[-2.5vw] flex-col flex-wrap py-2 opacity-0 shadow-md transition-opacity duration-300 group-hover:pointer-events-auto group-hover:opacity-100'>
+                  {nav.subpages.map((subpage) => (
+                    <a
+                      key={subpage.name}
+                      href={`${nav.link}${subpage.link}`}
+                      className='bg:neutral-1 hover:text-primary-md2 min-w-[20vw] px-6 py-2 text-start text-sm text-black dark:bg-neutral-9 dark:text-white'
+                    >
+                      {subpage.name}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
           ))}
         </nav>
+
         <div
           onClick={toggleNav}
-          className={`z-50 flex w-14 cursor-pointer items-center justify-center bg-neutral-9 text-2xl text-neutral-9 transition-transform duration-300 lg:hidden dark:text-neutral-1 ${isNavOpen ? 'rotate-180 opacity-100' : 'rotate-0 opacity-100'}`}
+          className={`z-50 flex w-20 cursor-pointer items-center justify-center text-2xl text-black transition-transform duration-fast lg:hidden dark:text-white ${isNavOpen ? 'rotate-180 opacity-100' : 'rotate-0 opacity-100'}`}
         >
           {isNavOpen ? <Icon icon={closeIcon} /> : <Icon icon={menuIcon} />}
         </div>
         <div
-          className={`absolute left-0 top-full z-50 w-full transform bg-neutral-1 shadow-md lg:hidden ${isNavOpen ? 'scale-y-100' : 'scale-y-0'} origin-top transition-transform duration-300 ease-in-out`}
+          className={`absolute left-0 top-full z-50 h-[89vh] w-full transform p-4 pt-0 shadow-md lg:hidden ${isNavOpen ? 'scale-y-100' : 'scale-y-0'} origin-top transition-transform duration-fast ease-in-out`}
         >
           <nav className='flex flex-col dark:bg-neutral-9'>
             {navs.map((nav, index) => (
@@ -118,26 +144,31 @@ const Header: React.FC<HeaderProps> = ({ title, navs }) => {
                 {nav.name}
               </a>
             ))}
-            <a href='/contact' className=''>
-              <button className='my-2 mb-4 transform rounded-xl bg-primary-md1 px-4 py-2 text-base transition duration-300 ease-in-out hover:scale-110'>
+            <a
+              href='/contact'
+              className='flex justify-items-center self-center'
+            >
+              <button className='my-2 transform rounded-xl bg-primary-md1 px-4 py-2 text-base transition duration-fast ease-in-out hover:scale-md hover:bg-primary-md2'>
                 CONTACT US
               </button>
             </a>
           </nav>
         </div>
-        <div className='hidden bg-neutral-9 px-4 lg:col-span-3 lg:flex lg:justify-around'>
-          <div className='group flex cursor-pointer justify-center gap-2 self-center bg-neutral-9 py-2 lg:gap-4'>
-            <Icon
-              icon='akar-icons:phone'
-              className='text-2xl text-primary-md1 transition-all duration-300 group-hover:scale-125 group-hover:text-primary-md3'
-            />
-            <h3 className='text-center text-neutral-9 transition-all duration-300 group-hover:scale-110 group-hover:text-primary-md3 group-hover:underline dark:text-neutral-1'>
-              (918) 123-1234
-            </h3>
+        <div className='hidden px-4 lg:col-span-2 text-sm lg:flex lg:justify-around xl:col-span-3'>
+          <div className='group hidden cursor-pointer items-center justify-center gap-[1.4vw] self-center xl:flex'>
+            <a href="tel:TELEPHONE_NUMBER_GOES_HERE" className='group hidden cursor-pointer items-center justify-center gap-[1.4vw] self-center xl:flex'>
+              <Icon
+                icon='akar-icons:phone'
+                className='text-primary-md1 transition-all duration-fast group-hover:scale-lg group-hover:text-primary-md2'
+              />
+              <span className='hidden text-center text-black transition-all duration-fast group-hover:scale-md group-hover:underline xl:inline dark:text-white'>
+                (918) 123-1234
+              </span>
+            </a>
           </div>
-          <a href='/contact' className=''>
-            <button className='my-2 transform rounded-xl bg-primary-md1 px-4 py-2 text-lg transition duration-300 ease-in-out hover:scale-110'>
-              CONTACT US
+          <a href='/contact' className='flex self-center'>
+            <button className='transform rounded-xl bg-primary-md1 px-4 py-2 transition duration-fast ease-in-out hover:scale-sm hover:bg-primary-md2'>
+              <span className=''>CONTACT US</span>
             </button>
           </a>
         </div>
