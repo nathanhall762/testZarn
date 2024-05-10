@@ -40,7 +40,7 @@ const Hero: React.FC<HeroProps> = ({
   };
 
   return (
-    <div className='h-screen overflow-hidden shadow-inner content-end'>
+    <div className='h-screen content-end overflow-hidden shadow-inner'>
       {backgroundImages.map((image, index) => (
         <div
           key={image}
@@ -50,24 +50,44 @@ const Hero: React.FC<HeroProps> = ({
       ))}
       <div className='absolute inset-0 bg-black opacity-50'></div>
       <div className='relative z-10 text-left'>
-        <div className='fade-in-up  shadow-md bg-opacity-80 px-4 lg:px-32 py-16'>
-          <h1 className='text-xl lg:text-3xl pb-4 lg:text-neutral-1 text-neutral-2'>
+        <div className='fade-in-up  bg-opacity-80 px-4 py-16 shadow-md lg:px-32'>
+          <h1 className='pb-4 text-xl text-neutral-2 lg:text-3xl lg:text-neutral-1'>
             {welcomeText}
           </h1>
-          <h2 className='text-2xl font-bold lg:text-5xl pb-32 lg:pb-48 text-center lg:text-left text-neutral-1'>
+          <h2 className='pb-32 text-center text-2xl font-bold text-neutral-1 lg:pb-48 lg:text-left lg:text-5xl'>
             {'The Top Auto Repair Shop in Tulsa'}
           </h2>
-          <div className='flex flex-col gap-4 lg:flex-row items-center justify-center lg:gap-16'>
+          <div className='flex flex-col items-center justify-center gap-4 lg:flex-row lg:gap-16'>
             <a href='/contact' className=''>
-              <button className='bg-other transform rounded-xl bg-neutral-8 px-12 py-4 text-lg text-neutral-2 transition duration-300 ease-in-out hover:scale-110 hover:bg-accent'>
+              <button className='bg-other hover:bg-accent transform rounded-xl bg-primary-md2 px-12 py-4 text-lg text-neutral-2 transition duration-300 ease-in-out hover:scale-110'>
                 Contact Us
               </button>
             </a>
-            <p className='lg:text-2xl text-base text-ltbg2'>
+            <p className='text-ltbg2 text-base lg:text-2xl'>
               <a href='tel:PHONE_NUMBER_GOES_HERE'>Call: (918) 123-1234</a>
             </p>
           </div>
         </div>
+      </div>
+      <div className='relative z-50'>
+        <button className='size-28 bg-primary-dk1'>Primary</button>
+        <button className='size-28 bg-primary-dk2'>Primary</button>
+        <button className='size-28 bg-primary-md1'>Primary</button>
+        <button className='size-28 bg-primary-md2'>Primary</button>
+        <button className='size-28 bg-primary-md3'>Primary</button>
+        <button className='size-28 bg-primary-lt1'>Primary</button>
+        <button className='size-28 bg-primary-lt2'>Primary</button>
+      </div>
+      <div className='relative z-50'>
+        <button className='size-28 bg-neutral-1'>Neutral</button>
+        <button className='size-28 bg-neutral-2'>Neutral</button>
+        <button className='size-28 bg-neutral-3'>Neutral</button>
+        <button className='size-28 bg-neutral-4'>Neutral</button>
+        <button className='size-28 bg-neutral-5'>Neutral</button>
+        <button className='size-28 bg-neutral-6'>Neutral</button>
+        <button className='size-28 bg-neutral-7'>Neutral</button>
+        <button className='size-28 bg-neutral-8'>Neutral</button>
+        <button className='size-28 bg-neutral-9'>Neutral</button>
       </div>
     </div>
   );
