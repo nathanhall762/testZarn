@@ -16,7 +16,6 @@ interface HeaderProps {
   cta: string;
 }
 
-
 const Header: React.FC<HeaderProps> = ({ title, navs }) => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -41,97 +40,99 @@ const Header: React.FC<HeaderProps> = ({ title, navs }) => {
   };
 
   return (
-    <header className={`fixed top-0 z-50 w-screen transition-all duration-md ease-in-out bg-transparent ${isScrolled ? 'h-[8vh]' : 'h-[11vh]'}`}>
+    <header
+      className={`fixed top-0 z-50 h-[11vh] w-screen bg-neutral-9 transition-all duration-md ease-in-out ${isScrolled ? 'h-[9vh]' : 'h-[13vh]'}`}
+    >
       <div
-        className={`w-screen flex dark:bgdk1 transition-all duration-md border-mdbg1 overflow-hidden transition-height ${isScrolled ? 'h-0 border-b-0' : 'h-[3vh] border-b-[1px]'}`}
+        className={`dark:bgdk1 text-xs transition-height flex w-screen overflow-hidden transition-all duration-md ${isScrolled ? 'h-0 border-b-0' : 'h-[4vh] border-b-[1px]'}`}
       >
         <a
-          className='flex flex-grow items-center hover:scale-100 border-r-[1px] border-mdbg1 h-full'
+          className='border-mdbg1 flex h-full flex-grow items-center border-r-[1px] hover:scale-100'
           href='tel:TELEPHONE_NUMBER_GOES_HERE'
         >
-          <div className='group items-center cursor-pointer h-full flex-grow flex justify-center gap-2 lg:gap-4 bg-dkbg1'>
+          <div className='group flex h-full flex-grow cursor-pointer items-center justify-center gap-2 lg:gap-4'>
             <Icon
               icon='akar-icons:phone'
-              className='text-accent group-hover:text-accent group-hover:scale-lg transition-all duration-fast'
+              className='text-primary-md1 transition-all duration-fast group-hover:scale-lg group-hover:text-primary-md2'
             />
-            <span className='text-xs text-black transition-all group-hover:underline group-hover:scale-md duration-fast dark:text-white'>
+            <span className=' text-black transition-all duration-fast group-hover:scale-md group-hover:underline dark:text-white'>
               (918) 123-1234
             </span>
           </div>
         </a>
         <a
-          className='flex-grow flex items-center hover:scale-100 border-r-[1px] border-mdbg1 h-full'
+          className='border-mdbg1 flex h-full flex-grow items-center border-r-[1px] hover:scale-100'
           href='mailto:EMAIL_ADDRESS_GOES_HERE'
         >
-          <div className='group items-center cursor-pointer h-full flex-grow flex justify-center gap-2 lg:gap-4 bg-dkbg1'>
+          <div className='group flex h-full flex-grow cursor-pointer items-center justify-center gap-2 lg:gap-4'>
             <Icon
               icon='mdi:email'
-              className='text-accent group-hover:text-accent group-hover:scale-lg transition-all duration-fast'
+              className='text-primary-md1 transition-all duration-fast group-hover:scale-lg group-hover:text-primary-md2'
             />
-            <span className='hidden lg:inline text-center text-xs text-black transition-all group-hover:underline group-hover:scale-md duration-fast dark:text-white'>
+            <span className='hidden text-center text-xs text-black transition-all duration-fast group-hover:scale-md group-hover:underline lg:inline dark:text-white'>
               Email@email.com
             </span>
           </div>
         </a>
         <a
-          className='flex-grow flex items-center hover:scale-100 h-full'
+          className='flex h-full flex-grow items-center hover:scale-100'
           href='/'
         >
-          <div className='group items-center cursor-pointer h-full flex-grow flex justify-center lg:gap-4 bg-dkbg1'>
+          <div className='group flex h-full flex-grow cursor-pointer items-center justify-center lg:gap-4'>
             <Icon
               icon='mdi:map-marker'
-              className='text-accent group-hover:text-accent group-hover:scale-lg transition-all duration-fast'
+              className='text-primary-md1 transition-all duration-fast group-hover:scale-lg group-hover:text-primary-md2'
             />
-            <span className='hidden lg:inline text-center text-xs text-black transition-all group-hover:underline group-hover:scale-md duration-fast dark:text-white'>
+            <span className='hidden text-center text-xs text-black transition-all duration-fast group-hover:scale-md group-hover:underline lg:inline dark:text-white'>
               1234 Address St
             </span>
           </div>
         </a>
       </div>
       <div
-        className={`relative top-0 h-[8vh] flex w-screen justify-between text-center align-middle shadow-2xl transition-all duration-md lg:grid lg:grid-cols-12`}
+        className={`relative top-0 h-[9vh] flex w-screen justify-between text-center align-middle shadow-2xl transition-all duration-md lg:grid lg:grid-cols-12`}
       >
         <div className='items-center relative flex-grow justify-center lg:col-span-2 flex bg-dkbg1 border-r-[1px] border-mdbg1'>
           <a href="/">
-            <div className='text-center text-black h-full overflow-clip transition-all duration-fast hover:text-accent dark:text-white'>
+            <div className='text-center text-black overflow-clip transition-all duration-fast hover:text-accent dark:text-white'>
               <img src="/public/ZarnLogo.png" alt="" className='h-[8vh] py-2'/>
             </div>
           </a>
         </div>
-        <nav className='hidden items-center justify-center gap-[1.4vw] align-middle lg:col-span-8 xl:col-span-7 lg:flex bg-dkbg1  border-r-[1px] border-mdbg1'>
-  {navs.map((nav) => (
-    <div key={nav.name} className="relative group">
-      <a
-        className='text-bold text-base text-black transition duration-fast ease-in-out hover:text-accent dark:text-white'
-        href={`${nav.link}`}
-      >
-        {nav.name}
-      </a>
-      {nav.subpages && (
-        <div className="absolute top-full flex flex-col flex-wrap left-0 w-fit-content max-h-[70vh] translate-x-[-2.5vw] shadow-md py-2 opacity-0 pointer-events-none transition-opacity duration-300 group-hover:opacity-100 group-hover:pointer-events-auto">
-          {nav.subpages.map((subpage) => (
-            <a
-              key={subpage.name}
-              href={`${subpage.link}`}
-              className='px-6 py-2 text-start text-base min-w-[20vw] bg:ltbg1 dark:bg-dkbg1 text-black dark:text-white hover:text-accent'
-            >
-              {subpage.name}
-            </a>
+        <nav className='border-mdbg1 hidden items-center justify-center gap-[1.4vw] border-r-[1px] align-middle lg:col-span-8  lg:flex xl:col-span-7'>
+          {navs.map((nav) => (
+            <div key={nav.name} className='group relative'>
+              <a
+                className='text-bold text-sm text-black transition duration-fast ease-in-out hover:text-primary-md2 dark:text-white'
+                href={`${nav.link}`}
+              >
+                {nav.name}
+              </a>
+              {nav.subpages && (
+                <div className='w-fit-content pointer-events-none absolute left-0 top-full flex max-h-[70vh] translate-x-[-2.5vw] flex-col flex-wrap py-2 opacity-0 shadow-md transition-opacity duration-300 group-hover:pointer-events-auto group-hover:opacity-100'>
+                  {nav.subpages.map((subpage) => (
+                    <a
+                      key={subpage.name}
+                      href={`${nav.link}${subpage.link}`}
+                      className='bg:neutral-1 hover:text-primary-md2 min-w-[20vw] px-6 py-2 text-start text-sm text-black dark:bg-neutral-9 dark:text-white'
+                    >
+                      {subpage.name}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
           ))}
-        </div>
-      )}
-    </div>
-  ))}
-</nav>
+        </nav>
 
         <div
           onClick={toggleNav}
-          className={`z-50 flex w-20 cursor-pointer items-center justify-center text-2xl text-black bg-dkbg1 transition-transform duration-fast lg:hidden dark:text-white ${isNavOpen ? 'rotate-180 opacity-100' : 'rotate-0 opacity-100'}`}
+          className={`z-50 flex w-20 cursor-pointer items-center justify-center text-2xl text-black transition-transform duration-fast lg:hidden dark:text-white ${isNavOpen ? 'rotate-180 opacity-100' : 'rotate-0 opacity-100'}`}
         >
           {isNavOpen ? <Icon icon={closeIcon} /> : <Icon icon={menuIcon} />}
         </div>
         <div
-          className={`absolute left-0 top-full z-50 w-full h-[89vh] p-4 pt-0 transform bg-ltbg1 dark:bg-dkbg1 shadow-md lg:hidden ${isNavOpen ? 'scale-y-100' : 'scale-y-0'} origin-top transition-transform duration-fast ease-in-out`}
+          className={`absolute left-0 top-full z-50 h-[89vh] w-full transform p-4 pt-0 shadow-md lg:hidden ${isNavOpen ? 'scale-y-100' : 'scale-y-0'} origin-top transition-transform duration-fast ease-in-out`}
         >
           <nav className='flex flex-col dark:bg-neutral-9'>
             {navs.map((nav, index) => (
@@ -143,26 +144,31 @@ const Header: React.FC<HeaderProps> = ({ title, navs }) => {
                 {nav.name}
               </a>
             ))}
-            <a href='/contact' className='flex self-center justify-items-center'>
-              <button className='my-2 transform rounded-xl bg-primary px-4 py-2 text-base transition duration-fast ease-in-out hover:scale-md hover:bg-accent'>
+            <a
+              href='/contact'
+              className='flex justify-items-center self-center'
+            >
+              <button className='my-2 transform rounded-xl bg-primary-md1 px-4 py-2 text-base transition duration-fast ease-in-out hover:scale-md hover:bg-primary-md2'>
                 CONTACT US
               </button>
             </a>
           </nav>
         </div>
-        <div className='hidden lg:col-span-2 xl:col-span-3 lg:flex lg:justify-around bg-dkbg1 px-4'>
-          <div className='group cursor-pointer xl:flex hidden justify-center self-center gap-[1.4vw] bg-dkbg1 py-2'>
-            <Icon
-              icon='akar-icons:phone'
-              className='text-accent text-2xl group-hover:text-accent group-hover:scale-lg transition-all duration-fast'
-            />
-            <span className='text-center xl:inline hidden text-black transition-all group-hover:underline group-hover:scale-md duration-fast dark:text-white'>
-              (918) 123-1234
-            </span>
+        <div className='hidden px-4 lg:col-span-2 text-sm lg:flex lg:justify-around xl:col-span-3'>
+          <div className='group hidden cursor-pointer items-center justify-center gap-[1.4vw] self-center xl:flex'>
+            <a href="tel:TELEPHONE_NUMBER_GOES_HERE" className='group hidden cursor-pointer items-center justify-center gap-[1.4vw] self-center xl:flex'>
+              <Icon
+                icon='akar-icons:phone'
+                className='text-primary-md1 transition-all duration-fast group-hover:scale-lg group-hover:text-primary-md2'
+              />
+              <span className='hidden text-center text-black transition-all duration-fast group-hover:scale-md group-hover:underline xl:inline dark:text-white'>
+                (918) 123-1234
+              </span>
+            </a>
           </div>
           <a href='/contact' className='flex self-center'>
-            <button className='transform rounded-xl bg-primary px-4 py-2 my-2 text-lg transition duration-fast ease-in-out hover:scale-sm hover:bg-accent'>
-              <span className='text-sm'>CONTACT US</span>
+            <button className='transform rounded-xl bg-primary-md1 px-4 py-2 transition duration-fast ease-in-out hover:scale-sm hover:bg-primary-md2'>
+              <span className=''>CONTACT US</span>
             </button>
           </a>
         </div>

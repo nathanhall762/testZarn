@@ -8,7 +8,9 @@ export default {
     },
     colors: {
       black: 'hsl(0, 0%, 5%)',
+      black2: 'hsl(0, 0%, 12%)',
       white: 'hsl(0, 0%, 96%)',
+      white2: 'hsl(0, 0%, 90%)',
       // primary: 'hsl(0, 76%, 47%)',
       // secondary: 'hsl(210, 100%, 15%)',
       // tertiary: 'hsl(342, 56%, 32%)',
