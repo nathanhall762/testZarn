@@ -59,7 +59,7 @@ const Hero: React.FC<HeroProps> = ({
           </h2>
           <div className='flex flex-col items-center justify-center gap-4 lg:flex-row lg:gap-16'>
             <a href='/contact' className=''>
-              <button className='bg-other hover:bg-accent transform rounded-xl bg-primary-md2 px-12 py-4 text-lg text-neutral-2 transition duration-300 ease-in-out hover:scale-110'>
+              <button className='bg-other hover:bg-accent transform rounded-xl bg-primary-md1 px-12 py-4 text-lg text-neutral-2 transition duration-300 ease-in-out hover:scale-110'>
                 Contact Us
               </button>
             </a>
