@@ -48,7 +48,7 @@ const Hero: React.FC<HeroProps> = ({
           style={{ backgroundImage: `url(${image})` }}
         />
       ))}
-      <div className='absolute inset-0 bg-black opacity-50'></div>
+      <div className='absolute inset-0 bg-black opacity-30'></div>
       <div className='relative z-10 text-left'>
         <div className='fade-in-up  bg-opacity-80 px-4 py-16 shadow-md lg:px-32'>
           <h1 className='pb-4 text-xl text-neutral-2 lg:text-3xl lg:text-neutral-1'>
