@@ -10,24 +10,27 @@ interface Props {
   };
 }
 
-const InfoCardList: React.FC<Props> = ({
-  content: { heading, card },
- }) => {
+const InfoCardList: React.FC<Props> = ({ content: { heading, card } }) => {
   return (
     <>
-      <div className='flex flex-col text-center px-8 py-8 gap-4'>
-        <h2 className='text-2xl text-primary lg:text-3xl'>{heading}</h2>
-        <div className='h-[2px] w-[30%] bg-white mx-auto'></div>
-        <div className='flex flex-grow flex-col lg:flex-row gap-8 lg:gap-16 py-8 content-center justify-center'>
+      <div className='flex flex-col px-4 py-16 text-center'>
+        <div className='items-center pb-2'>
+          <h2 className='m-0 pb-4 text-2xl font-bold text-neutral-1 lg:text-3xl'>
+            {heading}
+          </h2>
+          <div className='mx-auto h-[2px] w-[40%] max-w-2xl bg-primary-md1'></div>
+        </div>
+        <div className='flex flex-col items-center justify-center gap-16 px-4 py-8 lg:flex-row lg:gap-16'>
           {card.map((card) => (
             <div
               style={{ backgroundImage: `url('${card.image}')` }}
               aria-label={card.alt_image_text}
-              className='group shadow-2xl hover:shadow-none flex flex-col justify-end aspect-[2/3] bg-cover max-w-80 m-auto lg:m-0 hover:scale-105 transform transition-transform cursor-pointer'>
-              <div className='bg-dkbg1 backdrop-blur-sm h-[45%] bottom-0 py-4 px-2 bg-opacity-70 group-hover:bg-opacity-100 transition-all duration-1000 flex flex-col'>
-                <div className='size-full pb-4 overflow-clip text-ellipsis'>
-                  <h3 className='text-xl mb-2'>{card.heading}</h3>
-                  <p className='text-base'>{card.body_text}</p>
+              className='group flex aspect-[2/3] w-full max-w-2xl transform flex-col justify-end bg-cover shadow-2xl transition-transform hover:scale-105 hover:shadow-none'
+            >
+              <div className='bottom-0 flex h-[45%] flex-col bg-neutral-9 bg-opacity-70 px-2 py-4 backdrop-blur-sm transition-all duration-1000'>
+                <div className='size-full overflow-clip text-ellipsis pb-4'>
+                  <h3 className='m-0 pb-2 text-xl'>{card.heading}</h3>
+                  <p className='m-0 text-base'>{card.body_text}</p>
                 </div>
               </div>
             </div>

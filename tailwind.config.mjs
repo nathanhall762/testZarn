@@ -38,7 +38,7 @@ export default {
       'primary-lt2': 'hsl(0, 100%, 68%)',
     },
     extend: {
-      height: {
+      spacing: {
         '5xl': '768px',
         '4xl': '640px',
         '3xl': '512px',
@@ -50,7 +50,7 @@ export default {
         xs: '64px',
         xxs: '48px',
       },
-      width: {
+      maxHeight: {
         '5xl': '768px',
         '4xl': '640px',
         '3xl': '512px',
@@ -62,7 +62,7 @@ export default {
         xs: '64px',
         xxs: '48px',
       },
-      size: {
+      maxWidth: {
         '5xl': '768px',
         '4xl': '640px',
         '3xl': '512px',
