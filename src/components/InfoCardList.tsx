@@ -14,8 +14,8 @@ const InfoCardList: React.FC<Props> = ({ content: { heading, card } }) => {
   return (
     <>
       <div className='flex flex-col px-4 py-16 text-center'>
-        <div className='items-center pb-2'>
-          <h2 className='m-0 pb-4 text-2xl font-bold text-neutral-1 lg:text-3xl'>
+        <div className='items-center pb-4'>
+          <h2 className='text-2xl font-bold text-neutral-1 lg:text-3xl'>
             {heading}
           </h2>
           <div className='mx-auto h-[2px] w-[40%] max-w-2xl bg-primary-md1'></div>

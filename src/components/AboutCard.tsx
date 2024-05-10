@@ -19,9 +19,9 @@ const AboutCard: React.FC<AboutCardProps> = ({
 }) => {
   return (
     <>
-      <div className='bg-neutral-8 px-8 py-16 text-center'>
-        <div className='flex flex-col items-center justify-evenly'>
-          <div className='max-w-2xl pb-24'>
+      <div className='flex justify-center bg-neutral-8 px-8 py-16 text-center'>
+        <div className='flex max-w-5xl flex-col items-center justify-evenly'>
+          <div className='pb-24'>
             <h2 className='pb-4 text-2xl font-bold text-neutral-1 lg:text-3xl'>
               {aboutTitle}
             </h2>
@@ -29,7 +29,7 @@ const AboutCard: React.FC<AboutCardProps> = ({
               {aboutBody}
             </ReactMarkdown>
           </div>
-          <a className='transition duration-300 ease-in-out ' href={linkUrl}>
+          <a className='transition duration-300 ease-in-out' href={linkUrl}>
             <h3 className='text-xl text-neutral-2 underline hover:text-primary-md1 lg:text-2xl'>
               {linkText}
             </h3>
