@@ -48,7 +48,7 @@ const Hero: React.FC<HeroProps> = ({
           style={{ backgroundImage: `url(${image})` }}
         />
       ))}
-      <div className='absolute top-[13vh] w-full h-[87vh] inset-0 bg-black opacity-30'></div>
+      <div className='absolute inset-0 top-[13vh] h-[87vh] w-full bg-black opacity-30'></div>
       <div className='relative z-10 text-left'>
         <div className='fade-in-up  bg-opacity-80  px-4 py-16 shadow-md lg:px-32'>
           <h1 className='pb-4 text-xl text-neutral-2 lg:text-3xl lg:text-neutral-1'>
@@ -59,7 +59,7 @@ const Hero: React.FC<HeroProps> = ({
           </h2>
           <div className='flex flex-col items-center justify-center gap-4 lg:flex-row lg:gap-16'>
             <a href='/contact' className=''>
-              <button className='bg-other hover:bg-accent transform rounded-xl bg-primary-md1 px-12 py-4 text-lg text-neutral-2 transition duration-300 ease-in-out hover:scale-110'>
+              <button className='bg-other hover:bg-accent transform rounded-xl bg-primary-md1 px-12 py-4 text-lg text-neutral-2 transition duration-300 ease-in-out hover:scale-110 hover:bg-primary-md2'>
                 Contact Us
               </button>
             </a>

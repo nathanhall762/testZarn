@@ -41,69 +41,69 @@ const Header: React.FC<HeaderProps> = ({ title, navs }) => {
 
   return (
     <header
-      className={`fixed top-0 z-50 w-screen bg-neutral-9 transition-all duration-md ease-in-out ${isScrolled ? 'h-[9vh]' : 'h-[13vh]'}`}
+      className={`fixed top-0 z-50 w-screen bg-neutral-9 transition-all duration-md ease-in-out ${isScrolled ? 'h-[9vh]' : 'h-[15vh]'}`}
     >
       <div
-        className={`dark:bgdk1 text-xs transition-height flex w-screen overflow-hidden transition-all duration-md ${isScrolled ? 'h-0 border-b-0' : 'h-[4vh] border-b-[1px]'}`}
+        className={`dark:neutral-9 transition-height flex w-screen overflow-hidden border-neutral-6 text-xs transition-all duration-md ${isScrolled ? 'h-0 border-b-0' : 'h-[6vh] border-b-[1px]'}`}
       >
-        <a
-          className='border-mdbg1 flex h-full flex-grow items-center border-r-[1px] hover:scale-100'
-          href='tel:TELEPHONE_NUMBER_GOES_HERE'
-        >
-          <div className='group flex h-full flex-grow cursor-pointer items-center justify-center gap-2 lg:gap-4'>
+        <div className='flex flex-grow items-center justify-center border-r-[1px] border-neutral-6'>
+          <a
+            className='group flex items-center justify-center gap-2 lg:gap-4'
+            href='tel:TELEPHONE_NUMBER_GOES_HERE'
+          >
             <Icon
               icon='akar-icons:phone'
-              className='text-primary-md1 transition-all duration-fast group-hover:scale-lg group-hover:text-primary-md2'
+              className='text-lg text-primary-md1 transition-all duration-fast group-hover:text-primary-md2'
             />
-            <span className=' text-black transition-all duration-fast group-hover:scale-md group-hover:underline dark:text-white'>
+            <span className=' text-neutral-9 transition-all duration-fast group-hover:scale-md group-hover:underline dark:text-neutral-1'>
               (918) 123-1234
             </span>
-          </div>
-        </a>
-        <a
-          className='border-mdbg1 flex h-full flex-grow items-center border-r-[1px] hover:scale-100'
-          href='mailto:EMAIL_ADDRESS_GOES_HERE'
-        >
-          <div className='group flex h-full flex-grow cursor-pointer items-center justify-center gap-2 lg:gap-4'>
+          </a>
+        </div>
+        <div className='flex flex-grow items-center justify-center border-r-[1px] border-neutral-6'>
+          <a
+            className='group flex items-center justify-center gap-2 lg:gap-4'
+            href='mailto:EMAIL_ADDRESS_GOES_HERE'
+          >
             <Icon
               icon='mdi:email'
-              className='text-primary-md1 transition-all duration-fast group-hover:scale-lg group-hover:text-primary-md2'
+              className='text-lg text-primary-md1 transition-all duration-fast group-hover:text-primary-md2'
             />
-            <span className='hidden text-center text-xs text-black transition-all duration-fast group-hover:scale-md group-hover:underline lg:inline dark:text-white'>
+            <span className='hidden text-center text-xs text-neutral-9 transition-all duration-fast group-hover:scale-md group-hover:underline lg:inline dark:text-neutral-1'>
               Email@email.com
             </span>
-          </div>
-        </a>
-        <a
-          className='flex h-full flex-grow items-center hover:scale-100'
-          href='/'
-        >
-          <div className='group flex h-full flex-grow cursor-pointer items-center justify-center lg:gap-4'>
+          </a>
+        </div>
+        <div className='flex flex-grow items-center justify-center'>
+          <a
+            className='group flex items-center justify-center gap-2 lg:gap-4'
+            href='/'
+          >
             <Icon
               icon='mdi:map-marker'
-              className='text-primary-md1 transition-all duration-fast group-hover:scale-lg group-hover:text-primary-md2'
+              className='text-lg text-primary-md1 transition-all duration-fast group-hover:text-primary-md2'
             />
-            <span className='hidden text-center text-xs text-black transition-all duration-fast group-hover:scale-md group-hover:underline lg:inline dark:text-white'>
+            <span className='hidden text-center text-xs text-neutral-9 transition-all duration-fast group-hover:scale-md group-hover:underline lg:inline dark:text-neutral-1'>
               1234 Address St
             </span>
-          </div>
-        </a>
+          </a>
+        </div>
       </div>
       <div
-        className={`relative top-0 h-[9vh] flex w-screen justify-between text-center align-middle shadow-2xl transition-all duration-md lg:grid lg:grid-cols-12`}
+        className={`relative top-0 flex h-[9vh] w-screen justify-between text-center align-middle shadow-2xl transition-all duration-md lg:grid lg:grid-cols-12`}
       >
-        <div className='items-center relative flex-grow justify-center lg:col-span-2 flex bg-dkbg1 border-r-[1px] border-mdbg1'>
-          <a href="/">
-            <div className='text-center text-black overflow-clip transition-all duration-fast hover:text-accent dark:text-white'>
-              <img src="/public/ZarnLogo.png" alt="" className='h-[8vh] py-2'/>
+        <div className='bg-dkbg1 relative flex flex-grow items-center justify-center border-r-[1px] border-neutral-6 lg:col-span-2'>
+          <a href='/'>
+            <div className='hover:text-accent overflow-clip text-center text-neutral-9 transition-all duration-fast dark:text-neutral-1'>
+              <img src='/public/ZarnLogo.png' alt='' className='h-[8vh] py-2' />
             </div>
           </a>
         </div>
-        <nav className='border-mdbg1 hidden items-center justify-center gap-[1.4vw] border-r-[1px] align-middle lg:col-span-8  lg:flex xl:col-span-7'>
+        <nav className='hidden items-center justify-center gap-[1.4vw] border-r-[1px] border-neutral-6 align-middle lg:col-span-8  lg:flex xl:col-span-7'>
           {navs.map((nav) => (
             <div key={nav.name} className='group relative'>
               <a
-                className='text-bold text-sm text-black transition duration-fast ease-in-out hover:text-primary-md2 dark:text-white'
+                className='text-bold text-sm text-neutral-9 transition duration-fast ease-in-out hover:text-primary-md2 dark:text-neutral-1'
                 href={`${nav.link}`}
               >
                 {nav.name}
@@ -114,7 +114,7 @@ const Header: React.FC<HeaderProps> = ({ title, navs }) => {
                     <a
                       key={subpage.name}
                       href={`${nav.link}${subpage.link}`}
-                      className='bg:neutral-1 hover:text-primary-md2 min-w-[20vw] px-6 py-2 text-start text-sm text-black dark:bg-neutral-9 dark:text-white'
+                      className='bg:neutral-1 min-w-[20vw] px-6 py-2 text-start text-sm text-neutral-9 hover:text-primary-md2 dark:bg-neutral-9 dark:text-neutral-1'
                     >
                       {subpage.name}
                     </a>
@@ -127,12 +127,12 @@ const Header: React.FC<HeaderProps> = ({ title, navs }) => {
 
         <div
           onClick={toggleNav}
-          className={`z-50 flex w-20 cursor-pointer items-center justify-center text-2xl text-black transition-transform duration-fast lg:hidden dark:text-white ${isNavOpen ? 'rotate-180 opacity-100' : 'rotate-0 opacity-100'}`}
+          className={`z-50 flex w-20 cursor-pointer items-center justify-center text-2xl text-neutral-9 transition-transform duration-fast lg:hidden dark:text-neutral-1 ${isNavOpen ? 'rotate-180 opacity-100' : 'rotate-0 opacity-100'}`}
         >
           {isNavOpen ? <Icon icon={closeIcon} /> : <Icon icon={menuIcon} />}
         </div>
         <div
-          className={`absolute left-0 top-full z-50 w-full transform transition-transform duration-fast py-4 pt-0 shadow-md lg:hidden ${isNavOpen ? 'scale-y-100' : 'scale-y-0'} ${isScrolled ? 'h-[94vh]' : 'h-[90vh]'} origin-top transition-transform duration-fast ease-in-out`}
+          className={`absolute left-0 top-full z-50 w-full transform py-4 pt-0 shadow-md transition-transform duration-fast lg:hidden ${isNavOpen ? 'scale-y-100' : 'scale-y-0'} ${isScrolled ? 'h-[94vh]' : 'h-[90vh]'} origin-top transition-transform duration-fast ease-in-out`}
         >
           <nav className='flex h-full flex-col dark:bg-neutral-9'>
             {navs.map((nav, index) => (
@@ -148,26 +148,29 @@ const Header: React.FC<HeaderProps> = ({ title, navs }) => {
               href='/contact'
               className='flex justify-items-center self-center'
             >
-              <button className='my-2 transform rounded-xl bg-primary-md1 px-4 py-2 text-base transition duration-fast ease-in-out hover:scale-md hover:bg-primary-md2'>
+              <button className='my-2 transform rounded-xl bg-primary-md1 px-4 py-2 text-base text-neutral-1 transition duration-fast ease-in-out hover:scale-md hover:bg-primary-md2'>
                 CONTACT US
               </button>
             </a>
           </nav>
         </div>
-        <div className='hidden px-4 lg:col-span-2 text-sm lg:flex lg:justify-around xl:col-span-3'>
+        <div className='hidden px-4 text-sm lg:col-span-2 lg:flex lg:justify-around xl:col-span-3'>
           <div className='group hidden cursor-pointer items-center justify-center gap-[1.4vw] self-center xl:flex'>
-            <a href="tel:TELEPHONE_NUMBER_GOES_HERE" className='group hidden cursor-pointer items-center justify-center gap-[1.4vw] self-center xl:flex'>
+            <a
+              href='tel:TELEPHONE_NUMBER_GOES_HERE'
+              className='group hidden cursor-pointer items-center justify-center gap-[1.4vw] self-center xl:flex'
+            >
               <Icon
                 icon='akar-icons:phone'
-                className='text-primary-md1 transition-all duration-fast group-hover:scale-lg group-hover:text-primary-md2'
+                className='text-lg text-primary-md1 transition-all duration-fast group-hover:text-primary-md2'
               />
-              <span className='hidden text-center text-black transition-all duration-fast group-hover:scale-md group-hover:underline xl:inline dark:text-white'>
+              <span className='hidden text-justify text-neutral-9 transition-all duration-fast group-hover:scale-md group-hover:underline xl:inline dark:text-neutral-1'>
                 (918) 123-1234
               </span>
             </a>
           </div>
           <a href='/contact' className='flex self-center'>
-            <button className='transform rounded-xl bg-primary-md1 px-4 py-2 transition duration-fast ease-in-out hover:scale-sm hover:bg-primary-md2'>
+            <button className='transform rounded-xl bg-primary-md1 px-4 py-2 text-neutral-1 transition duration-fast ease-in-out hover:scale-sm hover:bg-primary-md2'>
               <span className=''>CONTACT US</span>
             </button>
           </a>
