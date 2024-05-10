@@ -40,7 +40,7 @@ const Hero: React.FC<HeroProps> = ({
   };
 
   return (
-    <div className='h-[87vh] content-end shadow-inner'>
+    <div className='h-[100vh] content-end shadow-inner'>
       {backgroundImages.map((image, index) => (
         <div
           key={image}
@@ -51,10 +51,10 @@ const Hero: React.FC<HeroProps> = ({
       <div className='absolute inset-0 top-[13vh] h-[87vh] w-full bg-black opacity-30'></div>
       <div className='relative z-10 text-left'>
         <div className='fade-in-up  bg-opacity-80  px-4 py-16 shadow-md lg:px-32'>
-          <h1 className='pb-4 text-xl text-neutral-2 lg:text-3xl lg:text-neutral-1'>
+          <h1 className='pb-2 text-xl text-neutral-2 lg:text-3xl lg:text-neutral-1'>
             {welcomeText}
           </h1>
-          <h2 className='pb-32 text-center text-2xl font-bold text-neutral-1 lg:pb-48 lg:text-left lg:text-5xl'>
+          <h2 className='pb-24 text-center text-2xl font-bold text-neutral-1 lg:pb-48 lg:text-left lg:text-5xl'>
             {'The Top Auto Repair Shop in Tulsa'}
           </h2>
           <div className='flex flex-col items-center justify-center gap-4 lg:flex-row lg:gap-16'>

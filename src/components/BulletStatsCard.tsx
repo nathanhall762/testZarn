@@ -1,9 +1,10 @@
 interface Props {
   content: {
-  heading: string;
-  body_text: string[];
-  image: string;
-  image_alt_text: string;}
+    heading: string;
+    body_text: string[];
+    image: string;
+    image_alt_text: string;
+  };
 }
 
 const BulletStatsCard: React.FC<Props> = ({
@@ -12,15 +13,15 @@ const BulletStatsCard: React.FC<Props> = ({
   console.log(bg_image, image_alt_text);
   return (
     <div
-      className={`lg:h-[50vh] text-black lg:px-32 dark:text-white bg-center bg-cover flex justify-center my-6 shadow-inner`}
+      className={`flex justify-center bg-cover bg-center text-neutral-9 shadow-inner lg:h-[50vh] lg:px-32 dark:text-white`}
       style={{ backgroundImage: `url('${bg_image}')` }}
     >
       <div
-        className={`flex h-full flex-col items-center justify-around px-8 lg:px-16 py-8 max-w-[800px] lg:backdrop-brightness-100 backdrop-brightness-[.25] bg-dkbg2 lg:bg-opacity-90 bg-opacity-50 backdrop-blur-sm shadow-md`}
+        className={`flex h-full max-w-[800px] flex-col items-center justify-around bg-neutral-9 bg-opacity-50 px-8 py-8 shadow-md backdrop-blur-sm backdrop-brightness-[.25] lg:bg-opacity-90 lg:px-16 lg:backdrop-brightness-100`}
       >
-        <h3 className='lg:text-3xl text-2xl text-primary pb-4'>{title}</h3>
-        <div className='grid grid-cols-2 w-full gap-x-4 lg:gap-x-8 text-center items-center'>
-            <p className='lg:text-lg text-base py-2'>{body}</p>
+        <h3 className='pb-4 text-2xl text-neutral-1 lg:text-3xl'>{title}</h3>
+        <div className='grid w-full grid-cols-2 items-center gap-x-4 text-center lg:gap-x-8'>
+          <p className='py-2 text-base lg:text-lg'>{body}</p>
         </div>
       </div>
     </div>

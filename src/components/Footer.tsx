@@ -31,9 +31,10 @@ const Footer: React.FC<Props> = ({
   socials,
   cta,
 }) => {
-  const getIconFromSocialsType = (type: string) => iconMap[type as 'facebook' | 'twitter' | 'instagram'];
+  const getIconFromSocialsType = (type: string) =>
+    iconMap[type as 'facebook' | 'twitter' | 'instagram'];
   return (
-    <footer className='bg-ltbg1 pb-8 pt-16 text-center text-black lg:px-10 dark:bg-dkbg1 dark:text-white'>
+    <footer className='bg-neutral-9 pb-8 pt-16 text-center text-neutral-1 lg:px-10 dark:bg-neutral-9 dark:text-neutral-1'>
       <div className='flex flex-col items-center justify-evenly lg:flex-row lg:justify-between'>
         <div className='hidden lg:block'>
           {address && <p className='text-left'>{address}</p>}
@@ -43,12 +44,16 @@ const Footer: React.FC<Props> = ({
         <div>
           <nav className='mb-8 flex flex-col items-center gap-2 lg:flex-row lg:justify-end lg:gap-8'>
             {navs.map((nav) => (
-              <a className='hover:text-accent' href={`${nav.link}`} key={nav.name}>
+              <a
+                className='hover:text-primary-md1'
+                href={`${nav.link}`}
+                key={nav.name}
+              >
                 {nav.name}
               </a>
             ))}
             <a href='/contact' className=''>
-              <button className='bg-other transform rounded-xl bg-primary px-4 py-2 text-lg text-white transition duration-300 ease-in-out hover:scale-110 hover:bg-accent'>
+              <button className='transform rounded-xl bg-primary-md2 px-4 py-2 text-lg text-neutral-1 transition duration-300 ease-in-out hover:scale-110 hover:bg-primary-md3'>
                 CONTACT US
               </button>
             </a>
@@ -58,7 +63,7 @@ const Footer: React.FC<Props> = ({
               <a
                 href={social.link}
                 key={social.type}
-                className='text-4xl text-black dark:text-white hover:text-accent'
+                className='text-4xl text-neutral-9 hover:text-primary-md1 dark:text-neutral-1'
               >
                 <Icon
                   icon={
@@ -72,7 +77,7 @@ const Footer: React.FC<Props> = ({
           </nav>
         </div>
       </div>
-      <p className='text-center text-sm text-black text-opacity-50 dark:text-white'>
+      <p className='text-center text-sm text-neutral-9 text-opacity-50 dark:text-neutral-1'>
         {copyright}
       </p>
     </footer>

@@ -19,25 +19,23 @@ const AboutCard: React.FC<AboutCardProps> = ({
 }) => {
   return (
     <>
-      <section className='h-[70vh] lg:h-[60vh] bg-ltbg1 px-[10vw] py-16 text-center lg:px-[20vw] lg:py-24 dark:bg-dkbg1'>
-        <div className='flex h-[100%] flex-col justify-evenly overflow-clip'>
-          <div className=''>
-            <h2 className='text-2xl text-black lg:text-3xl dark:text-white'>
+      <div className='flex justify-center bg-neutral-8 px-8 py-16 text-center'>
+        <div className='flex max-w-5xl flex-col items-center justify-evenly'>
+          <div className='pb-24'>
+            <h2 className='pb-4 text-2xl font-bold text-neutral-1 lg:text-3xl'>
               {aboutTitle}
             </h2>
-            <ReactMarkdown className='line-clamp-3 text-lg text-start text-black lg:text-2xl dark:text-white block'>
+            <ReactMarkdown className='line-clamp-5 text-start text-lg text-neutral-2 lg:line-clamp-3 lg:text-2xl'>
               {aboutBody}
             </ReactMarkdown>
           </div>
-          <a
-            className='hover:text-accent transition duration-300 ease-in-out'
-            href={linkUrl}>
-            <h3 className='text-xl text-primary underline lg:text-2xl hover'>
+          <a className='transition duration-300 ease-in-out' href={linkUrl}>
+            <h3 className='text-xl text-neutral-2 underline hover:text-primary-md1 lg:text-2xl'>
               {linkText}
             </h3>
           </a>
         </div>
-      </section>
+      </div>
     </>
   );
 };
