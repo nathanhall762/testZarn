@@ -133,12 +133,12 @@ const Header: React.FC<HeaderProps> = ({ title, navs }) => {
         <div
           className={`absolute left-0 top-full z-50 w-full h-[89vh] p-4 pt-0 transform bg-ltbg1 dark:bg-dkbg1 shadow-md lg:hidden ${isNavOpen ? 'scale-y-100' : 'scale-y-0'} origin-top transition-transform duration-fast ease-in-out`}
         >
-          <nav className='flex flex-col dark:bg-dkbg1'>
+          <nav className='flex flex-col dark:bg-neutral-9'>
             {navs.map((nav, index) => (
               <a
                 key={index}
                 href={`${nav.link}`}
-                className='px-6 py-4 text-base text-black dark:bg-dkbg1 dark:text-white'
+                className='px-6 py-4 text-base text-neutral-9 dark:bg-neutral-9 dark:text-neutral-1'
               >
                 {nav.name}
               </a>

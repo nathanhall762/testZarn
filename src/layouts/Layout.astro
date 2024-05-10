@@ -74,28 +74,13 @@ const cta = 'Contact Us';
 ---
 
 <!doctype html>
-<html
-  lang='en'
-  class='bg-black font-sans font-light text-white'>
+<html lang='en' class='bg-black font-sans font-light text-white'>
   <head>
     <meta charset='UTF-8' />
-    <meta
-      name='description'
-      content={metaDescription}
-    />
-    <meta
-      name='viewport'
-      content='width=device-width'
-    />
-    <link
-      rel='icon'
-      type='image/svg+xml'
-      href='/favicon.svg'
-    />
-    <meta
-      name='generator'
-      content={Astro.generator}
-    />
+    <meta name='description' content={metaDescription} />
+    <meta name='viewport' content='width=device-width' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <meta name='generator' content={Astro.generator} />
     <script>
       if (
         localStorage.theme === 'dark' ||
@@ -125,7 +110,7 @@ const cta = 'Contact Us';
         pageData.content.map((item: Item) => {
           switch (item.type) {
             case 'hero_section':
-              return <Hero content={item.value} />;
+              return <Hero content={item.value} client:load />;
             case 'sidekick_section':
               return <Sidekick content={item.value} />;
             case 'welcome_message_section':
@@ -139,12 +124,7 @@ const cta = 'Contact Us';
             case 'text_image_card':
               return <TextImagecard content={item.value} />;
             case 'accordion':
-              return (
-                <Accordion
-                  content={item.value}
-                  client:load
-                />
-              );
+              return <Accordion content={item.value} client:load />;
             default:
               return null;
           }
@@ -186,7 +166,7 @@ const cta = 'Contact Us';
           @apply absolute h-full w-full transform bg-cover bg-center transition-all duration-500 ease-in-out;
         }
         .card-zoom-text {
-          @apply absolute transform text-gray-50 transition-all duration-500 ease-in-out;
+          @apply absolute transform transition-all duration-500 ease-in-out;
         }
         .zoom-in {
           @apply scale-[1.25];
