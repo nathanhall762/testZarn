@@ -11,7 +11,11 @@ interface HeroProps {
 }
 
 const Hero: React.FC<HeroProps> = ({
-  content: { heading: welcomeText, subheading: tagline, images: backgroundImages },
+  content: {
+    heading: welcomeText,
+    subheading: tagline,
+    images: backgroundImages,
+  },
 }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -27,7 +31,7 @@ const Hero: React.FC<HeroProps> = ({
 
   const getImageClasses = (index: number) => {
     let baseClasses =
-      'absolute top-0 w-full h-full bg-cover bg-center transition-all duration-2000 ease-in-out';
+      'absolute z-0 top-0 w-full h-full bg-cover bg-center transition-all duration-2000 ease-in-out';
     if (index === currentImageIndex) {
       return `${baseClasses} transform opacity-100`;
     } else {
@@ -36,7 +40,7 @@ const Hero: React.FC<HeroProps> = ({
   };
 
   return (
-    <div className='h-screen overflow-hidden shadow-inner'>
+    <div className='h-screen overflow-hidden shadow-inner content-end'>
       {backgroundImages.map((image, index) => (
         <div
           key={image}
@@ -44,21 +48,22 @@ const Hero: React.FC<HeroProps> = ({
           style={{ backgroundImage: `url(${image})` }}
         />
       ))}
-      <div className='absolute bottom-0 z-10 px-4 pb-8 text-left lg:pb-32 lg:pl-16 lg:pr-64'>
-        <div className='fade-in-up backdrop-blur-sm  bg-dkbg1 shadow-md bg-opacity-80 p-4 rounded-md lg:max-w-[50vw]'>
-          <h2 className='text-lg lg:text-2xl pb-4'>{welcomeText}</h2>
-          <h1 className='text-2xl tracking-widest lg:text-4xl pb-4 text-center lg:text-left lg:pb-8'>
-            {tagline}
+      <div className='absolute inset-0 bg-black opacity-50'></div>
+      <div className='relative z-10 text-left'>
+        <div className='fade-in-up  shadow-md bg-opacity-80 px-4 lg:px-32 py-16'>
+          <h1 className='text-xl lg:text-3xl pb-4 lg:text-neutral-1 text-neutral-2'>
+            {welcomeText}
           </h1>
+          <h2 className='text-2xl font-bold lg:text-5xl pb-32 lg:pb-48 text-center lg:text-left text-neutral-1'>
+            {'The Top Auto Repair Shop in Tulsa'}
+          </h2>
           <div className='flex flex-col gap-4 lg:flex-row items-center justify-center lg:gap-16'>
-            <a
-              href='/contact'
-              className=''>
-              <button className='bg-other transform rounded-xl bg-primary px-4 py-2 text-lg text-white transition duration-300 ease-in-out hover:scale-110 hover:bg-accent'>
-                CONTACT US
+            <a href='/contact' className=''>
+              <button className='bg-other transform rounded-xl bg-neutral-8 px-12 py-4 text-lg text-neutral-2 transition duration-300 ease-in-out hover:scale-110 hover:bg-accent'>
+                Contact Us
               </button>
             </a>
-            <p className='lg:text-2xl text-lg text-primary'>
+            <p className='lg:text-2xl text-base text-ltbg2'>
               <a href='tel:PHONE_NUMBER_GOES_HERE'>Call: (918) 123-1234</a>
             </p>
           </div>
