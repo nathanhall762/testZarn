@@ -41,7 +41,7 @@ const Header: React.FC<HeaderProps> = ({ title, navs }) => {
 
   return (
     <header
-      className={`fixed top-0 z-50 h-[11vh] w-screen bg-neutral-9 transition-all duration-md ease-in-out ${isScrolled ? 'h-[9vh]' : 'h-[13vh]'}`}
+      className={`fixed top-0 z-50 w-screen bg-neutral-9 transition-all duration-md ease-in-out ${isScrolled ? 'h-[9vh]' : 'h-[13vh]'}`}
     >
       <div
         className={`dark:bgdk1 text-xs transition-height flex w-screen overflow-hidden transition-all duration-md ${isScrolled ? 'h-0 border-b-0' : 'h-[4vh] border-b-[1px]'}`}
@@ -132,9 +132,9 @@ const Header: React.FC<HeaderProps> = ({ title, navs }) => {
           {isNavOpen ? <Icon icon={closeIcon} /> : <Icon icon={menuIcon} />}
         </div>
         <div
-          className={`absolute left-0 top-full z-50 h-[89vh] w-full transform p-4 pt-0 shadow-md lg:hidden ${isNavOpen ? 'scale-y-100' : 'scale-y-0'} origin-top transition-transform duration-fast ease-in-out`}
+          className={`absolute left-0 top-full z-50 w-full transform transition-transform duration-fast py-4 pt-0 shadow-md lg:hidden ${isNavOpen ? 'scale-y-100' : 'scale-y-0'} ${isScrolled ? 'h-[94vh]' : 'h-[90vh]'} origin-top transition-transform duration-fast ease-in-out`}
         >
-          <nav className='flex flex-col dark:bg-neutral-9'>
+          <nav className='flex h-full flex-col dark:bg-neutral-9'>
             {navs.map((nav, index) => (
               <a
                 key={index}
