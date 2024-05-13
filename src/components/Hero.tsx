@@ -49,7 +49,7 @@ const Hero: React.FC<HeroProps> = ({
         />
       ))}
       <div className='absolute inset-0 h-full w-full bg-black opacity-30'></div>
-      <div className='relative z-10 h-full content-end text-center lg:text-left'>
+      <div className='relative z-10 flex h-full flex-col justify-end text-center lg:text-left'>
         <div className='fade-in-up  bg-opacity-80  px-4 py-16 shadow-md lg:px-32'>
           <h1 className='text-shadow-xl pb-2 text-xl font-normal text-neutral-2 drop-shadow-xl lg:text-3xl lg:text-neutral-1'>
             {welcomeText}

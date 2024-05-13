@@ -28,7 +28,7 @@ interface Props {
 const { title, metaDescription, pageData } = Astro.props;
 
 const zarnData = await getData('business_information');
-console.log(zarnData);
+console.log(zarnData[0].favicon);
 const zarnLogo = zarnData[0].business_logo;
 
 const websiteName = 'Zarn Automotive';
@@ -120,11 +120,6 @@ const cta = 'Contact Us';
       name='viewport'
       content='width=device-width'
     />
-    <link
-      rel='icon'
-      type='image/svg+xml'
-      href='/favicon.svg'
-    />
     <meta
       name='generator'
       content={Astro.generator}
@@ -143,6 +138,7 @@ const cta = 'Contact Us';
       localStorage.theme = 'dark';
       localStorage.removeItem('theme');
     </script>
+    <link rel="icon" type="image/png" sizes="32x32" href={zarnData[0].favicon.favicon_32_x32}>
     <title>{title ? `${title} - ${websiteName}` : websiteName}</title>
     <ViewTransitions />
   </head>
