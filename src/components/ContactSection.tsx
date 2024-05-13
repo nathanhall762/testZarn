@@ -1,16 +1,16 @@
 const ContactSection = () => {
   return (
-    <div className="max-h-fit lg:h-[90vh] bg-dkbg2 flex lg:flex-row justify-start flex-col lg:p-10">
+    <div className="max-h-fit lg:h-[90vh] relative flex lg:flex-row justify-start flex-col lg:p-10">
       <div className="lg:w-[40vw] flex flex-col items-center py-10">
-		<div className="bg-gray-400 w-[90%] h-[20vh] lg:h-[40%] rounded-3xl mb-4"></div>
-		<address className="mb-8">ADDRESS GOES HERE</address>
+		<div className="bg-neutral-5 w-[90%] h-[20vh] lg:h-[40%] rounded-3xl mb-4"></div>
+		<address className="mb-8 text-neutral-9 dark:text-neutral-1">ADDRESS GOES HERE</address>
 		<p className="mb-4">
           <a href="tel:PHONE_NUMBER_GOES_HERE">PHONE NUMBER GOES HERE</a>
         </p>
         <p className="mb-8">
           <a href="mailto:EMAIL_GOES_HERE">EMAIL GOES HERE</a>
         </p>
-		<table>
+		<table className="text-neutral-9 dark:text-neutral-1">
 			<tr>
 				<td>MONDAY</td>
 				<td>9AM - 5PM</td>
@@ -41,7 +41,7 @@ const ContactSection = () => {
 			</tr>
 		</table>
 	  </div>
-	  <div className="lg:w-[60vw] h-[50vh] lg:h-full dark:bg-ltbg2"></div>
+	  <div className="lg:w-[60vw] h-[50vh] lg:h-full dark:bg-neutral-7"></div>
     </div>
   );
 };

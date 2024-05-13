@@ -18,25 +18,26 @@ const AboutCard: React.FC<AboutCardProps> = ({
   },
 }) => {
   return (
-    <>
-      <div className='flex justify-center bg-neutral-8 px-8 py-16 text-center'>
-        <div className='flex max-w-5xl flex-col items-center justify-evenly'>
-          <div className='pb-24'>
-            <h2 className='pb-4 text-2xl font-bold text-neutral-1 lg:text-3xl'>
+    <div className='flex px-4 py-8 lg:py-16'>
+      <div className='mx-auto flex max-w-6xl justify-center rounded-3xl bg-neutral-7 px-6 py-8 text-center lg:px-16 lg:py-16'>
+        <div className='flex max-w-5xl flex-col items-center justify-around align-baseline'>
+          <div className='pb-12'>
+            <h2 className='pb-4 text-2xl font-bold lg:text-3xl'>
               {aboutTitle}
             </h2>
-            <ReactMarkdown className='line-clamp-5 text-start text-lg text-neutral-2 lg:line-clamp-3 lg:text-2xl'>
-              {aboutBody}
-            </ReactMarkdown>
+            <div className='m-auto h-[2px] w-[vw%] max-w-2xl bg-primary-md1'></div>
           </div>
+          <ReactMarkdown className='line-clamp-5 pb-12 text-start text-lg lg:line-clamp-3 lg:pb-24 lg:text-2xl'>
+            {aboutBody}
+          </ReactMarkdown>
           <a className='transition duration-300 ease-in-out' href={linkUrl}>
-            <h3 className='text-xl text-neutral-2 underline hover:text-primary-md1 lg:text-2xl'>
+            <span className='cursor-pointer text-neutral-3 underline hover:text-primary-md3'>
               {linkText}
-            </h3>
+            </span>
           </a>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -102,13 +102,28 @@ const cta = 'Contact Us';
 ---
 
 <!doctype html>
-<html lang='en' class='bg-neutral-9 font-sans font-light text-neutral-9'>
+<html
+  lang='en'
+  class='bg-neutral-9 font-sans font-light text-neutral-9'>
   <head>
     <meta charset='UTF-8' />
-    <meta name='description' content={metaDescription} />
-    <meta name='viewport' content='width=device-width' />
-    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
-    <meta name='generator' content={Astro.generator} />
+    <meta
+      name='description'
+      content={metaDescription}
+    />
+    <meta
+      name='viewport'
+      content='width=device-width'
+    />
+    <link
+      rel='icon'
+      type='image/svg+xml'
+      href='/favicon.svg'
+    />
+    <meta
+      name='generator'
+      content={Astro.generator}
+    />
     <script>
       if (
         localStorage.theme === 'dark' ||
@@ -133,32 +148,49 @@ const cta = 'Contact Us';
       cta={cta}
       client:load
     />
-    <main class=''>
-      {
-        pageData.content.map((item: Item) => {
-          switch (item.type) {
-            case 'hero_section':
-              return <Hero content={item.value} client:idle />;
-            case 'sidekick_section':
-              return <Sidekick content={item.value} client:idle />;
-            case 'welcome_message_section':
-              return <AboutCard content={item.value} />;
-            case 'info_card_list':
-              return <InfoCardList content={item.value} />;
-            case 'bullet_stats_card':
-              return <BulletStatsCard content={item.value} />;
-            case 'tab_list_cards':
-              return <TabListCards content={item.value} client:idle />;
-            case 'text_image_card':
-              return <TextImagecard content={item.value} />;
-            case 'accordion':
-              return <Accordion content={item.value} client:idle />;
-            default:
-              return null;
-          }
-        })
-      }
-    </main>
+    <div class=''>
+      <main class='bg-neutral-8'>
+        {
+          pageData.content.map((item: Item) => {
+            switch (item.type) {
+              case 'hero_section':
+                return (
+                  <Hero
+                    content={item.value}
+                    client:idle
+                  />
+                );
+              case 'sidekick_section':
+                return <Sidekick content={item.value} />;
+              case 'welcome_message_section':
+                return <AboutCard content={item.value} />;
+              case 'info_card_list':
+                return <InfoCardList content={item.value} />;
+              case 'bullet_stats_card':
+                return <BulletStatsCard content={item.value} />;
+              case 'tab_list_cards':
+                return (
+                  <TabListCards
+                    content={item.value}
+                    client:idle
+                  />
+                );
+              case 'text_image_card':
+                return <TextImagecard content={item.value} />;
+              case 'accordion':
+                return (
+                  <Accordion
+                    content={item.value}
+                    client:idle
+                  />
+                );
+              default:
+                return null;
+            }
+          })
+        }
+      </main>
+    </div>
     <ContactSection />
     <Footer
       cta={cta}
@@ -201,6 +233,10 @@ const cta = 'Contact Us';
         }
       }
 
+      body {
+        @apply text-neutral-9 dark:text-neutral-1;
+      }
+
       a {
         @apply transition-transform duration-fast ease-in-out;
       }
@@ -214,31 +250,31 @@ const cta = 'Contact Us';
       }
 
       h1 {
-        @apply mb-6 text-3xl font-semibold text-neutral-9 lg:text-4xl dark:text-neutral-1;
+        @apply text-3xl font-semibold lg:text-4xl;
       }
 
       h2 {
-        @apply mb-4 text-2xl font-semibold text-neutral-9 lg:text-3xl dark:text-neutral-1;
+        @apply text-2xl font-semibold lg:text-3xl;
       }
 
       h3 {
-        @apply mb-4 text-xl font-semibold text-neutral-9 lg:text-2xl dark:text-neutral-1;
+        @apply text-xl font-semibold lg:text-2xl;
       }
 
       h4 {
-        @apply mb-4 text-lg font-semibold text-neutral-9 lg:text-xl dark:text-neutral-1;
+        @apply text-lg font-semibold lg:text-xl;
       }
 
       h5 {
-        @apply mb-4 text-base font-semibold text-neutral-9 lg:text-lg dark:text-neutral-1;
+        @apply text-base font-semibold lg:text-lg;
       }
 
       h6 {
-        @apply mb-4 text-base font-semibold text-neutral-9 lg:text-lg dark:text-neutral-1;
+        @apply text-base font-semibold lg:text-lg;
       }
 
       p {
-        @apply mb-4 text-base text-neutral-8 lg:text-lg dark:text-neutral-2;
+        @apply text-base leading-loose lg:text-lg lg:leading-loose;
       }
     </style>
   </body><!-- custom animation keyframes and other global stuffs -->

@@ -17,15 +17,15 @@ const TextImagecard: React.FC<Props> = ({
   
 }) => {
   return (
-    <div className='flex justify-center dark:bg-dkbg1'>
-      <div className='lg:grid max-w-[1200px] flex flex-col lg:h-[40vh] lg:grid-cols-3 lg:grid-rows-1 transition-all'>
+    <section className='flex justify-center my-16'>
+      <div className='lg:grid max-w-[1200px] flex flex-col gap-8 lg:h-[60vh] lg:grid-cols-12 lg:grid-rows-1 transition-all'>
         <img
           src={image}
           alt={image_alt_text}
-          className={`${reversed && 'lg:order-1'} from-dkbg1 box-border h-[40vh] lg:h-full w-full object-cover lg:col-span-1`}
+          className={`${reversed && 'lg:order-1'} from-dkbg1 box-border h-[40vh] lg:h-full w-full object-cover lg:col-span-5`}
         />
-        <div className='flex flex-col justify-between bg-ltbg2 py-8  text-center text-black lg:col-span-2 lg:px-6 lg:py-8 dark:bg-dkbg1 dark:text-white transition-all'>
-          <h3 className='text-lg lg:text-3xl pb-4 text-primary'>{heading}</h3>
+        <div className='flex flex-col bg-ltbg2 py-8 radius-3xl text-center text-neutral-8 dark:text-neutral-2 lg:col-span-7 lg:px-6 lg:py-8 bg-neutral-3 dark:bg-neutral-7 transition-all'>
+          <h3 className='text-lg text-neutral-9 dark:text-neutral-1 lg:text-3xl pb-4 text-primary'>{heading}</h3>
             <div className='text-base lg:text-lg lg:px-12 px-6 lg:text-left text-center'>
               <p>{body_text}</p>
             </div>
@@ -38,7 +38,7 @@ const TextImagecard: React.FC<Props> = ({
           )}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

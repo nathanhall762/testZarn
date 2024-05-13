@@ -16,7 +16,7 @@ const Accordion: React.FC<Props> = ({
 
   return (
     <>
-      <div className='px-4 py-8 lg:px-32'>
+      <div className='px-4 py-8 lg:px-32 lg:py-16'>
         <h2 className='text-primary pb-8 text-center text-2xl lg:text-3xl'>
           FAQ's
         </h2>
@@ -28,7 +28,7 @@ const Accordion: React.FC<Props> = ({
               onClick={() => handleClick(index)}
             >
               <hr className='text-neutral-1' />
-              <div className='flex items-center justify-between px-4 pt-6 lg:px-8'>
+              <div className='flex items-center justify-between px-4 py-4 lg:px-8'>
                 <p className='text-pretty text-base transition duration-300 ease-in-out group-hover:scale-[1.01] lg:text-lg'>
                   {q_and_a_group.question}
                 </p>
@@ -41,14 +41,14 @@ const Accordion: React.FC<Props> = ({
               </div>
               <div
                 className={`${
-                  index === clicked ? 'my-4 scale-y-100' : 'my-0 scale-y-0'
-                } origin-top transform px-4 transition-all duration-300 ease-in-out lg:px-8`}
+                  index === clicked ? 'max-h-md' : 'max-h-0'
+                } origin-top transform px-4 transition-all duration-fast ease-in-out lg:px-8`}
               >
                 <hr className='text-neutral-1' />
                 <p
                   className={`${
-                    index === clicked ? 'my-4 scale-y-100' : 'scale-y-0 py-0'
-                  } px-4 py-4 lg:px-8`}
+                    index === clicked ? 'max-h-md py-4' : 'max-h-0 py-0'
+                  } overflow-clip px-4 transition-all duration-fast lg:px-8`}
                 >
                   {q_and_a_group.answer}
                 </p>

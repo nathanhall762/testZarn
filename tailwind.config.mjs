@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+import plugin from 'tailwindcss/plugin';
+
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
@@ -36,6 +38,12 @@ export default {
       'primary-md3': 'hsl(0, 100%, 57%)',
       'primary-lt1': 'hsl(0, 100%, 62%)',
       'primary-lt2': 'hsl(0, 100%, 68%)',
+    },
+    textShadow: {
+      sm: '1px 1px 2px hsl(0, 0%, 5%)',
+      DEFAULT: '2px 2px 4px hsl(0, 0%, 5%)',
+      lg: '4px 4px 8px hsl(0, 0%, 5%)',
+      xl: '4px 4px 16px hsl(0, 0%, 5%)',
     },
     extend: {
       spacing: {
@@ -92,5 +100,16 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(function ({ matchUtilities, theme }) {
+      matchUtilities(
+        {
+          'text-shadow': (value) => ({
+            textShadow: value,
+          }),
+        },
+        { values: theme('textShadow') }
+      );
+    }),
+  ],
 };

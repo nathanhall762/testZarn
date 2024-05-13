@@ -44,17 +44,22 @@ const TabListCards: React.FC<Props> = ({
   return (
     <>
       <div>
-        <div className='flex flex-col items-center px-8 py-8 text-center'>
-          <div className='pb-4'>
-            <h2 className='text-primary text-2xl lg:text-3xl'>{heading}</h2>
+        <div className='mx-auto flex max-w-7xl flex-col items-center rounded-3xl bg-neutral-7 p-8 px-4 text-center shadow-xl lg:my-32 lg:p-16 lg:px-32 lg:pb-24'>
+          <div className='pb-8 lg:pb-16'>
+            <h2 className='text-primary pb-4 text-2xl lg:text-3xl'>
+              {heading}
+            </h2>
             <div className='m-auto h-[2px] w-[vw%] max-w-2xl bg-primary-md1'></div>
           </div>
-          <div className='flex w-full max-w-5xl flex-col items-center pt-8 md:flex-row md:justify-between'>
-            <div className='grid grid-cols-4 pb-4 lg:grid-cols-1'>
+          <div className='lg:just lg: flex w-full flex-col-reverse items-center lg:flex-row lg:justify-center'>
+            <div className='grid grid-cols-2 gap-2 pt-4 lg:grid-cols-1 lg:gap-4 lg:pt-0'>
               {cards.map((card) => (
-                <div onClick={handleTabClick}>
+                <div
+                  onClick={handleTabClick}
+                  className={`${selected === card.heading ? 'scale-110 bg-opacity-100 text-neutral-2' : 'bg-opacity-70 text-neutral-3'} bg-neutral-9 hover:scale-110  hover:bg-opacity-100`}
+                >
                   <p
-                    className={`${selected === card.heading ? 'text-primary scale-110 opacity-100' : 'scale-75 opacity-50 hover:scale-110 hover:opacity-100'} hover:text-primary w-full p-4 text-xl transition-transform duration-100 ease-in-out hover:cursor-pointer`}
+                    className={`hover:text-primary w-full p-4 text-xl transition-transform duration-100 ease-in-out hover:cursor-pointer`}
                   >
                     {card.heading}
                   </p>
@@ -65,11 +70,13 @@ const TabListCards: React.FC<Props> = ({
               <div
                 style={{ backgroundImage: `url('${defaultCard.image}')` }}
                 aria-label={defaultCard.alt_image_text}
-                className='group flex aspect-[2/3] w-full max-w-3xl flex-grow flex-col justify-end bg-cover bg-center shadow-2xl md:aspect-square lg:m-0'
+                className='group flex aspect-[2/3] w-full max-w-3xl flex-grow flex-col justify-end bg-cover bg-center shadow-2xl backdrop-blur-sm lg:m-0 lg:aspect-square'
               >
-                <div className='bottom-0 flex h-[45%] flex-col bg-neutral-9 bg-opacity-70 px-2  py-4 backdrop-blur-sm'>
-                  <h3 className='text-xl'>{defaultCard.heading}</h3>
-                  <p className='m-0 text-base'>{defaultCard.body_text}</p>
+                <div className='flex h-full flex-col justify-center bg-neutral-9 bg-opacity-70 px-2 py-4 backdrop-blur-sm lg:h-[45%] lg:justify-start'>
+                  <div className='overflow-clip text-ellipsis pb-4'>
+                    <h3 className='pb-4 text-xl'>{defaultCard.heading}</h3>
+                    <p className='text-base'>{defaultCard.body_text}</p>
+                  </div>
                 </div>
               </div>
             )}
@@ -80,11 +87,11 @@ const TabListCards: React.FC<Props> = ({
                   <div
                     style={{ backgroundImage: `url('${card.image}')` }}
                     aria-label={card.alt_image_text}
-                    className='group flex aspect-[2/3] flex-col justify-end bg-cover shadow-2xl lg:m-0 lg:aspect-auto lg:h-[70vh] lg:w-[100vh]'
+                    className='group flex aspect-[2/3] w-full max-w-3xl flex-grow flex-col justify-end bg-cover bg-center shadow-2xl backdrop-blur-sm lg:m-0 lg:aspect-square'
                   >
-                    <div className='bottom-0 flex h-[45%] flex-col bg-neutral-9 bg-opacity-70 px-2  py-4 backdrop-blur-sm'>
-                      <div className='size-full overflow-clip text-ellipsis pb-4'>
-                        <h3 className='mb-2 text-xl'>{card.heading}</h3>
+                    <div className='flex h-full flex-col justify-center bg-neutral-9 bg-opacity-70 px-2 py-4 backdrop-blur-sm lg:h-[45%] lg:justify-start'>
+                      <div className='overflow-clip text-ellipsis pb-4'>
+                        <h3 className='pb-4 text-xl'>{card.heading}</h3>
                         <p className='text-base'>{card.body_text}</p>
                       </div>
                     </div>
