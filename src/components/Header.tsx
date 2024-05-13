@@ -25,6 +25,7 @@ const Header: React.FC<HeaderProps> = ({ title, navs }) => {
 
     const handleScroll = () => {
       const offset = window.scrollY;
+
       setIsScrolled(offset > headerHeight);
     };
 
@@ -40,15 +41,13 @@ const Header: React.FC<HeaderProps> = ({ title, navs }) => {
   };
 
   return (
-    <header className='will-change-transform'>
+    <header className=''>
+      <div className={`top-0 z-50 h-[15vh] bg-neutral-9`}></div>
       <div
-        className={`top-0 z-50 bg-neutral-9 transition-all duration-md ease-in-out ${isScrolled ? 'h-[9vh]' : 'h-[15vh]'}`}
-      ></div>
-      <div
-        className={`fixed top-0 z-50 w-full bg-neutral-9 transition-all duration-md ease-in-out ${isScrolled ? 'h-[9vh]' : 'h-[15vh]'}`}
+        className={`fixed top-0 z-50 w-full bg-neutral-9 transition-all duration-fast ease-in-out ${isScrolled ? 'h-[9vh]' : 'h-[15vh]'}`}
       >
         <div
-          className={`flex overflow-hidden border-neutral-6 text-xs  transition-all duration-md lg:flex-row-reverse ${isScrolled ? 'h-0 border-b-0' : 'h-[6vh] border-b-[1px]'}`}
+          className={`flex overflow-hidden border-neutral-6 text-xs transition-all duration-fast lg:flex-row-reverse ${isScrolled ? 'h-0 border-b-0' : 'h-[6vh] border-b-[1px]'}`}
         >
           <div className='flex flex-grow items-center justify-center border-r-[1px] border-neutral-6'>
             <a
@@ -78,7 +77,7 @@ const Header: React.FC<HeaderProps> = ({ title, navs }) => {
               </span>
             </a>
           </div>
-          <div className='lg:border-r-[1px] flex flex-grow items-center justify-center border-neutral-6'>
+          <div className='flex flex-grow items-center justify-center border-neutral-6 lg:border-r-[1px]'>
             <a
               className='group flex items-center justify-center gap-2 lg:gap-4'
               href='tel:TELEPHONE_NUMBER_GOES_HERE'
@@ -95,7 +94,7 @@ const Header: React.FC<HeaderProps> = ({ title, navs }) => {
         </div>
 
         <div
-          className={`relative top-0 flex h-[9vh] justify-between text-center align-middle shadow-2xl transition-all duration-md lg:grid lg:grid-cols-12`}
+          className={`relative top-0 flex h-[9vh] justify-between text-center align-middle shadow-2xl transition-all duration-fast lg:grid lg:grid-cols-12`}
         >
           <div className='relative flex flex-grow items-center justify-center border-r-[1px] border-neutral-6 bg-neutral-9 lg:col-span-2'>
             <a href='/'>
