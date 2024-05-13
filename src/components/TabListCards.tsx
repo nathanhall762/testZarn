@@ -44,7 +44,7 @@ const TabListCards: React.FC<Props> = ({
   return (
     <>
       <div>
-        <div className='mx-auto flex max-w-7xl flex-col items-center rounded-3xl bg-neutral-7 p-8 px-4 text-center shadow-xl lg:my-32 lg:p-16 lg:px-32 lg:pb-24'>
+        <div className='mx-auto flex max-w-7xl flex-col items-center rounded-3xl bg-neutral-7 p-8 px-4 text-center shadow-xl my-16 lg:my-32 lg:p-16 lg:px-32 lg:pb-24'>
           <div className='pb-8 lg:pb-16'>
             <h2 className='text-primary pb-4 text-2xl lg:text-3xl'>
               {heading}

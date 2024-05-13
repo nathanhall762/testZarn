@@ -18,7 +18,7 @@ const TextImagecard: React.FC<Props> = ({
 }) => {
   return (
     <section className='flex justify-center my-16'>
-      <div className='lg:grid max-w-[1200px] flex flex-col gap-8 lg:h-[60vh] lg:grid-cols-12 lg:grid-rows-1 transition-all'>
+      <div className='lg:grid max-w-[1200px] flex flex-col lg:gap-8 lg:h-[60vh] lg:grid-cols-12 lg:grid-rows-1 transition-all'>
         <img
           src={image}
           alt={image_alt_text}

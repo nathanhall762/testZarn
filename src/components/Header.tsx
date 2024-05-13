@@ -40,7 +40,7 @@ const Header: React.FC<HeaderProps> = ({ title, navs }) => {
   };
 
   return (
-    <header className=''>
+    <header className='will-change-transform'>
       <div
         className={`top-0 z-50 bg-neutral-9 transition-all duration-md ease-in-out ${isScrolled ? 'h-[9vh]' : 'h-[15vh]'}`}
       ></div>
