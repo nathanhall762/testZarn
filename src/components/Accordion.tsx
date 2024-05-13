@@ -41,13 +41,13 @@ const Accordion: React.FC<Props> = ({
               </div>
               <div
                 className={`${
-                  index === clicked ? 'max-h-md' : 'max-h-0'
+                  index === clicked ? 'max-h-lg' : 'max-h-0'
                 } origin-top transform px-4 transition-all duration-fast ease-in-out lg:px-8`}
               >
                 <hr className='text-neutral-1' />
                 <p
                   className={`${
-                    index === clicked ? 'max-h-md py-4' : 'max-h-0 py-0'
+                    index === clicked ? 'max-h-lg py-4' : 'max-h-0 py-0'
                   } overflow-clip px-4 transition-all duration-fast lg:px-8`}
                 >
                   {q_and_a_group.answer}

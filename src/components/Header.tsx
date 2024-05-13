@@ -5,6 +5,7 @@ import closeIcon from '@iconify/icons-mdi/close';
 
 interface HeaderProps {
   title: string;
+  logo: string;
   navs: {
     link: string;
     name: string;
@@ -16,7 +17,7 @@ interface HeaderProps {
   cta: string;
 }
 
-const Header: React.FC<HeaderProps> = ({ title, navs }) => {
+const Header: React.FC<HeaderProps> = ({ title, logo, navs, cta }) => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -99,11 +100,7 @@ const Header: React.FC<HeaderProps> = ({ title, navs }) => {
           <div className='relative flex flex-grow items-center justify-center border-r-[1px] border-neutral-6 bg-neutral-9 lg:col-span-2'>
             <a href='/'>
               <div className='hover:text-accent overflow-clip text-center text-neutral-1 transition-all duration-fast dark:text-neutral-1'>
-                <img
-                  src='/public/ZarnLogo.png'
-                  alt=''
-                  className='h-[8vh] py-2'
-                />
+                <img src={logo} alt='logo' className='h-[8vh] py-2' />
               </div>
             </a>
           </div>

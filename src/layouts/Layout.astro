@@ -12,6 +12,7 @@ import InfoCardList from '../components/InfoCardList';
 import Sidekick from '../components/Sidekick';
 import TabListCards from '../components/TabListCards';
 import TextImagecard from '../components/TextImageCard';
+import { getData } from '../firebase';
 
 interface Item {
   type: string;
@@ -25,6 +26,10 @@ interface Props {
 }
 
 const { title, metaDescription, pageData } = Astro.props;
+
+const zarnData = await getData('business_information');
+console.log(zarnData);
+const zarnLogo = zarnData[0].business_logo;
 
 const websiteName = 'Zarn Automotive';
 const phone = '(918) 123-1234';
@@ -146,6 +151,7 @@ const cta = 'Contact Us';
       title={websiteName}
       navs={navs.filter((nav) => nav.link !== '/')}
       cta={cta}
+      logo={zarnLogo}
       client:load
     />
     <div class=''>
