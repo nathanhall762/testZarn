@@ -16,12 +16,10 @@ const PictureGallery: React.FC<Props> = ({ images }) => {
     null
   );
 
-  console.log(images)
 
   const openModal = (image: SelectedImage) => {
     setSelectedImage(image);
     setModalOpen(true);
-    console.log(isModalOpen);
   };
 
   const closeModal = () => {

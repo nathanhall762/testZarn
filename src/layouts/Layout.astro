@@ -13,6 +13,7 @@ import Sidekick from '../components/Sidekick';
 import TabListCards from '../components/TabListCards';
 import TextImagecard from '../components/TextImageCard';
 import { getData } from '../firebase';
+import ReviewCards from '../components/ReviewCards';
 
 interface Item {
   type: string;
@@ -28,7 +29,6 @@ interface Props {
 const { title, metaDescription, pageData } = Astro.props;
 
 const zarnData = await getData('business_information');
-console.log(zarnData[0].favicon);
 const zarnLogo = zarnData[0].business_logo;
 
 const websiteName = 'Zarn Automotive';
@@ -191,6 +191,7 @@ const cta = 'Contact Us';
             }
           })
         }
+        <ReviewCards heading='Reviews' client:idle/>
       </main>
     </div>
     <ContactSection />

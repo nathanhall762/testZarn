@@ -29,7 +29,6 @@ const TabListCards: React.FC<Props> = ({
 }) => {
   const [selected, setSelected] = useState<string>('');
 
-  console.log(cards);
 
   const handleTabClick = (event: any) => {
     const name = event.target.textContent;
