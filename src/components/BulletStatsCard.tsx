@@ -10,7 +10,6 @@ interface Props {
 const BulletStatsCard: React.FC<Props> = ({
   content: { heading: title, body_text: body, image: bg_image, image_alt_text },
 }) => {
-  console.log(bg_image, image_alt_text);
   return (
     <div
       className={`flex justify-center bg-cover bg-center text-neutral-9 shadow-inner lg:h-[50vh] lg:px-32 dark:text-white`}

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Icon } from '@iconify/react';
 import menuIcon from '@iconify/icons-mdi/menu';
 import closeIcon from '@iconify/icons-mdi/close';
+import { initAnalytics } from '../firebase';
 
 interface HeaderProps {
   title: string;
@@ -20,6 +21,10 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ title, logo, navs, cta }) => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    initAnalytics();
+  }, []);
 
   useEffect(() => {
     const headerHeight = 200; // Adjust as needed
