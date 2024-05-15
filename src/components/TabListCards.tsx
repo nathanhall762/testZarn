@@ -29,6 +29,7 @@ const TabListCards: React.FC<Props> = ({
 }) => {
   const [selected, setSelected] = useState<string>('');
 
+  console.log(cards);
 
   const handleTabClick = (event: any) => {
     const name = event.target.textContent;
@@ -65,33 +66,34 @@ const TabListCards: React.FC<Props> = ({
                 </div>
               ))}
             </div>
-            {!selected && (
-              <div
-                style={{ backgroundImage: `url('${defaultCard.image}')` }}
-                aria-label={defaultCard.alt_image_text}
-                className='group flex aspect-[2/3] w-full max-w-3xl flex-grow flex-col justify-end bg-cover bg-center shadow-2xl backdrop-blur-sm lg:m-0 lg:aspect-square'
-              >
-                <div className='flex h-full flex-col justify-center bg-neutral-9 bg-opacity-70 px-2 py-4 backdrop-blur-sm lg:h-[45%] lg:justify-start'>
-                  <div className='overflow-clip text-ellipsis pb-4'>
-                    <h3 className='pb-4 text-xl'>{defaultCard.heading}</h3>
-                    <p className='text-base'>{defaultCard.body_text}</p>
+              <div className={`${!selected?'':'hidden'}`}>
+                <div
+                  style={{ backgroundImage: `url('${defaultCard.image}')` }}
+                  aria-label={defaultCard.alt_image_text}
+                  className='group flex aspect-[2/3] w-full max-w-3xl flex-grow flex-col justify-end bg-cover bg-center shadow-2xl backdrop-blur-sm lg:m-0 lg:aspect-square'
+                >
+                  <div className='flex h-full flex-col justify-center bg-neutral-9 bg-opacity-70 px-2 py-4 backdrop-blur-sm lg:h-[45%] lg:justify-start'>
+                    <div className='overflow-clip text-ellipsis pb-4'>
+                      <h3 className='pb-4 text-xl'>{defaultCard.heading}</h3>
+                      <p className='text-base'>{defaultCard.body_text}</p>
+                    </div>
                   </div>
                 </div>
               </div>
-            )}
-            {selected &&
+            {
               cards
-                .filter((card) => selected === card.heading)
                 .map((card) => (
-                  <div
-                    style={{ backgroundImage: `url('${card.image}')` }}
-                    aria-label={card.alt_image_text}
-                    className='group flex aspect-[2/3] w-full max-w-3xl flex-grow flex-col justify-end bg-cover bg-center shadow-2xl backdrop-blur-sm lg:m-0 lg:aspect-square'
-                  >
-                    <div className='flex h-full flex-col justify-center bg-neutral-9 bg-opacity-70 px-2 py-4 backdrop-blur-sm lg:h-[45%] lg:justify-start'>
-                      <div className='overflow-clip text-ellipsis pb-4'>
-                        <h3 className='pb-4 text-xl'>{card.heading}</h3>
-                        <p className='text-base'>{card.body_text}</p>
+                  <div className={`${selected === card.heading?'':'hidden'}`}>
+                    <div
+                      style={{ backgroundImage: `url('${card.image}')` }}
+                      aria-label={card.alt_image_text}
+                      className='group flex aspect-[2/3] w-full max-w-3xl flex-grow flex-col justify-end bg-cover bg-center shadow-2xl backdrop-blur-sm lg:m-0 lg:aspect-square'
+                    >
+                      <div className='flex h-full flex-col justify-center bg-neutral-9 bg-opacity-70 px-2 py-4 backdrop-blur-sm lg:h-[45%] lg:justify-start'>
+                        <div className='overflow-clip text-ellipsis pb-4'>
+                          <h3 className='pb-4 text-xl'>{card.heading}</h3>
+                          <p className='text-base'>{card.body_text}</p>
+                        </div>
                       </div>
                     </div>
                   </div>
