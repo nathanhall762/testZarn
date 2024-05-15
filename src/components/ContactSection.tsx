@@ -6,12 +6,7 @@ const ContactSection = () => {
           className='mb-4 w-[90%] h-[50vh] bg-cover rounded-3xl bg-neutral-5'
           style={{ border: '0' }}
         >
-          <iframe
-            src='https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12899.52967817112!2d-95.8397005!3d36.0719719!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87b68b8abffadfa9%3A0x27055814a51f3a45!2sZarn%20Automotive%20LLC!5e0!3m2!1sen!2sus!4v1715722035860!5m2!1sen!2sus'
-            loading='lazy'
-            referrerPolicy='no-referrer-when-downgrade'
-			className="w-full h-full rounded-3xl"
-          ></iframe>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d178633.7464556669!2d-95.85650703773332!3d36.074828780412936!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87b68b8abffadfa9%3A0x27055814a51f3a45!2sZarn%20Automotive%20LLC!5e0!3m2!1sen!2sus!4v1715814075475!5m2!1sen!2sus" className="h-full w-full rounded-3xl" loading="lazy"></iframe>
         </div>
         <address className='mb-8 text-neutral-9 dark:text-neutral-1'>
           ADDRESS GOES HERE
