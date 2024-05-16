@@ -5,8 +5,12 @@ import closeIcon from '@iconify/icons-mdi/close';
 import { initAnalytics } from '../firebase';
 
 interface HeaderProps {
-  title: string;
+  phone: string;
+  address: string;
+  email: string;
   logo: string;
+  socials: { link: string; type: string }[];
+  addressLink: string;
   navs: {
     link: string;
     name: string;
@@ -18,7 +22,16 @@ interface HeaderProps {
   cta: string;
 }
 
-const Header: React.FC<HeaderProps> = ({ title, logo, navs, cta }) => {
+const Header: React.FC<HeaderProps> = ({
+  phone,
+  address,
+  email,
+  socials,
+  addressLink,
+  logo,
+  navs,
+  cta,
+}) => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -46,6 +59,15 @@ const Header: React.FC<HeaderProps> = ({ title, logo, navs, cta }) => {
     setIsNavOpen(!isNavOpen);
   };
 
+  const formatPhoneNumber = (phone: string) => {
+    const cleaned = ('' + phone).replace(/\D/g, '');
+    const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+    if (match) {
+      return `(${match[1]}) ${match[2]}-${match[3]}`;
+    }
+    return phone;
+  };
+
   return (
     <header className=''>
       <div className={`top-0 z-50 h-[15vh] bg-neutral-9`}></div>
@@ -58,42 +80,43 @@ const Header: React.FC<HeaderProps> = ({ title, logo, navs, cta }) => {
           <div className='flex flex-grow items-center justify-center border-r-[1px] border-neutral-6'>
             <a
               className='group flex items-center justify-center gap-2 lg:gap-4'
-              href='mailto:EMAIL_ADDRESS_GOES_HERE'
+              href={`mailto:${email}}`}
             >
               <Icon
                 icon='mdi:email'
                 className='text-lg text-primary-md1 transition-all duration-fast group-hover:text-primary-md2'
               />
               <span className='hidden text-center text-xs text-neutral-1 transition-all duration-fast group-hover:scale-md group-hover:underline lg:inline dark:text-neutral-1'>
-                Email@email.com
+                {email}
               </span>
             </a>
           </div>
           <div className='flex flex-grow items-center justify-center border-r-[1px] border-neutral-6'>
             <a
               className='group flex items-center justify-center gap-2 lg:gap-4'
-              href='/'
+              href={addressLink}
+              target='_blank'
             >
               <Icon
                 icon='mdi:map-marker'
                 className='text-lg text-primary-md1 transition-all duration-fast group-hover:text-primary-md2'
               />
               <span className='hidden text-center text-xs text-neutral-1 transition-all duration-fast group-hover:scale-md group-hover:underline lg:inline dark:text-neutral-1'>
-                1234 Address St
+                {address}
               </span>
             </a>
           </div>
           <div className='flex flex-grow items-center justify-center border-neutral-6 lg:border-r-[1px]'>
             <a
               className='group flex items-center justify-center gap-2 lg:gap-4'
-              href='tel:TELEPHONE_NUMBER_GOES_HERE'
+              href={`tel:${phone}`}
             >
               <Icon
                 icon='akar-icons:phone'
                 className='text-lg text-primary-md1 transition-all duration-fast group-hover:text-primary-md2'
               />
               <span className=' text-neutral-1 transition-all duration-fast group-hover:scale-md group-hover:underline dark:text-neutral-1'>
-                (918) 123-1234
+                {formatPhoneNumber(phone)}
               </span>
             </a>
           </div>
@@ -174,7 +197,7 @@ const Header: React.FC<HeaderProps> = ({ title, logo, navs, cta }) => {
                   className='text-lg text-primary-md1 transition-all duration-fast group-hover:text-primary-md2'
                 />
                 <span className='hidden text-justify text-neutral-1 transition-all duration-fast group-hover:scale-md group-hover:underline xl:inline dark:text-neutral-1'>
-                  (918) 123-1234
+                  {formatPhoneNumber(phone)}
                 </span>
               </a>
             </div>

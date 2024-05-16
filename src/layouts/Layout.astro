@@ -28,12 +28,9 @@ interface Props {
 
 const { title, metaDescription, pageData } = Astro.props;
 
-const zarnData = await getData('business_information');
-const zarnLogo = zarnData[0].business_logo;
+const businessInformation = await getData('business_information');
+console.log(businessInformation);
 
-const websiteName = 'Zarn Automotive';
-const phone = '(918) 123-1234';
-const address = '1234 Main St, Tulsa, OK 74103';
 const navs = [
   {
     link: '/about',
@@ -99,17 +96,13 @@ const navs = [
   { link: '/book-appointment', name: 'Book Appointment' },
   { link: '/contact', name: 'Contact Us' },
 ];
-const socials = [
-  { link: 'https://www.instagram.com/', type: 'instagram' },
-  { link: 'https://www.facebook.com/', type: 'facebook' },
-];
 const cta = 'Contact Us';
 ---
 
 <!doctype html>
 <html
   lang='en'
-  class='bg-neutral-9 font-sans font-light text-neutral-9'>
+  class='bg-neutral-9 font-sans font-light text-neutral-9 scroller'>
   <head>
     <meta charset='UTF-8' />
     <meta
@@ -138,68 +131,86 @@ const cta = 'Contact Us';
       localStorage.theme = 'dark';
       localStorage.removeItem('theme');
     </script>
-    <link rel="icon" type="image/png" sizes="32x32" href={zarnData[0].favicon.favicon_32_x32}>
-    <title>{title ? `${title} - ${websiteName}` : websiteName}</title>
+    <link
+      rel='icon'
+      type='image/png'
+      sizes='32x32'
+      href={businessInformation[0].favicon.favicon_32_x32}
+    />
+    <title>
+      {
+        title
+          ? `${title} - ${businessInformation[0].business_name}`
+          : businessInformation[0].business_name
+      }
+    </title>
     <ViewTransitions />
   </head>
   <body class='bg-ltbg2 dark:bg-dkbg2'>
     <Header
-      title={websiteName}
+      phone={businessInformation[0].business_phone}
+      address={businessInformation[0].business_address}
+      addressLink={businessInformation[0].google_maps_link}
+      email={businessInformation[0].business_contact_email}
+      socials={businessInformation[0].socials}
       navs={navs.filter((nav) => nav.link !== '/')}
       cta={cta}
-      logo={zarnLogo}
+      logo={businessInformation[0].business_logo}
       client:load
     />
-      <main class='bg-neutral-8'>
-        {
-          pageData.content.map((item: Item) => {
-            switch (item.type) {
-              case 'hero_section':
-                return (
-                  <Hero
-                    content={item.value}
-                    client:idle
-                  />
-                );
-              case 'sidekick_section':
-                return <Sidekick content={item.value} />;
-              case 'welcome_message_section':
-                return <AboutCard content={item.value} />;
-              case 'info_card_list':
-                return <InfoCardList content={item.value} />;
-              case 'bullet_stats_card':
-                return <BulletStatsCard content={item.value} />;
-              case 'tab_list_cards':
-                return (
-                  <TabListCards
-                    content={item.value}
-                    client:idle
-                  />
-                );
-              case 'text_image_card':
-                return <TextImagecard content={item.value} />;
-              case 'accordion':
-                return (
-                  <Accordion
-                    content={item.value}
-                    client:idle
-                  />
-                );
-              default:
-                return null;
-            }
-          })
-        }
-        <ReviewCards heading='Reviews' client:idle/>
-      </main>
+    <main class='bg-neutral-8'>
+      {
+        pageData.content.map((item: Item) => {
+          switch (item.type) {
+            case 'hero_section':
+              return (
+                <Hero
+                  content={item.value}
+                  client:idle
+                />
+              );
+            case 'sidekick_section':
+              return <Sidekick content={item.value} />;
+            case 'welcome_message_section':
+              return <AboutCard content={item.value} />;
+            case 'info_card_list':
+              return <InfoCardList content={item.value} />;
+            case 'bullet_stats_card':
+              return <BulletStatsCard content={item.value} />;
+            case 'tab_list_cards':
+              return (
+                <TabListCards
+                  content={item.value}
+                  client:idle
+                />
+              );
+            case 'text_image_card':
+              return <TextImagecard content={item.value} />;
+            case 'accordion':
+              return (
+                <Accordion
+                  content={item.value}
+                  client:idle
+                />
+              );
+            default:
+              return null;
+          }
+        })
+      }
+      <ReviewCards
+        heading='Reviews'
+        client:idle
+      />
+    </main>
     <ContactSection />
     <Footer
       cta={cta}
-      address={address}
-      copyright=`${websiteName} 2024`
+      address={businessInformation[0].business_address}
+      copyright=`${businessInformation[0].business_name} 2024`
       navs={navs}
-      phone={phone}
-      socials={socials}
+      phone={businessInformation[0].business_phone}
+      socials={businessInformation[0].socials}
       client:idle
     />
     <style is:global>
@@ -232,6 +243,21 @@ const cta = 'Contact Us';
         .zoom-in {
           @apply scale-[1.25];
         }
+      }
+
+      .scroller {
+        scrollbar-color: hsl(0, 100%, 25%) hsl(240, 5%, 8%);
+      }
+
+      /* Hide scrollbar for Chrome, Safari and Opera */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+
+      /* Hide scrollbar for IE, Edge and Firefox */
+      .no-scrollbar {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
       }
 
       body {

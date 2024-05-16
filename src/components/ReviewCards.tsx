@@ -38,7 +38,6 @@ const ReviewCards: React.FC<Props> = ({ heading }) => {
           'https://places.googleapis.com/v1/places/ChIJqd_6v4qLtocRRTofpRRYBSc?fields=reviews&key=AIzaSyBiyBHqgtpmZzkQv0ylqC4MGH_GRDafcaY'
         );
         const reviewsData = response.data.reviews;
-        console.log(reviewsData);
         setReviews(reviewsData);
       } catch (error) {
         console.error('Error fetching reviews:', error);
@@ -55,18 +54,18 @@ const ReviewCards: React.FC<Props> = ({ heading }) => {
   return (
     <div className='pt-8'>
       <h2 className='pb-8 text-center text-2xl'>{heading}</h2>
-      <div className='snap-mandatory snap-x overflow-x-scroll flex lg:gap-16 gap-8 mx-auto px-24 lg:px-16 py-8'>
+      <div className='snap-mandatory snap-x overflow-x-scroll flex lg:gap-16 gap-8 mx-auto px-24 lg:px-16 py-8 no-scrollbar'>
         {reviews.map((review, index) => (
           <div
             key={index}
-            className='bg-primary rounded-lg bg-neutral-3 dark:bg-neutral-7 max-w-[350px] max-h-[400px] w-[70vw] h-[50vh] lg:p-6 p-4 text-pretty snap-always snap-center flex-shrink-0 overflow-hidden'
+            className='bg-primary rounded-lg bg-neutral-3 dark:bg-neutral-7 max-w-[350px] max-h-[400px] w-[70vw] h-[50vh] lg:p-6 p-4 text-pretty snap-always snap-center flex-shrink-0 overflow-hidden shadow-xl'
           >
             <div className='flex justify-between pb-6 text-sm'>
               <img
                 alt={review.authorAttribution.displayName}
                 // style={{ backgroundImage: `url(${review.authorAttribution.photoUri})` }}
                 src={review.authorAttribution.photoUri}
-                className='rounded-full lg:size-24 size-24 bg-center bg-contain bg-no-repeat'
+                className='rounded-full lg:size-24 size-16 bg-center bg-contain bg-no-repeat'
               />
               <div className='flex flex-col justify-evenly'>
                 <p className='lg:text-lg text-base'>{review.authorAttribution.displayName}</p>
@@ -82,8 +81,8 @@ const ReviewCards: React.FC<Props> = ({ heading }) => {
                 </div>
               </div>
             </div>
-            <div>
-              <p className='text-justify text-base'>{review.text.text}</p>
+            <div className='line-clamp-[8]'>
+              <p className='inline text-justify h-full text-base'>{review.text.text}</p>
             </div>
           </div>
         ))}

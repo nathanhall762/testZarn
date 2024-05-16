@@ -3,13 +3,15 @@ import facebookIcon from '@iconify/icons-mdi/facebook';
 import twitterIcon from '@iconify/icons-mdi/twitter';
 import instagramIcon from '@iconify/icons-mdi/instagram';
 import alertCircle from '@iconify/icons-mdi/alert-circle';
+import youtubeIcon from '@iconify/icons-mdi/youtube';
 
-type SocialType = 'facebook' | 'twitter' | 'instagram';
+type SocialType = 'facebook' | 'twitter' | 'instagram' | 'youtube';
 
 const iconMap = {
-  facebook: facebookIcon,
-  twitter: twitterIcon,
-  instagram: instagramIcon,
+  Facebook: facebookIcon,
+  Twitter: twitterIcon,
+  Instagram: instagramIcon,
+  Youtube: youtubeIcon,
 };
 
 interface Props {
@@ -32,7 +34,7 @@ const Footer: React.FC<Props> = ({
   cta,
 }) => {
   const getIconFromSocialsType = (type: string) =>
-    iconMap[type as 'facebook' | 'twitter' | 'instagram'];
+    iconMap[type as 'Facebook' | 'Twitter' | 'Instagram' | 'Youtube'];
   return (
     <footer className='bg-neutral-9 pb-8 pt-16 text-center text-neutral-1 lg:px-10 dark:bg-neutral-9 dark:text-neutral-1'>
       <div className='flex flex-col items-center justify-evenly lg:flex-row lg:justify-between'>
