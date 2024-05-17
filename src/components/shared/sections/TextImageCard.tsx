@@ -1,5 +1,3 @@
-import ReactMarkdown from 'react-markdown';
-
 interface Props {
   content: {
     heading: string;

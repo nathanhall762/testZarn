@@ -2,10 +2,7 @@ import { Icon } from '@iconify/react';
 import facebookIcon from '@iconify/icons-mdi/facebook';
 import twitterIcon from '@iconify/icons-mdi/twitter';
 import instagramIcon from '@iconify/icons-mdi/instagram';
-import alertCircle from '@iconify/icons-mdi/alert-circle';
 import youtubeIcon from '@iconify/icons-mdi/youtube';
-
-type SocialType = 'facebook' | 'twitter' | 'instagram' | 'youtube';
 
 const iconMap = {
   Facebook: facebookIcon,
@@ -21,7 +18,6 @@ interface Props {
   socials: { link: string; type: string }[];
   phone: string;
   copyright: string;
-  cta: string;
 }
 
 const Footer: React.FC<Props> = ({
@@ -31,7 +27,6 @@ const Footer: React.FC<Props> = ({
   navs,
   phone,
   socials,
-  cta,
 }) => {
   const getIconFromSocialsType = (type: string) =>
     iconMap[type as 'Facebook' | 'Twitter' | 'Instagram' | 'Youtube'];

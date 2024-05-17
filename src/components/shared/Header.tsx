@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Icon } from '@iconify/react';
 import menuIcon from '@iconify/icons-mdi/menu';
 import closeIcon from '@iconify/icons-mdi/close';
-import { initAnalytics } from '../firebase';
+import { initAnalytics } from '../../firebase';
 
 interface HeaderProps {
   phone: string;
@@ -19,7 +19,6 @@ interface HeaderProps {
       name: string;
     }[];
   }[];
-  cta: string;
 }
 
 const Header: React.FC<HeaderProps> = ({
@@ -30,7 +29,6 @@ const Header: React.FC<HeaderProps> = ({
   addressLink,
   logo,
   navs,
-  cta,
 }) => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);

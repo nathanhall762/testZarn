@@ -14,6 +14,7 @@ const BulletStatsCard: React.FC<Props> = ({
     <div
       className={`flex justify-center bg-cover bg-center text-neutral-9 shadow-inner lg:h-[50vh] lg:px-32 dark:text-white`}
       style={{ backgroundImage: `url('${bg_image}')` }}
+      title={image_alt_text}
     >
       <div
         className={`flex h-full max-w-[800px] flex-col items-center justify-center bg-neutral-8 bg-opacity-50 px-8 py-8 shadow-md backdrop-blur-sm backdrop-brightness-[.25] lg:bg-opacity-90 lg:px-16 lg:backdrop-brightness-100`}

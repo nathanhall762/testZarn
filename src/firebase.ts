@@ -1,4 +1,4 @@
-import { getAnalytics, isSupported } from 'firebase/analytics';
+import { getAnalytics } from 'firebase/analytics';
 import { initializeApp } from 'firebase/app';
 import type { DocumentData } from 'firebase/firestore';
 import {

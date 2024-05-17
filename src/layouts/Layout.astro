@@ -1,21 +1,15 @@
 ---
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import { ViewTransitions, fade } from 'astro:transitions';
-import ContactSection from '../components/ContactSection';
+import Header from '../components/shared/Header';
+import Footer from '../components/shared/Footer';
+import { ViewTransitions } from 'astro:transitions';
+import ContactSection from '../components/shared/ContactSection';
 import type { DocumentData } from 'firebase/firestore';
-import AboutCard from '../components/AboutCard';
-import Accordion from '../components/Accordion';
-import BulletStatsCard from '../components/BulletStatsCard';
-import Hero from '../components/Hero';
-import InfoCardList from '../components/InfoCardList';
-import Sidekick from '../components/Sidekick';
-import TabListCards from '../components/TabListCards';
-import TextImagecard from '../components/TextImageCard';
 import { getData } from '../firebase';
 import ReviewCards from '../components/ReviewCards';
+import PageBuilder from '../components/shared/PageBuilder.astro';
+import { navs } from '../navMenu';
 
-interface Item {
+export interface Item {
   type: string;
   value: any;
 }
@@ -29,80 +23,12 @@ interface Props {
 const { title, metaDescription, pageData } = Astro.props;
 
 const businessInformation = await getData('business_information');
-console.log(businessInformation);
-
-const navs = [
-  {
-    link: '/about',
-    name: 'About Us',
-    subpages: [
-      { link: '/our-team', name: 'Our Team' },
-      { link: '/faqs', name: 'FAQ' },
-      { link: '/care-tips', name: 'Care Tips' },
-      { link: '/why-choose-us', name: 'Why Choose Us' },
-    ],
-  },
-  {
-    link: '/services',
-    name: 'Our Services',
-    subpages: [
-      { link: '/ac-services', name: 'AC Services' },
-      { link: '/auto-repair-estimates', name: 'Auto Repair Estimates' },
-      { link: '/battery', name: 'Battery' },
-      { link: '/bg', name: 'BG Services' },
-      { link: '/brake-system', name: 'Brake System' },
-      { link: '/check-engine-light', name: 'Check Engine Light' },
-      { link: '/computer-diagnostics', name: 'Computer Diagnostics' },
-      { link: '/drivetrain', name: 'Drivetrain' },
-      { link: '/electrical-concerns', name: 'Electrical Concerns' },
-      { link: '/engine-cooling-system', name: 'Engine Cooling System' },
-      { link: '/engine-performance-repair', name: 'Engine Performance Repair' },
-      { link: '/fleet-services', name: 'Fleet Services' },
-      { link: '/fuel-system', name: 'Fuel System' },
-      { link: '/hybrid-electric-vehicles', name: 'Hybrid/Electric Vehicles' },
-      { link: '/inspections', name: 'Inspections' },
-      { link: '/courtesy-inspection', name: 'Courtesy Inspection' },
-      { link: '/preventative-maintenance', name: 'Preventative Maintenance' },
-      { link: '/oil-and-filter-change', name: 'Oil and Filter Change' },
-      { link: '/tune-ups', name: 'Tune-Ups' },
-      { link: '/steering-components', name: 'Steering Components' },
-      { link: '/suspension', name: 'Suspension' },
-      { link: '/transmission', name: 'Transmission' },
-    ],
-  },
-  {
-    link: '/european-car-repair',
-    name: 'European Car Repair',
-    subpages: [
-      { link: '/mercedes', name: 'Mercedes' },
-      { link: '/volkswagen', name: 'Volkswagen' },
-      { link: '/acura', name: 'Acura' },
-      { link: '/bmw', name: 'BMW' },
-      { link: '/audi', name: 'Audi' },
-      { link: '/volvo', name: 'Volvo' },
-      { link: '/porsche', name: 'Porsche' },
-      { link: '/mini', name: 'Mini' },
-      { link: '/land-rover', name: 'Land Rover' },
-      { link: '/jaguar', name: 'Jaguar' },
-      { link: '/buick', name: 'Buick' },
-      { link: '/cadillac', name: 'Cadillac' },
-      { link: '/infiniti', name: 'Infiniti' },
-      { link: '/lexus', name: 'Lexus' },
-      { link: '/mazda', name: 'Mazda' },
-      { link: '/hyundai', name: 'Hyundai' },
-    ],
-  },
-  { link: '/testimonials', name: 'Testimonials' },
-  { link: '/book-appointment', name: 'Book Appointment' },
-  { link: '/contact', name: 'Contact Us' },
-];
-const cta = 'Contact Us';
 ---
 
 <!doctype html>
 <html
   lang='en'
-  class='bg-neutral-9 font-sans font-light text-neutral-9 scroller'>
+  class='scroller bg-neutral-9 font-sans font-light text-neutral-9'>
   <head>
     <meta charset='UTF-8' />
     <meta
@@ -154,58 +80,24 @@ const cta = 'Contact Us';
       email={businessInformation[0].business_contact_email}
       socials={businessInformation[0].socials}
       navs={navs.filter((nav) => nav.link !== '/')}
-      cta={cta}
       logo={businessInformation[0].business_logo}
       client:load
     />
     <main class='bg-neutral-8'>
-      {
-        pageData.content.map((item: Item) => {
-          switch (item.type) {
-            case 'hero_section':
-              return (
-                <Hero
-                  content={item.value}
-                  client:idle
-                />
-              );
-            case 'sidekick_section':
-              return <Sidekick content={item.value} />;
-            case 'welcome_message_section':
-              return <AboutCard content={item.value} />;
-            case 'info_card_list':
-              return <InfoCardList content={item.value} />;
-            case 'bullet_stats_card':
-              return <BulletStatsCard content={item.value} />;
-            case 'tab_list_cards':
-              return (
-                <TabListCards
-                  content={item.value}
-                  client:idle
-                />
-              );
-            case 'text_image_card':
-              return <TextImagecard content={item.value} />;
-            case 'accordion':
-              return (
-                <Accordion
-                  content={item.value}
-                  client:idle
-                />
-              );
-            default:
-              return null;
-          }
-        })
-      }
+      <PageBuilder pageData={pageData} />
       <ReviewCards
         heading='Reviews'
         client:idle
       />
     </main>
-    <ContactSection />
+    <ContactSection
+      businessName={businessInformation[0].business_name}
+      businessAddress={businessInformation[0].business_address}
+      businessPhone={businessInformation[0].business_phone}
+      businessEmail={businessInformation[0].business_contact_email}
+      client:idle
+    />
     <Footer
-      cta={cta}
       address={businessInformation[0].business_address}
       copyright=`${businessInformation[0].business_name} 2024`
       navs={navs}

@@ -29,13 +29,15 @@ interface Props {
 
 const ReviewCards: React.FC<Props> = ({ heading }) => {
   const [reviews, setReviews] = useState<Review[]>([]);
+  const apiKey = import.meta.env.PUBLIC_GOOGLE_PLACES_API_KEY;
+  
 
   useEffect(() => {
     // Define the function to fetch reviews from the Google Places API
     const fetchReviews = async () => {
       try {
         const response = await axios.get(
-          'https://places.googleapis.com/v1/places/ChIJqd_6v4qLtocRRTofpRRYBSc?fields=reviews&key=AIzaSyBiyBHqgtpmZzkQv0ylqC4MGH_GRDafcaY'
+          `https://places.googleapis.com/v1/places/ChIJqd_6v4qLtocRRTofpRRYBSc?fields=reviews&key=${apiKey}`
         );
         const reviewsData = response.data.reviews;
         setReviews(reviewsData);

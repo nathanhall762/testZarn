@@ -55,7 +55,7 @@ const Hero: React.FC<HeroProps> = ({
             {welcomeText}
           </h1>
           <h2 className='text-shadow-xl pb-24 text-center text-2xl font-bold text-neutral-1 lg:pb-48 lg:text-left lg:text-5xl'>
-            {'The Top Auto Repair Shop in Tulsa'}
+            {tagline}
           </h2>
           <div className='flex flex-col items-center justify-center gap-4 lg:flex-row lg:gap-16'>
             <a href='/contact' className=''>
