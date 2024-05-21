@@ -1,3 +1,5 @@
+import Markdown from 'react-markdown';
+
 interface Props {
   content: {
     heading: string;
@@ -8,9 +10,11 @@ interface Props {
 const Testimonial: React.FC<Props> = ({ content }) => {
   return (
     <>
-      <div className='p-4'>
-        <h2>{content.heading}</h2>
-        <p>{content.body}</p>
+      <div className='flex flex-col items-center p-4'>
+        <div className='max-w-5xl bg-neutral-7 p-8'>
+          <h2 className='pb-4'>{content.heading}</h2>
+          <Markdown>{content.body}</Markdown>
+        </div>
       </div>
     </>
   );
