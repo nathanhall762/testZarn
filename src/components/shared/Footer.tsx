@@ -30,13 +30,23 @@ const Footer: React.FC<Props> = ({
 }) => {
   const getIconFromSocialsType = (type: string) =>
     iconMap[type as 'Facebook' | 'Twitter' | 'Instagram' | 'Youtube'];
+
+  const formatPhoneNumber = (phone: string) => {
+    const cleaned = ('' + phone).replace(/\D/g, '');
+    const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+    if (match) {
+      return `(${match[1]}) ${match[2]}-${match[3]}`;
+    }
+    return phone;
+  };
+
   return (
     <footer className='bg-neutral-9 pb-8 pt-16 text-center text-neutral-1 lg:px-10 dark:bg-neutral-9 dark:text-neutral-1'>
       <div className='flex flex-col items-center justify-evenly lg:flex-row lg:justify-between'>
         <div className='hidden lg:block'>
           {address && <p className='text-left'>{address}</p>}
           {email && <p className='text-left'>{email}</p>}
-          <p className='text-left'>{phone}</p>
+          <p className='text-left'>{formatPhoneNumber(phone)}</p>
         </div>
         <div>
           <nav className='mb-8 flex flex-col items-center gap-2 lg:flex-row lg:justify-end lg:gap-8'>

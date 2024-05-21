@@ -37,7 +37,12 @@ const TextImagecard: React.FC<Props> = ({
               {heading}
             </h3>
             <div className='mb-8 h-[2px] w-3/4 max-w-2xl bg-primary-md1'></div>
-            <ReactMarkdown className='markdown px-6 text-center mb-6 lg:mb-12 text-base lg:px-12 lg:text-left lg:text-lg'>
+            <ReactMarkdown className='markdown px-6 text-center mb-6 lg:mb-12 text-base lg:px-12 lg:text-left lg:text-lg' components={{
+              a(props) {
+                const { node, ...rest } = props;
+                return <a className='mb-2' target='_blank' {...rest} />;
+              },
+            }}>
               {body_text}
             </ReactMarkdown>
           </div>

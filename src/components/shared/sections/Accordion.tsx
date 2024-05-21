@@ -1,12 +1,13 @@
 import { Icon } from '@iconify/react/dist/iconify.js';
 import { useState } from 'react';
+import ReactMarkdown from 'react-markdown';
 
 interface Props {
-  content: { question_and_answer: { question: string; answer: string }[] };
+  content: { heading: string, question_and_answer: { question: string; answer: string }[] };
 }
 
 const Accordion: React.FC<Props> = ({
-  content: { question_and_answer: question_and_answer },
+  content: { heading, question_and_answer },
 }) => {
   const [clicked, setClicked] = useState<number>();
 
@@ -18,7 +19,7 @@ const Accordion: React.FC<Props> = ({
     <>
       <div className='px-4 py-8 lg:px-32 lg:py-16'>
         <h2 className='text-primary pb-8 text-center text-2xl lg:text-3xl'>
-          FAQ's
+          {heading}
         </h2>
         <div className='flex flex-col'>
           {question_and_answer.map((q_and_a_group, index) => (
@@ -45,13 +46,19 @@ const Accordion: React.FC<Props> = ({
                 } origin-top transform px-4 transition-all duration-fast ease-in-out lg:px-8`}
               >
                 <hr className='text-neutral-1' />
-                <p
+                <ReactMarkdown
                   className={`${
                     index === clicked ? 'max-h-lg py-4' : 'max-h-0 py-0'
-                  } overflow-clip px-4 transition-all duration-fast lg:px-8`}
+                  } markdown overflow-clip px-4 transition-all duration-fast lg:px-8`}
+                  components={{
+                    a(props) {
+                      const { node, ...rest } = props;
+                      return <a className='mb-2' target='_blank' {...rest} />;
+                    },
+                  }}
                 >
                   {q_and_a_group.answer}
-                </p>
+                </ReactMarkdown>
               </div>
               <hr className='text-neutral-1' />
             </div>

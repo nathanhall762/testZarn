@@ -56,7 +56,7 @@ const ReviewCards: React.FC<Props> = ({ heading }) => {
   return (
     <div className='pt-8'>
       <h2 className='pb-8 text-center text-2xl'>{heading}</h2>
-      <div className='snap-mandatory snap-x overflow-x-scroll flex lg:gap-16 gap-8 mx-auto px-24 lg:px-16 py-8 no-scrollbar'>
+      <div className='scroller-sm snap-mandatory snap-x overflow-x-scroll flex lg:gap-16 gap-8 mx-auto px-24 lg:px-16 py-8'>
         {reviews.map((review, index) => (
           <div
             key={index}
@@ -77,7 +77,7 @@ const ReviewCards: React.FC<Props> = ({ heading }) => {
                   {Array.from({ length: 5 }).map((_, index) => (
                     <Icon
                       icon={`material-symbols-light:${review.rating > index ? 'star' : 'star-outline'}`}
-                      className='size-5 lg:size-7'
+                      className={`size-5 lg:size-7 ${review.rating > index ? 'text-primary-md2' : 'text-neutral-6 dark:text-neutral-4'}`}
                     />
                   ))}
                 </div>
