@@ -1,5 +1,5 @@
 interface Props {
-  content: { cta: string; buttonText: string };
+  content: { cta: string; button_text: string };
 }
 
 const Cta: React.FC<Props> = ({ content }) => {
@@ -10,7 +10,7 @@ const Cta: React.FC<Props> = ({ content }) => {
           {content.cta}
         </h2>
         <button className='bg-other hover:bg-accent transform rounded-xl bg-primary-md1 px-12 py-4 text-lg text-neutral-2 transition duration-300 ease-in-out hover:scale-110 hover:bg-primary-md2'>
-          {content.buttonText}
+          {content.button_text}
         </button>
       </div>
     </>
