@@ -25,7 +25,7 @@ const AboutCard: React.FC<AboutCardProps> = ({
               {aboutTitle}
             </h3>
             <div className='h-[2px] w-full max-w-2xl mb-8 bg-primary-md1'></div>
-          <ReactMarkdown className='line-clamp-5 pb-12 text-start text-lg lg:line-clamp-3 lg:pb-24 lg:text-2xl'>
+          <ReactMarkdown className='markdown line-clamp-5 pb-12 text-start text-lg lg:line-clamp-3 lg:pb-24 lg:text-2xl'>
             {aboutBody}
           </ReactMarkdown>
           {linkUrl && (

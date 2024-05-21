@@ -121,7 +121,11 @@ const businessInformation = await getData('business_information');
         }
 
         ul {
-          @apply list-disc;
+          @apply ms-8 list-disc text-base leading-loose lg:text-lg lg:leading-loose;
+        }
+
+        .markdown>p {
+          @apply mb-8
         }
 
         .fade-in-up {
