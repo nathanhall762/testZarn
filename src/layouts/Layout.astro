@@ -28,7 +28,7 @@ const businessInformation = await getData('business_information');
 <!doctype html>
 <html
   lang='en'
-  class='scroller bg-neutral-9 font-sans font-light text-neutral-9'>
+  class='dark scroller bg-neutral-9 font-sans font-light text-neutral-9'>
   <head>
     <meta charset='UTF-8' />
     <meta
@@ -43,20 +43,6 @@ const businessInformation = await getData('business_information');
       name='generator'
       content={Astro.generator}
     />
-    <script>
-      if (
-        localStorage.theme === 'dark' ||
-        (!('theme' in localStorage) &&
-          window.matchMedia('(prefers-color-scheme: dark)').matches)
-      ) {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
-      localStorage.theme = 'light';
-      localStorage.theme = 'dark';
-      localStorage.removeItem('theme');
-    </script>
     <link
       rel='icon'
       type='image/png'
@@ -72,7 +58,7 @@ const businessInformation = await getData('business_information');
     </title>
     <ViewTransitions />
   </head>
-  <body class='bg-ltbg2 dark:bg-dkbg2'>
+  <body>
     <Header
       phone={businessInformation[0].business_phone}
       address={businessInformation[0].business_address}
@@ -108,6 +94,12 @@ const businessInformation = await getData('business_information');
     <style is:global>
       @tailwind base;
 
+      @media (prefers-color-scheme: light) {
+          html {
+            color-scheme: dark;
+          }
+        }
+
       @layer base {
         @keyframes fadeInUp {
           0% {
@@ -119,17 +111,18 @@ const businessInformation = await getData('business_information');
             transform: translateY(0);
           }
         }
+        
 
         ul {
           @apply ms-8 list-disc text-base leading-loose lg:text-lg lg:leading-loose;
         }
 
-        .markdown>p {
-          @apply mb-8
+        .markdown > p {
+          @apply mb-8;
         }
 
-        .markdown>p>a,
-        .markdown>ul>li>a {
+        .markdown > p > a,
+        .markdown > ul > li > a {
           @apply text-primary-md2 hover:text-primary-md3 hover:underline;
         }
 
