@@ -18,23 +18,24 @@ const AboutCard: React.FC<AboutCardProps> = ({
   },
 }) => {
   return (
-    <div className='flex px-4 py-8 lg:py-16'>
-      <div className='mx-auto flex max-w-6xl justify-center rounded-3xl bg-neutral-7 px-6 py-8 text-center lg:px-16 lg:py-16'>
+    <div className='flex my-8 lg:my-16'>
+      <div className='mx-auto flex max-w-6xl justify-center rounded-3xl shadow-md bg-neutral-7 px-6 py-8 text-center lg:px-16 lg:py-16'>
         <div className='flex max-w-5xl flex-col items-center justify-around align-baseline'>
-          <div className='pb-12'>
-            <h2 className='pb-4 text-2xl font-bold lg:text-3xl'>
+            <h3 className='mb-4 text-lg font-bold lg:text-3xl'>
               {aboutTitle}
-            </h2>
-            <div className='m-auto h-[2px] w-[vw%] max-w-2xl bg-primary-md1'></div>
-          </div>
+            </h3>
+            <div className='h-[2px] w-full max-w-2xl mb-8 bg-primary-md1'></div>
           <ReactMarkdown className='line-clamp-5 pb-12 text-start text-lg lg:line-clamp-3 lg:pb-24 lg:text-2xl'>
             {aboutBody}
           </ReactMarkdown>
-          <a className='transition duration-300 ease-in-out' href={linkUrl}>
-            <span className='cursor-pointer text-neutral-3 underline hover:text-primary-md3'>
+          {linkUrl && (
+            <a
+              href={linkUrl}
+              className='hover:text-primary-md1 text-sm underline underline-offset-4 transition-all duration-300 lg:text-2xl'
+            >
               {linkText}
-            </span>
-          </a>
+            </a>
+          )}
         </div>
       </div>
     </div>

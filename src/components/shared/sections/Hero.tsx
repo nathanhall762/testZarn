@@ -15,6 +15,8 @@ const Hero: React.FC<HeroProps> = ({
     heading: welcomeText,
     subheading: tagline,
     images: backgroundImages,
+    call_to_action_text,
+    call_to_action_link,
   },
 }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -60,7 +62,7 @@ const Hero: React.FC<HeroProps> = ({
           <div className='flex flex-col items-center justify-center gap-4 lg:flex-row lg:gap-16'>
             <a href='/contact' className=''>
               <button className='bg-other hover:bg-accent transform rounded-xl bg-primary-md1 px-12 py-4 text-lg text-neutral-2 transition duration-300 ease-in-out hover:scale-110 hover:bg-primary-md2'>
-                Contact Us
+                {call_to_action_text}
               </button>
             </a>
             <p className='text-ltbg2 text-base lg:text-2xl'>

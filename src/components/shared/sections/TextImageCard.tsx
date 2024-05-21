@@ -1,3 +1,5 @@
+import ReactMarkdown from 'react-markdown';
+
 interface Props {
   content: {
     heading: string;
@@ -24,9 +26,9 @@ const TextImagecard: React.FC<Props> = ({
         />
         <div className='flex flex-col bg-ltbg2 py-8 radius-3xl text-center text-neutral-8 dark:text-neutral-2 lg:col-span-7 lg:px-6 lg:py-8 bg-neutral-3 dark:bg-neutral-7 transition-all'>
           <h3 className='text-lg text-neutral-9 dark:text-neutral-1 lg:text-3xl pb-4 text-primary'>{heading}</h3>
-            <div className='text-base lg:text-lg lg:px-12 px-6 lg:text-left text-center'>
-              <p>{body_text}</p>
-            </div>
+            <ReactMarkdown className='text-base lg:text-lg lg:px-12 px-6 lg:text-left text-center'>
+              {body_text}
+            </ReactMarkdown>
           {link_url && (
             <a
               href={link_url}
