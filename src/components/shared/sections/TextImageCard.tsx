@@ -38,7 +38,7 @@ const TextImagecard: React.FC<Props> = ({
             </h3>
             <div className='mb-8 h-[2px] w-3/4 max-w-2xl bg-primary-md1'></div>
             <ReactMarkdown
-              className='markdown mb-6 px-6 text-left text-base lg:mb-12 lg:px-12 lg:text-left lg:text-lg'
+              className='markdown px-6 text-left text-base  lg:px-12 lg:text-left lg:text-lg'
               components={{
                 a(props) {
                   const { node, ...rest } = props;
@@ -52,7 +52,7 @@ const TextImagecard: React.FC<Props> = ({
           {link_url && (
             <a
               href={link_url}
-              className='text-tertiary text-sm underline underline-offset-4 transition-all duration-300  hover:text-primary-md1 lg:text-xl'
+              className='text-tertiary mt-6 text-sm underline underline-offset-4 transition-all duration-300 hover:text-primary-md1  lg:mt-12 lg:text-xl'
             >
               {link_text}
             </a>
