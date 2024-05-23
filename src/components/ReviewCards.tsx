@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios'; // Import Axios for making HTTP requests
 import { Icon } from '@iconify/react/dist/iconify.js';
 
-interface Review {
+export interface Review {
   name: string;
   relativePublishTimeDescription: string;
   rating: number;
@@ -24,33 +22,10 @@ interface Review {
 
 interface Props {
   heading: string;
+  reviews: Review[];
 }
 
-const ReviewCards: React.FC<Props> = ({ heading }) => {
-  const [reviews, setReviews] = useState<Review[]>([]);
-  const apiKey = import.meta.env.PUBLIC_GOOGLE_PLACES_API_KEY;
-
-  useEffect(() => {
-    // Define the function to fetch reviews from the Google Places API
-    const fetchReviews = async () => {
-      try {
-        const response = await axios.get(
-          `https://places.googleapis.com/v1/places/ChIJqd_6v4qLtocRRTofpRRYBSc?fields=reviews&key=${apiKey}`
-        );
-        const reviewsData = response.data.reviews;
-        setReviews(reviewsData);
-      } catch (error) {
-        console.error('Error fetching reviews:', error);
-      }
-    };
-
-    // Call the fetchReviews function when the component mounts
-    fetchReviews();
-
-    // Cleanup function to cancel any ongoing requests
-    return () => {};
-  }, []); // Empty dependency array to run the effect only once
-
+const ReviewCards: React.FC<Props> = ({ heading, reviews }) => {
   const formatTimestamp = (timestamp: string): string | null => {
     const date = new Date(timestamp);
 

@@ -5,12 +5,10 @@ import { getData } from '../../firebase';
 
 const data = await getData('pages', 'infiniti');
 const pageData: DocumentData = data[0];
-console.log(`pageData`, pageData);
-
 ---
 
 <Layout
   title={pageData.title}
   metaDescription={pageData.seo_metadata.meta_description}
-  pageData={pageData}>
-</Layout>
+  pageData={pageData}
+/>
