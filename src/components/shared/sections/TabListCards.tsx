@@ -51,6 +51,7 @@ const TabListCards: React.FC<Props> = ({
           </div>
           <div className='lg:just lg: flex w-full flex-col-reverse items-center lg:flex-row lg:justify-center'>
             <div className='grid grid-cols-2 gap-2 pt-4 lg:grid-cols-1 lg:gap-4 lg:pt-0'>
+              {/* card heading list */}
               {cards.map((card) => (
                 <div
                   onClick={handleTabClick}
@@ -78,6 +79,7 @@ const TabListCards: React.FC<Props> = ({
                 </div>
               </div>
             </div>
+            {/* card body */}
             {cards.map((card) => (
               <div className={`${selected === card.heading ? '' : 'hidden'}`}>
                 <div
@@ -88,7 +90,13 @@ const TabListCards: React.FC<Props> = ({
                   <div className='flex flex-col justify-center bg-neutral-9 bg-opacity-70 px-2 py-4 backdrop-blur-sm lg:min-h-[45%] lg:justify-start'>
                     <div className='overflow-clip text-ellipsis pb-4'>
                       <h3 className='pb-4 text-xl'>{card.heading}</h3>
-                      <p className='text-base'>{card.body_text}</p>
+                      <p className='pb-4 text-base'>{card.body_text}</p>
+                      <a
+                        className='text-xl text-neutral-1 underline hover:scale-110 hover:text-primary-md2'
+                        href={card.call_to_action_link}
+                      >
+                        {card.call_to_action_text}
+                      </a>
                     </div>
                   </div>
                 </div>

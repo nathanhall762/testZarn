@@ -3,7 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import type { DocumentData } from 'firebase/firestore';
 import { getData } from '../../firebase';
 
-const data = await getData('pages', 'our-services');
+const data = await getData('pages', 'services');
 const pageData: DocumentData = data[0];
 ---
 
