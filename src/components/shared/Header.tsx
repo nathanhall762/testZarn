@@ -4,6 +4,15 @@ import menuIcon from '@iconify/icons-mdi/menu';
 import closeIcon from '@iconify/icons-mdi/close';
 import { initAnalytics } from '../../firebase';
 
+interface Nav {
+  link: string;
+  name: string;
+  subpages?: {
+    link: string;
+    name: string;
+  }[];
+}
+
 interface HeaderProps {
   phone: string;
   address: string;
@@ -11,14 +20,7 @@ interface HeaderProps {
   logo: string;
   socials: { link: string; type: string }[];
   addressLink: string;
-  navs: {
-    link: string;
-    name: string;
-    subpages?: {
-      link: string;
-      name: string;
-    }[];
-  }[];
+  navs: Nav[];
 }
 
 const Header: React.FC<HeaderProps> = ({
@@ -32,6 +34,9 @@ const Header: React.FC<HeaderProps> = ({
 }) => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [subNavOpen, setSubNavOpen] = useState<Nav | undefined>();
+
+  console.log(subNavOpen?.subpages);
 
   useEffect(() => {
     initAnalytics();
@@ -66,12 +71,25 @@ const Header: React.FC<HeaderProps> = ({
     return phone;
   };
 
+  const handleSubNavClick = (event: any) => {
+    const clickedItem = event.target.textContent;
+    const selectedNav = navs.find((nav) => nav.name === clickedItem);
+    if (selectedNav?.name === subNavOpen) {
+      setSubNavOpen(undefined);
+      return;
+    }
+
+    // open subnav if subpages are present for nav
+    setSubNavOpen(selectedNav?.subpages ? selectedNav : undefined);
+  };
+
   return (
     <header className=''>
       <div className={`top-0 z-50 h-[15vh] bg-neutral-9`}></div>
       <div
         className={`fixed top-0 z-50 w-full bg-neutral-9 transition-all duration-fast ease-in-out ${isScrolled ? 'h-[9vh]' : 'h-[15vh]'}`}
       >
+        {/* super header */}
         <div
           className={`flex overflow-hidden border-neutral-6 text-xs transition-all duration-fast lg:flex-row-reverse ${isScrolled ? 'h-0 border-b-0' : 'h-[6vh] border-b-[1px]'}`}
         >
@@ -119,7 +137,7 @@ const Header: React.FC<HeaderProps> = ({
             </a>
           </div>
         </div>
-
+        {/* desktop nav */}
         <div
           className={`relative top-0 flex h-[9vh] justify-between text-center align-middle shadow-2xl transition-all duration-fast lg:grid lg:grid-cols-12`}
         >
@@ -161,18 +179,35 @@ const Header: React.FC<HeaderProps> = ({
           >
             {isNavOpen ? <Icon icon={closeIcon} /> : <Icon icon={menuIcon} />}
           </div>
+          {/* mobile nav */}
           <div
             className={`absolute left-0 top-full z-50 w-full transform py-4 pt-0 shadow-md transition-transform duration-fast lg:hidden ${isNavOpen ? 'scale-y-100' : 'scale-y-0'} ${isScrolled ? 'h-[94vh]' : 'h-[90vh]'} origin-top transition-transform duration-fast ease-in-out`}
           >
-            <nav className='flex h-full flex-col bg-neutral-9 dark:bg-neutral-9'>
-              {navs.map((nav, index) => (
-                <a
-                  key={index}
-                  href={`${nav.link}`}
-                  className='px-6 py-4 text-base text-neutral-1 dark:bg-neutral-9 dark:text-neutral-1'
-                >
-                  {nav.name}
-                </a>
+            <nav
+              className={`flex h-full flex-col bg-neutral-9 duration-md ease-in-out dark:bg-neutral-9 ${subNavOpen ? 'z-0 translate-x-[-95%]' : 'z-20 translate-x-[0]'}`}
+            >
+              {navs.map((nav) => (
+                <div className='flex justify-center px-6 py-4' key={nav.name}>
+                  {!nav.subpages ? (
+                    <a
+                      href={`${nav.link}`}
+                      className='text-base text-neutral-1 dark:bg-neutral-9 dark:text-neutral-1'
+                    >
+                      {nav.name}
+                    </a>
+                  ) : (
+                    <button
+                      onClick={handleSubNavClick}
+                      className='flex items-center justify-center text-base text-neutral-1 dark:bg-neutral-9 dark:text-neutral-1'
+                    >
+                      <p className=''>{nav.name}</p>
+                      <Icon
+                        icon='mingcute:arrows-left-line'
+                        className='rotate-180 text-2xl text-primary-md1'
+                      />
+                    </button>
+                  )}
+                </div>
               ))}
               <a
                 href='/contact'
@@ -182,6 +217,27 @@ const Header: React.FC<HeaderProps> = ({
                   CONTACT US
                 </button>
               </a>
+            </nav>
+            {/* subnav for subpages */}
+            <nav
+              className={`absolute inset-0 flex h-full flex-col bg-neutral-9 duration-md ease-in-out dark:bg-neutral-9 ${subNavOpen ? 'z-20 translate-x-[0]' : 'z-0 translate-x-[95%]'}`}
+            >
+              <button
+                onClick={handleSubNavClick}
+                className='flex items-center justify-center text-primary-md1 dark:bg-neutral-9 '
+              >
+                <Icon icon='mingcute:arrows-left-line' className='text-2xl' />
+                <p className='text-xl'>Back</p>
+              </button>
+              {subNavOpen?.subpages?.map((subpage) => (
+                <a
+                  key={subpage.name}
+                  href={`${subNavOpen.link}${subpage.link}`}
+                  className='bg-neutral-9 px-6 py-2 text-base text-neutral-1 hover:text-primary-md2 dark:bg-neutral-9 dark:text-neutral-1'
+                >
+                  {subpage.name}
+                </a>
+              ))}
             </nav>
           </div>
           <div className='hidden px-4 text-sm lg:col-span-2 lg:flex lg:justify-around xl:col-span-3'>
