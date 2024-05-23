@@ -28,7 +28,7 @@ const businessInformation = await getData('business_information');
 <!doctype html>
 <html
   lang='en'
-  class='dark scroller bg-neutral-9 font-sans font-light text-neutral-9'>
+  class='scroller dark bg-neutral-9 font-sans font-light text-neutral-9'>
   <head>
     <meta charset='UTF-8' />
     <meta
@@ -70,6 +70,7 @@ const businessInformation = await getData('business_information');
       client:load
     />
     <main class='bg-neutral-8'>
+      <slot />
       <PageBuilder pageData={pageData} />
       <ReviewCards
         heading='Reviews'
@@ -95,10 +96,10 @@ const businessInformation = await getData('business_information');
       @tailwind base;
 
       @media (prefers-color-scheme: light) {
-          html {
-            color-scheme: dark;
-          }
+        html {
+          color-scheme: dark;
         }
+      }
 
       @layer base {
         @keyframes fadeInUp {
@@ -111,7 +112,11 @@ const businessInformation = await getData('business_information');
             transform: translateY(0);
           }
         }
-        
+
+        .text-outline {
+          text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000,
+            -1px 1px 0 #000;
+        }
 
         ul {
           @apply ms-8 list-disc text-base leading-loose lg:text-lg lg:leading-loose;
