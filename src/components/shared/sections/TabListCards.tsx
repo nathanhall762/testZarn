@@ -29,7 +29,6 @@ const TabListCards: React.FC<Props> = ({
 }) => {
   const [selected, setSelected] = useState<string>('');
 
-
   const handleTabClick = (event: any) => {
     const name = event.target.textContent;
     const selectedTab = cards.find((card) => card.heading === name);
@@ -43,7 +42,7 @@ const TabListCards: React.FC<Props> = ({
   return (
     <>
       <div>
-        <div className='mx-auto flex max-w-7xl flex-col items-center rounded-3xl bg-neutral-7 p-8 px-4 text-center shadow-xl my-16 lg:my-32 lg:p-16 lg:px-32 lg:pb-24'>
+        <div className='mx-auto my-16 flex max-w-7xl flex-col items-center rounded-3xl bg-neutral-7 p-8 px-4 text-center shadow-xl lg:my-32 lg:p-16 lg:px-32 lg:pb-24'>
           <div className='pb-8 lg:pb-16'>
             <h2 className='text-primary pb-4 text-2xl lg:text-3xl'>
               {heading}
@@ -65,38 +64,36 @@ const TabListCards: React.FC<Props> = ({
                 </div>
               ))}
             </div>
-              <div className={`${!selected?'':'hidden'}`}>
+            <div className={`${!selected ? '' : 'hidden'}`}>
+              <div
+                style={{ backgroundImage: `url('${defaultCard.image}')` }}
+                aria-label={defaultCard.alt_image_text}
+                className='group flex aspect-[2/3] w-full max-w-3xl flex-grow flex-col justify-end bg-cover bg-center shadow-2xl backdrop-blur-sm lg:m-0 lg:aspect-square'
+              >
+                <div className='flex flex-col justify-center bg-neutral-9 bg-opacity-70 px-2 py-4 backdrop-blur-sm lg:min-h-[45%] lg:justify-start'>
+                  <div className='overflow-clip text-ellipsis pb-4'>
+                    <h3 className='pb-4 text-xl'>{defaultCard.heading}</h3>
+                    <p className='text-base'>{defaultCard.body_text}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {cards.map((card) => (
+              <div className={`${selected === card.heading ? '' : 'hidden'}`}>
                 <div
-                  style={{ backgroundImage: `url('${defaultCard.image}')` }}
-                  aria-label={defaultCard.alt_image_text}
+                  style={{ backgroundImage: `url('${card.image}')` }}
+                  aria-label={card.alt_image_text}
                   className='group flex aspect-[2/3] w-full max-w-3xl flex-grow flex-col justify-end bg-cover bg-center shadow-2xl backdrop-blur-sm lg:m-0 lg:aspect-square'
                 >
-                  <div className='flex h-full flex-col justify-center bg-neutral-9 bg-opacity-70 px-2 py-4 backdrop-blur-sm lg:h-[45%] lg:justify-start'>
+                  <div className='flex flex-col justify-center bg-neutral-9 bg-opacity-70 px-2 py-4 backdrop-blur-sm lg:min-h-[45%] lg:justify-start'>
                     <div className='overflow-clip text-ellipsis pb-4'>
-                      <h3 className='pb-4 text-xl'>{defaultCard.heading}</h3>
-                      <p className='text-base'>{defaultCard.body_text}</p>
+                      <h3 className='pb-4 text-xl'>{card.heading}</h3>
+                      <p className='text-base'>{card.body_text}</p>
                     </div>
                   </div>
                 </div>
               </div>
-            {
-              cards
-                .map((card) => (
-                  <div className={`${selected === card.heading?'':'hidden'}`}>
-                    <div
-                      style={{ backgroundImage: `url('${card.image}')` }}
-                      aria-label={card.alt_image_text}
-                      className='group flex aspect-[2/3] w-full max-w-3xl flex-grow flex-col justify-end bg-cover bg-center shadow-2xl backdrop-blur-sm lg:m-0 lg:aspect-square'
-                    >
-                      <div className='flex h-full flex-col justify-center bg-neutral-9 bg-opacity-70 px-2 py-4 backdrop-blur-sm lg:h-[45%] lg:justify-start'>
-                        <div className='overflow-clip text-ellipsis pb-4'>
-                          <h3 className='pb-4 text-xl'>{card.heading}</h3>
-                          <p className='text-base'>{card.body_text}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
+            ))}
           </div>
         </div>
       </div>
