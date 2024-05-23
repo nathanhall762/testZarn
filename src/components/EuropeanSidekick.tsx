@@ -14,34 +14,25 @@ const EuropeanSidekick: React.FC<SidekickProps> = ({
   tagline,
   backgroundImages,
   logo,
-  slideTime = 5000,
+  slideTime,
 }) => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentImages, setCurrentImages] = useState(backgroundImages);
   const logoIcon = { __html: logo };
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentImageIndex((prevIndex) =>
-        prevIndex === backgroundImages.length - 1 ? 0 : prevIndex + 1
-      );
+    const interval = setInterval(() => {
+      setCurrentImages((prevImages) => {
+        const nextImage = backgroundImages[(prevImages.length) % backgroundImages.length];
+        return [...prevImages, nextImage];
+      });
     }, slideTime);
 
-    return () => clearInterval(timer);
-  }, [backgroundImages.length, slideTime]);
-
-  const getImageClasses = (index: number) => {
-    let baseClasses =
-      'absolute top-0 w-full h-[70vh] bg-contain bg-bottom transition-all duration-2000 ease-in-out';
-    if (index === currentImageIndex) {
-      return `${baseClasses} transform opacity-100`;
-    } else {
-      return `${baseClasses} transform opacity-0`;
-    }
-  };
+    return () => clearInterval(interval);
+  }, [backgroundImages, slideTime]);
 
   return (
-    <div className=''>
-      <div className='absolute items-center h-[70vh] pr-[85vw] z-10 w-full backdrop-brightness-75 backdrop-saturate-200 bg-gradient-to-r from-15% to-40% from-primary-dk1 flex flex-col p-16'>
+    <div className=' overflow-clip'>
+      <div className='absolute py-[5vw] items-center h-[70vh] pr-[85vw] z-10 w-full backdrop-brightness-75 backdrop-saturate-200 bg-gradient-to-r from-15% to-40% from-primary-dk1 flex flex-col p-[2.5vw]'>
         {/* <Icon icon='simple-icons:mercedes' className='size-16 lg:size-32'></Icon> */}
         <div className='' dangerouslySetInnerHTML={logoIcon}></div>
         <h2 className='text-center mb-16'>{tagline}</h2>
@@ -51,14 +42,13 @@ const EuropeanSidekick: React.FC<SidekickProps> = ({
               </button>
             </a>
       </div>
-      <div className='z-0 relative ml-[15vw] h-[50vh] lg:h-[70vh] lg:w-[84vw]'>
-        {backgroundImages.map((image, index) => (
+      <div className='z-0 flex relative ml-[15vw] w-[230vw] h-[50vh] lg:h-[70vh]'>
+        {currentImages.map((image, index) => (
           <div
-            key={image}
-            className={getImageClasses(index)}
+            key={index}
+            className={`w-full h-full bg-cover bg-no-repeat bg-center slide-animation`}
             style={{ backgroundImage: `url(${image})` }}
           >
-            <div className='size-full bg-opacity-50'></div>
           </div>
         ))}
       </div>
