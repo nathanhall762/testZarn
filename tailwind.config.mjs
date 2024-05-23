@@ -44,7 +44,8 @@ export default {
       sm: '1px 1px 2px hsl(0, 0%, 5%)',
       DEFAULT: '2px 2px 4px hsl(0, 0%, 5%)',
       lg: '4px 4px 8px hsl(0, 0%, 5%)',
-      xl: '4px 4px 16px hsl(0, 0%, 5%)',
+      xl: '4px 4px 4px hsl(0, 0%, 5%)',
+      outline: '4px 4px 4px hsl(0, 0%, 5%), 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000',
     },
     extend: {
       spacing: {

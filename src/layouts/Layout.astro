@@ -46,8 +46,7 @@ const reviews = await fetchReviews();
 <!doctype html>
 <html
   lang='en'
-  class='scroller dark bg-neutral-9 font-sans font-light text-neutral-9'
->
+  class='scroller dark bg-neutral-9 font-sans font-light text-neutral-9'>
   <head>
     <meta charset='UTF-8' />
     <meta name='description' content={metaDescription} />
@@ -80,6 +79,7 @@ const reviews = await fetchReviews();
       client:load
     />
     <main class='bg-neutral-8'>
+      <slot />
       <PageBuilder pageData={pageData} />
       <ReviewCards heading='Reviews' reviews={reviews} client:idle />
     </main>
@@ -106,6 +106,10 @@ const reviews = await fetchReviews();
           color-scheme: dark;
         }
       }
+        html {
+          color-scheme: dark;
+        }
+      }
 
       @layer base {
         @keyframes fadeInUp {
@@ -117,6 +121,27 @@ const reviews = await fetchReviews();
             opacity: 1;
             transform: translateY(0);
           }
+        }
+
+        .text-outline {
+          text-shadow:
+            1px 1px 0 #000,
+            -1px -1px 0 #000,
+            1px -1px 0 #000,
+            -1px 1px 0 #000;
+        }
+
+        @keyframes slide {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-100%);
+          }
+        }
+
+        .slide-animation {
+          animation: slide 30s linear infinite;
         }
 
         ul {
