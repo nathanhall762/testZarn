@@ -2,13 +2,8 @@
 import Header from '../components/shared/Header';
 import Footer from '../components/shared/Footer';
 import { ViewTransitions } from 'astro:transitions';
-import ContactSection from '../components/shared/ContactSection';
 import type { DocumentData } from 'firebase/firestore';
 import { getData } from '../firebase';
-import ReviewCards from '../components/ReviewCards';
-import type { Review } from '../components/ReviewCards';
-import PageBuilder from '../components/shared/PageBuilder.astro';
-import axios from 'axios';
 import { navs } from '../navMenu';
 
 export interface Item {
@@ -19,28 +14,11 @@ export interface Item {
 interface Props {
   title: string;
   metaDescription: string;
-  pageData: DocumentData;
 }
 
-const { title, metaDescription, pageData } = Astro.props;
+const { title, metaDescription } = Astro.props;
 
 const businessInformation = await getData('business_information');
-
-const apiKey = import.meta.env.PUBLIC_GOOGLE_PLACES_API_KEY;
-const fetchReviews = async (): Promise<Review[]> => {
-  try {
-    const response = await axios.get(
-      `https://places.googleapis.com/v1/places/ChIJqd_6v4qLtocRRTofpRRYBSc?fields=reviews&key=${apiKey}`
-    );
-    const reviewsData = response.data.reviews;
-    return reviewsData;
-  } catch (error) {
-    console.error('Error fetching reviews:', error);
-    return [];
-  }
-};
-
-const reviews = await fetchReviews();
 ---
 
 <!doctype html>
@@ -80,16 +58,8 @@ const reviews = await fetchReviews();
       client:load
     />
     <main class='bg-neutral-8'>
-      <PageBuilder pageData={pageData} />
-      <ReviewCards heading='Reviews' reviews={reviews} client:idle />
+      <slot />
     </main>
-    <ContactSection
-      businessName={businessInformation[0].business_name}
-      businessAddress={businessInformation[0].business_address}
-      businessPhone={businessInformation[0].business_phone}
-      businessEmail={businessInformation[0].business_contact_email}
-      client:idle
-    />
     <Footer
       address={businessInformation[0].business_address}
       copyright=`${businessInformation[0].business_name} 2024`
