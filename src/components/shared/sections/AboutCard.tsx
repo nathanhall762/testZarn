@@ -24,7 +24,7 @@ const AboutCard: React.FC<AboutCardProps> = ({
           <h3 className='mb-4 text-lg font-bold lg:text-3xl'>{aboutTitle}</h3>
           <div className='mb-8 h-[2px] w-full max-w-2xl bg-primary-md1'></div>
           <ReactMarkdown
-            className='markdown text-start text-lg lg:pb-24 lg:text-2xl'
+            className='markdown text-start text-lg lg:text-2xl'
             components={{
               a(props) {
                 const { node, ...rest } = props;
@@ -37,7 +37,7 @@ const AboutCard: React.FC<AboutCardProps> = ({
           {linkUrl && (
             <a
               href={linkUrl}
-              className='pt-12 text-sm underline underline-offset-4 transition-all duration-300 hover:text-primary-md1 lg:text-2xl'
+              className='pt-12 text-sm underline  underline-offset-4 transition-all duration-300 hover:text-primary-md1 lg:pt-24 lg:text-2xl'
             >
               {linkText}
             </a>
