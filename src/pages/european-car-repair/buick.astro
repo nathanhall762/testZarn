@@ -1,14 +1,19 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import EuroLayout from '../../layouts/EuroLayout.astro';
 import type { DocumentData } from 'firebase/firestore';
 import { getData } from '../../firebase';
+import EuropeanSidekick from '../../components/EuropeanSidekick';
 
 const data = await getData('pages', 'buick');
 const pageData: DocumentData = data[0];
 ---
 
-<Layout
+<EuroLayout
   title={pageData.title}
   metaDescription={pageData.seo_metadata.meta_description}
-  pageData={pageData}
-/>
+  pageData={pageData}>
+  <EuropeanSidekick
+    content={pageData.content[0].value}
+    logo='<svg enable-background="new 0 0 71.9 71.9" height="full" viewBox="0 0 71.9 71.9" width="full" xmlns="http://www.w3.org/2000/svg"><path fill="#FFFFFF" d="m35.9.8c-19.4 0-35.1 15.7-35.1 35.2s15.7 35.2 35.2 35.2 35.1-15.8 35.1-35.2c0-19.5-15.8-35.2-35.2-35.2zm0 66.6c-17.3 0-31.4-14.1-31.4-31.4s14-31.5 31.4-31.5 31.4 14.1 31.4 31.4c.1 17.4-14 31.5-31.4 31.5z"/><path fill="#FFFFFF" d="m49.9 53.5h-.1z"/><path fill="#FFFFFF" d="m41.7 19.9h-13.7v4.8h-13.7v17.6c0 10.1 7.8 20.3 8.1 20.9.4-.6 5.8-7.7 7.6-16 1.6 3.9 3.6 7.7 6.1 11.2.4-.6 5.8-7.7 7.6-16 1.6 3.9 3.7 7.7 6.1 11.2.4-.7 8.1-10.8 8.1-20.9v-17.7h-16.2zm-13.7 22.6c0 7.7-5.2 14.7-5.5 15.3-.3-.5-5.6-7.6-5.6-15.3v-15.2h11.1zm13.7-4.8c0 7.7-5.2 14.7-5.5 15.3-.3-.5-5.6-7.6-5.6-15.3v-15.3h11.1zm2.6-20.1h11.1v15.3c0 7.7-5.2 14.7-5.6 15.3-.3-.5-5.6-7.5-5.6-15.3z"/><path fill="#FFFFFF" d="m54.8 30.4v-12.3h-10l9.8 17.4c.1-.8.2-2.4.2-5.1z"/><path fill="#FFFFFF" d="m53.3 40.3-8.5-14.9v7.8c0 4.9 2.6 10.4 5 14 1.5-2.2 2.6-4.5 3.5-6.9z"/><path fill="#FFFFFF" d="m41.1 35.2v-12.2h-10l9.8 17.4c.1-.9.2-2.5.2-5.2z"/><path fill="#FFFFFF" d="m39.7 45.1-8.5-14.9v7.8c0 4.9 2.6 10.4 5 14 1.4-2.2 2.5-4.5 3.5-6.9z"/><path fill="#FFFFFF" d="m27.5 40.1v-12.3h-10l9.8 17.4c.1-.8.2-2.4.2-5.1z"/><path fill="#FFFFFF" d="m26 50-8.5-15v7.8c0 4.9 2.6 10.4 5 14 1.4-2.1 2.6-4.4 3.5-6.8z"/></svg>'
+  />
+</EuroLayout>
