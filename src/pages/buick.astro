@@ -1,8 +1,8 @@
 ---
-import EuroLayout from '../../layouts/EuroLayout.astro';
+import EuroLayout from '../layouts/EuroLayout.astro';
 import type { DocumentData } from 'firebase/firestore';
-import { getData } from '../../firebase';
-import EuropeanSidekick from '../../components/EuropeanSidekick';
+import { getData } from '../firebase';
+import EuropeanSidekick from '../components/EuropeanSidekick';
 
 const data = await getData('pages', 'buick');
 const pageData: DocumentData = data[0];

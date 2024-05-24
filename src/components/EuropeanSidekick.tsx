@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import {Icon} from '@iconify-icon/react';
 
 interface SidekickProps {
   content: {
@@ -7,7 +7,7 @@ interface SidekickProps {
     image: string;
     slideTime?: number;
   };
-  logo: TrustedHTML;
+  logo: string;
 }
 
 const EuropeanSidekick: React.FC<SidekickProps> = ({
@@ -19,9 +19,10 @@ const EuropeanSidekick: React.FC<SidekickProps> = ({
     <div className='overflow-clip'>
       <div className='absolute z-10 flex h-[80vh] w-full flex-col items-center justify-end bg-gradient-to-t from-primary-dk1 from-15% to-40% p-[2.5vw] py-[5vw] lg:h-[70vh] lg:justify-around lg:bg-gradient-to-r lg:pr-[85vw] lg:backdrop-brightness-75 lg:backdrop-saturate-200'>
         {/* <Icon icon='simple-icons:mercedes' className='size-16 lg:size-32'></Icon> */}
-        <div className='flex h-[15vh] flex-row lg:h-auto lg:flex-col'>
-          <div className='lg:mb-4' dangerouslySetInnerHTML={logoIcon}></div>
-          <h2 className='h-full content-center text-center text-base lg:mb-16 lg:text-2xl'>
+        <div className='flex h-[15vh] flex-row items-center lg:h-auto lg:flex-col'>
+          {/* <div className='lg:mb-4' dangerouslySetInnerHTML={logoIcon}></div> */}
+            <Icon className='text-[5rem] lg:text-[10rem] items-center' icon={logo} />
+          <h2 className='h-full flex items-center text-center text-base lg:mb-16 lg:text-2xl'>
             {tagline}
           </h2>
         </div>

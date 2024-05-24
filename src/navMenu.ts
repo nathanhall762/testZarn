@@ -32,8 +32,8 @@ export const navs = [
     ],
   },
   {
-    link: '/european-car-repair',
-    name: 'European Car Repair',
+    link: '',
+    name: 'Luxury & Import Repair',
     subpages: [
       { link: '/mercedes', name: 'Mercedes' },
       { link: '/volkswagen', name: 'Volkswagen' },

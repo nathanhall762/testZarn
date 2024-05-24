@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Icon } from '@iconify/react';
+import { Icon } from '@iconify-icon/react';
 import menuIcon from '@iconify/icons-mdi/menu';
 import closeIcon from '@iconify/icons-mdi/close';
 import { initAnalytics } from '../../firebase';
@@ -128,7 +128,7 @@ const Header: React.FC<HeaderProps> = ({
               href={`tel:${phone}`}
             >
               <Icon
-                icon='akar-icons:phone'
+                icon='mdi:phone'
                 className='text-lg text-primary-md1 transition-all duration-fast group-hover:text-primary-md2'
               />
               <span className=' text-neutral-1 transition-all duration-fast group-hover:scale-md group-hover:underline dark:text-neutral-1'>
