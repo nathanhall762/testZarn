@@ -1,60 +1,45 @@
 import { useState, useEffect } from 'react';
-import { Icon } from '@iconify/react';
 
 interface SidekickProps {
-  welcomeText: string;
-  tagline: string;
-  backgroundImages: string[];
-  slideTime?: number;
+  content: {
+    heading: string;
+    subheading: string;
+    image: string;
+    slideTime?: number;
+  };
   logo: TrustedHTML;
 }
 
 const EuropeanSidekick: React.FC<SidekickProps> = ({
-  welcomeText,
-  tagline,
-  backgroundImages,
-  logo,
-  slideTime,
+  content: { heading: welcomeText, subheading: tagline, image, slideTime = 5000 }, logo,
 }) => {
-  const [currentImages, setCurrentImages] = useState(backgroundImages);
   const logoIcon = { __html: logo };
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImages((prevImages) => {
-        const nextImage = backgroundImages[(prevImages.length) % backgroundImages.length];
-        return [...prevImages, nextImage];
-      });
-    }, slideTime);
-
-    return () => clearInterval(interval);
-  }, [backgroundImages, slideTime]);
-
   return (
-    <div className=' overflow-clip'>
-      <div className='absolute py-[5vw] items-center h-[70vh] pr-[85vw] z-10 w-full backdrop-brightness-75 backdrop-saturate-200 bg-gradient-to-r from-15% to-40% from-primary-dk1 flex flex-col p-[2.5vw]'>
+    <div className='overflow-clip'>
+      <div className='absolute z-10 flex h-[80vh] w-full flex-col items-center justify-end bg-gradient-to-t from-primary-dk1 from-15% to-40% p-[2.5vw] py-[5vw] lg:h-[70vh] lg:justify-around lg:bg-gradient-to-r lg:pr-[85vw] lg:backdrop-brightness-75 lg:backdrop-saturate-200'>
         {/* <Icon icon='simple-icons:mercedes' className='size-16 lg:size-32'></Icon> */}
-        <div className='' dangerouslySetInnerHTML={logoIcon}></div>
-        <h2 className='text-center mb-16'>{tagline}</h2>
+        <div className='flex h-[15vh] flex-row lg:h-auto lg:flex-col'>
+          <div className='lg:mb-4' dangerouslySetInnerHTML={logoIcon}></div>
+          <h2 className='h-full content-center text-center text-base lg:mb-16 lg:text-2xl'>
+            {tagline}
+          </h2>
+        </div>
         <a href='/contact' className=''>
-              <button className='transform rounded-xl bg-transparent outline-neutral-1 outline px-4 py-2 text-lg text-neutral-1 transition duration-300 ease-in-out hover:scale-110 hover:bg-neutral-1 hover:text-primary-md1'>
-                CONTACT US
-              </button>
-            </a>
+          <button className='bg-transparent transform rounded-xl px-4 py-2 text-lg text-neutral-1 outline outline-neutral-1 transition duration-300 ease-in-out hover:scale-110 hover:bg-neutral-1 hover:text-primary-md1'>
+            <span>GET IN TOUCH</span>
+          </button>
+        </a>
       </div>
-      <div className='z-0 flex relative ml-[15vw] w-[230vw] h-[50vh] lg:h-[70vh]'>
-        {currentImages.map((image, index) => (
+      <div className='relative z-0 flex h-[80vh] w-[300vw] lg:ml-[15vw] lg:h-[70vh] lg:w-auto'>
           <div
-            key={index}
-            className={`w-full h-full bg-cover bg-no-repeat bg-center slide-animation`}
+            className={`lg:no-animation slide-animation h-full w-full bg-cover bg-center bg-no-repeat`}
             style={{ backgroundImage: `url(${image})` }}
-          >
-          </div>
-        ))}
+          ></div>
       </div>
-          <h3 className='backdrop-blur-sm rounded-full absolute z-20 -translate-y-[60vh] ml-[30vw] mr-[10vw] text-center text-2xl leading-relaxed tracking-widest  text-shadow-outline lg:mt-6 lg:text-5xl'>
-            {welcomeText}
-          </h3>
+      <h3 className='text-shadow-outline absolute z-20 -translate-y-[65vh] rounded-full px-2 text-center text-2xl leading-relaxed tracking-widest lg:ml-[30vw] lg:mr-[10vw] lg:mt-6 lg:-translate-y-[60vh] lg:px-0 lg:text-5xl lg:backdrop-blur-sm'>
+        {welcomeText}
+      </h3>
     </div>
   );
 };

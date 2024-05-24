@@ -1,0 +1,43 @@
+---
+import type { Item } from '../../layouts/Layout.astro';
+import AboutCard from './sections/AboutCard';
+import Accordion from './sections/Accordion';
+import BulletStatsCard from './sections/BulletStatsCard';
+import Hero from './sections/Hero';
+import InfoCardList from './sections/InfoCardList';
+import Sidekick from './sections/Sidekick';
+import TabListCards from './sections/TabListCards';
+import TextImagecard from './sections/TextImageCard';
+import Cta from './sections/Cta';
+import Testimonial from './sections/Testimonial';
+const { pageData } = Astro.props;
+---
+
+<>
+  {
+    pageData.content.map((item: Item) => {
+      switch (item.type) {
+        case 'hero_section':
+          return <Hero content={item.value} client:idle />;
+        case 'welcome_message_section':
+          return <AboutCard content={item.value} />;
+        case 'info_card_list':
+          return <InfoCardList content={item.value} />;
+        case 'bullet_stats_card':
+          return <BulletStatsCard content={item.value} />;
+        case 'tab_list_cards':
+          return <TabListCards content={item.value} client:idle />;
+        case 'text_image_card':
+          return <TextImagecard content={item.value} />;
+        case 'accordion':
+          return <Accordion content={item.value} client:idle />;
+        case 'cta_section':
+          return <Cta content={item.value} />;
+        case 'testimonial':
+          return <Testimonial content={item.value} />;
+        default:
+          return null;
+      }
+    })
+  }
+</>
