@@ -184,10 +184,10 @@ const Header: React.FC<HeaderProps> = ({
             className={`absolute left-0 top-full z-50 w-full transform py-4 pt-0 shadow-md transition-transform duration-fast lg:hidden ${isNavOpen ? 'scale-y-100' : 'scale-y-0'} ${isScrolled ? 'h-[94vh]' : 'h-[90vh]'} origin-top transition-transform duration-fast ease-in-out`}
           >
             <nav
-              className={`flex h-full flex-col bg-neutral-9 duration-md ease-in-out dark:bg-neutral-9 ${subNavOpen ? 'z-0 translate-x-[-95%]' : 'z-20 translate-x-[0]'}`}
+              className={`flex h-full flex-col bg-neutral-9 px-8 pt-4 duration-md ease-in-out dark:bg-neutral-9 ${subNavOpen ? 'z-0 translate-x-[-95%]' : 'z-20 translate-x-[0]'}`}
             >
               {navs.map((nav) => (
-                <div className='flex justify-center px-6 py-4' key={nav.name}>
+                <div className='flex px-6 py-4' key={nav.name}>
                   {!nav.subpages ? (
                     <a
                       href={`${nav.link}`}
@@ -220,11 +220,11 @@ const Header: React.FC<HeaderProps> = ({
             </nav>
             {/* subnav for subpages */}
             <nav
-              className={`absolute inset-0 flex h-full flex-col bg-neutral-9 duration-md ease-in-out dark:bg-neutral-9 ${subNavOpen ? 'z-20 translate-x-[0]' : 'z-0 translate-x-[95%]'}`}
+              className={`absolute inset-0 flex h-full flex-col bg-neutral-9 px-8 pt-4 text-left duration-md ease-in-out dark:bg-neutral-9 ${subNavOpen ? 'z-20 translate-x-[0]' : 'z-0 translate-x-[95%]'}`}
             >
               <button
                 onClick={handleSubNavClick}
-                className='flex items-center justify-center text-primary-md1 dark:bg-neutral-9 '
+                className='flex items-center justify-start pb-2 text-primary-md1 dark:bg-neutral-9'
               >
                 <Icon icon='mingcute:arrows-left-line' className='text-2xl' />
                 <p className='text-xl'>Back</p>
@@ -233,7 +233,7 @@ const Header: React.FC<HeaderProps> = ({
                 <a
                   key={subpage.name}
                   href={`${subNavOpen.link}${subpage.link}`}
-                  className='bg-neutral-9 px-6 py-2 text-base text-neutral-1 hover:text-primary-md2 dark:bg-neutral-9 dark:text-neutral-1'
+                  className='bg-neutral-9 py-2 text-base text-neutral-1 hover:text-primary-md2 dark:bg-neutral-9 dark:text-neutral-1'
                 >
                   {subpage.name}
                 </a>
