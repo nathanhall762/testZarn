@@ -46,7 +46,8 @@ const reviews = await fetchReviews();
 <!doctype html>
 <html
   lang='en'
-  class='scroller dark bg-neutral-9 font-sans font-light text-neutral-9'>
+  class='scroller dark bg-neutral-9 font-sans font-light text-neutral-9'
+>
   <head>
     <meta charset='UTF-8' />
     <meta name='description' content={metaDescription} />
@@ -81,7 +82,7 @@ const reviews = await fetchReviews();
     <main class='bg-neutral-8'>
       <slot />
       <PageBuilder pageData={pageData} />
-      <ReviewCards heading='Reviews' reviews={reviews} client:idle />
+      <ReviewCards heading='Reviews' reviews={reviews} />
     </main>
     <ContactSection
       businessName={businessInformation[0].business_name}
@@ -96,7 +97,6 @@ const reviews = await fetchReviews();
       navs={navs}
       phone={businessInformation[0].business_phone}
       socials={businessInformation[0].socials}
-      client:idle
     />
     <style is:global>
       @tailwind base;
@@ -106,9 +106,9 @@ const reviews = await fetchReviews();
           color-scheme: dark;
         }
       }
-        html {
-          color-scheme: dark;
-        }
+      html {
+        color-scheme: dark;
+      }
 
       @layer base {
         @keyframes fadeInUp {

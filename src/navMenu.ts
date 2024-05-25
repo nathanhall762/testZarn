@@ -21,7 +21,7 @@ export const navs = [
       { link: '/fleet-services', name: 'Fleet Services' },
       { link: '/fuel-system', name: 'Fuel System' },
       { link: '/hybrid-electric-vehicles', name: 'Hybrid/Electric Vehicles' },
-      { link: '/inspections', name: 'Inspections' },
+      { link: '/pre-purchase-inspection', name: 'Pre-Purchase Inspections' },
       { link: '/courtesy-inspection', name: 'Courtesy Inspection' },
       { link: '/preventative-maintenance', name: 'Preventative Maintenance' },
       { link: '/oil-and-filter-change', name: 'Oil and Filter Change' },

@@ -1,4 +1,4 @@
-import { Icon } from '@iconify/react';
+import { Icon } from '@iconify-icon/react';
 import facebookIcon from '@iconify/icons-mdi/facebook';
 import twitterIcon from '@iconify/icons-mdi/twitter';
 import instagramIcon from '@iconify/icons-mdi/instagram';

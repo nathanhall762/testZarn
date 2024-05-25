@@ -1,4 +1,4 @@
-import { Icon } from '@iconify/react/dist/iconify.js';
+import { Icon } from '@iconify-icon/react';
 
 export interface Review {
   name: string;

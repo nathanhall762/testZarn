@@ -1,9 +1,12 @@
-import { Icon } from '@iconify/react/dist/iconify.js';
+import { Icon } from '@iconify-icon/react';
 import { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 
 interface Props {
-  content: { heading: string, question_and_answer: { question: string; answer: string }[] };
+  content: {
+    heading: string;
+    question_and_answer: { question: string; answer: string }[];
+  };
 }
 
 const Accordion: React.FC<Props> = ({

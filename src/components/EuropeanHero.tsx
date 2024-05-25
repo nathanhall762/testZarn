@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Icon } from '@iconify/react/dist/iconify.js';
+import { Icon } from '@iconify-icon/react';
 
 interface SidekickProps {
   welcomeText: string;
@@ -46,8 +46,8 @@ const EuropeanHero: React.FC<SidekickProps> = ({
         className='bg-cover bg-center pt-16 lg:pt-24'
         style={{ backgroundImage: `url(${tulsaPic})` }}
       >
-        <div className='bg-dkbg1 bg-opacity-30 p-4 lg:py-12 h-full flex items-center justify-center '>
-          <h2 className='text-xl text-center'>
+        <div className='bg-dkbg1 flex h-full items-center justify-center bg-opacity-30 p-4 lg:py-12 '>
+          <h2 className='text-center text-xl'>
             LUXURY AND IMPORT SPECIALISTS IN THE TULSA AREA
           </h2>
         </div>
@@ -59,22 +59,22 @@ const EuropeanHero: React.FC<SidekickProps> = ({
             className={getImageClasses(index)}
             style={{ backgroundImage: `url(${image})` }}
           >
-            <div className='bg-dkbg1 bg-opacity-50 size-full'></div>
+            <div className='bg-dkbg1 size-full bg-opacity-50'></div>
           </div>
         ))}
-        <div className='absolute bottom-0 z-10 px-4 pb-8 text-left lg:pb-16 lg:px-32'>
-          <h1 className='text-center leading-relaxed mt-2 text-2xl tracking-widest lg:mt-6 lg:text-5xl'>
+        <div className='absolute bottom-0 z-10 px-4 pb-8 text-left lg:px-32 lg:pb-16'>
+          <h1 className='mt-2 text-center text-2xl leading-relaxed tracking-widest lg:mt-6 lg:text-5xl'>
             {tagline}
           </h1>
         </div>
       </div>
-      <div className='p-8 grid grid-cols-2 lg:grid-cols-4 lg:px-32 gap-y-8 justify-items-center'>
+      <div className='grid grid-cols-2 justify-items-center gap-y-8 p-8 lg:grid-cols-4 lg:px-32'>
         {logos.map((logo, index) => (
           <a href={'/european-car-repair/mercedes'}>
             <Icon
               icon={logo}
               key={index}
-              className='size-12 lg:size-16 hover:text-primary transition-transform hover:scale-110'
+              className='hover:text-primary size-12 transition-transform hover:scale-110 lg:size-16'
             />
           </a>
         ))}
