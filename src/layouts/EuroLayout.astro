@@ -10,7 +10,7 @@ import type { Review } from '../components/ReviewCards';
 import axios from 'axios';
 import { navs } from '../navMenu';
 import EuroPageBuilder from '../components/shared/EuroPageBuilder.astro';
-import EmptyLayout from './EmptyLayout.astro';
+import BaseLayout from './BaseLayout.astro';
 
 export interface Item {
   type: string;
@@ -44,7 +44,7 @@ const fetchReviews = async (): Promise<Review[]> => {
 const reviews = await fetchReviews();
 ---
 
-<EmptyLayout metaDescription={metaDescription} title={title}>
+<BaseLayout metaDescription={metaDescription} title={title}>
   <slot />
   <EuroPageBuilder pageData={pageData} />
   <ReviewCards heading='Reviews' reviews={reviews} />
@@ -55,4 +55,4 @@ const reviews = await fetchReviews();
     businessEmail={businessInformation[0].business_contact_email}
     client:idle
   />
-</EmptyLayout>
+</BaseLayout>

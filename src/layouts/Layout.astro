@@ -9,7 +9,7 @@ import ReviewCards from '../components/ReviewCards';
 import type { Review } from '../components/ReviewCards';
 import PageBuilder from '../components/shared/PageBuilder.astro';
 import axios from 'axios';
-import EmptyLayout from './EmptyLayout.astro';
+import BaseLayout from './BaseLayout.astro';
 import { navs } from '../navMenu';
 
 export interface Item {
@@ -44,7 +44,7 @@ const fetchReviews = async (): Promise<Review[]> => {
 const reviews = await fetchReviews();
 ---
 
-<EmptyLayout title={title} metaDescription={metaDescription}>
+<BaseLayout title={title} metaDescription={metaDescription}>
   <slot />
   <PageBuilder pageData={pageData} />
   <ReviewCards heading='Reviews' reviews={reviews} />
@@ -55,4 +55,4 @@ const reviews = await fetchReviews();
     businessEmail={businessInformation[0].business_contact_email}
     client:idle
   />
-</EmptyLayout>
+</BaseLayout>
