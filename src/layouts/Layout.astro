@@ -9,6 +9,7 @@ import ReviewCards from '../components/ReviewCards';
 import type { Review } from '../components/ReviewCards';
 import PageBuilder from '../components/shared/PageBuilder.astro';
 import axios from 'axios';
+import EmptyLayout from './EmptyLayout.astro';
 import { navs } from '../navMenu';
 
 export interface Item {
@@ -43,203 +44,15 @@ const fetchReviews = async (): Promise<Review[]> => {
 const reviews = await fetchReviews();
 ---
 
-<!doctype html>
-<html
-  lang='en'
-  class='scroller dark bg-neutral-9 font-sans font-light text-neutral-9'
->
-  <head>
-    <meta charset='UTF-8' />
-    <meta name='description' content={metaDescription} />
-    <meta name='viewport' content='width=device-width' />
-    <meta name='generator' content={Astro.generator} />
-    <link
-      rel='icon'
-      type='image/png'
-      sizes='32x32'
-      href={businessInformation[0].favicon.favicon_32_x32}
-    />
-    <title>
-      {
-        title
-          ? `${title} - ${businessInformation[0].business_name}`
-          : businessInformation[0].business_name
-      }
-    </title>
-    <ViewTransitions />
-  </head>
-  <body>
-    <Header
-      phone={businessInformation[0].business_phone}
-      address={businessInformation[0].business_address}
-      addressLink={businessInformation[0].google_maps_link}
-      email={businessInformation[0].business_contact_email}
-      socials={businessInformation[0].socials}
-      navs={navs.filter((nav) => nav.link !== '/')}
-      logo={businessInformation[0].business_logo}
-      client:load
-    />
-    <main class='bg-neutral-8'>
-      <slot />
-      <PageBuilder pageData={pageData} />
-      <ReviewCards heading='Reviews' reviews={reviews} />
-    </main>
-    <ContactSection
-      businessName={businessInformation[0].business_name}
-      businessAddress={businessInformation[0].business_address}
-      businessPhone={businessInformation[0].business_phone}
-      businessEmail={businessInformation[0].business_contact_email}
-      client:idle
-    />
-    <Footer
-      address={businessInformation[0].business_address}
-      copyright=`${businessInformation[0].business_name} 2024`
-      navs={navs}
-      phone={businessInformation[0].business_phone}
-      socials={businessInformation[0].socials}
-    />
-    <style is:global>
-      @tailwind base;
-
-      @media (prefers-color-scheme: light) {
-        html {
-          color-scheme: dark;
-        }
-      }
-      html {
-        color-scheme: dark;
-      }
-
-      @layer base {
-        @keyframes fadeInUp {
-          0% {
-            opacity: 0;
-            transform: translateY(20vh);
-          }
-          100% {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        .text-outline {
-          text-shadow:
-            1px 1px 0 #000,
-            -1px -1px 0 #000,
-            1px -1px 0 #000,
-            -1px 1px 0 #000;
-        }
-
-        @keyframes slide {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-100%);
-          }
-        }
-
-        .slide-animation {
-          animation: slide 60s linear infinite;
-        }
-
-        .no-animation {
-          animation: none;
-        }
-
-        ul {
-          @apply ms-8 list-disc text-base leading-loose lg:text-lg lg:leading-loose;
-        }
-
-        .markdown > p {
-          @apply mb-8;
-        }
-
-        .markdown > p > a,
-        .markdown > ul > li > a {
-          @apply text-primary-md2 hover:text-primary-md3 hover:underline;
-        }
-
-        .fade-in-up {
-          animation: fadeInUp 0.75s ease-out;
-        }
-        .card-zoom {
-          @apply relative overflow-hidden;
-        }
-        .card-zoom-image {
-          @apply absolute h-full w-full transform bg-cover bg-center transition-all duration-500 ease-in-out;
-        }
-        .card-zoom-text {
-          @apply absolute transform transition-all duration-500 ease-in-out;
-        }
-        .zoom-in {
-          @apply scale-[1.25];
-        }
-      }
-
-      .scroller {
-        scrollbar-color: hsl(0, 100%, 25%) hsl(240, 5%, 8%);
-      }
-
-      .scroller-sm {
-        scrollbar-color: hsl(240, 5%, 46%) hsl(240, 5%, 8%);
-        scrollbar-width: thin;
-      }
-
-      /* Hide scrollbar for Chrome, Safari and Opera */
-      .no-scrollbar::-webkit-scrollbar {
-        display: none;
-      }
-
-      /* Hide scrollbar for IE, Edge and Firefox */
-      .no-scrollbar {
-        -ms-overflow-style: none; /* IE and Edge */
-        scrollbar-width: none; /* Firefox */
-      }
-
-      body {
-        @apply text-neutral-9 dark:text-neutral-1;
-      }
-
-      a {
-        @apply transition-transform duration-fast ease-in-out;
-      }
-
-      a:hover {
-        @apply scale-md;
-      }
-
-      strong {
-        font-weight: bold;
-      }
-
-      h1 {
-        @apply text-3xl font-semibold lg:text-4xl;
-      }
-
-      h2 {
-        @apply text-2xl font-semibold lg:text-3xl;
-      }
-
-      h3 {
-        @apply text-xl font-semibold lg:text-2xl;
-      }
-
-      h4 {
-        @apply text-lg font-semibold lg:text-xl;
-      }
-
-      h5 {
-        @apply text-base font-semibold lg:text-lg;
-      }
-
-      h6 {
-        @apply text-base font-semibold lg:text-lg;
-      }
-
-      p {
-        @apply text-base leading-loose lg:text-lg lg:leading-loose;
-      }
-    </style>
-  </body><!-- custom animation keyframes and other global stuffs -->
-</html>
+<EmptyLayout title={title} metaDescription={metaDescription}>
+  <slot />
+  <PageBuilder pageData={pageData} />
+  <ReviewCards heading='Reviews' reviews={reviews} />
+  <ContactSection
+    businessName={businessInformation[0].business_name}
+    businessAddress={businessInformation[0].business_address}
+    businessPhone={businessInformation[0].business_phone}
+    businessEmail={businessInformation[0].business_contact_email}
+    client:idle
+  />
+</EmptyLayout>
