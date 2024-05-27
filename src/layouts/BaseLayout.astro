@@ -92,6 +92,24 @@ const businessInformation = await getData('business_information');
           @apply ms-8 list-disc text-base leading-loose lg:text-lg lg:leading-loose;
         }
 
+        @keyframes slide {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-100%);
+          }
+        }
+
+        .slide-animation {
+          animation: slide 60s linear infinite;
+        }
+
+        .no-animation {
+          animation: none;
+        }
+
+
         .markdown > p {
           @apply mb-8;
         }

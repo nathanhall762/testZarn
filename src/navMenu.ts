@@ -54,5 +54,5 @@ export const navs = [
   },
   { link: '/testimonials', name: 'Testimonials' },
   { link: '/book-appointment', name: 'Book Appointment' },
-  { link: '/contact', name: 'Contact Us' },
+  { link: '/contact#contact', name: 'Contact Us' },
 ];

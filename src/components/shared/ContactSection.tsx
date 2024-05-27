@@ -21,7 +21,7 @@ const ContactSection: React.FC<Props> = ({
   };
 
   return (
-    <div className='relative flex h-fit flex-col justify-start lg:flex-row lg:p-10'>
+    <div className='relative flex h-fit flex-col justify-start lg:flex-row lg:p-10' id="contact">
       <div className='flex flex-col items-center py-10 lg:w-[40vw]'>
         <div
           className='mb-4 h-[50vh] w-[90%] rounded-3xl bg-neutral-5 bg-cover'

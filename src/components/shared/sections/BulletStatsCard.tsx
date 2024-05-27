@@ -1,4 +1,4 @@
-import Markdown from 'react-markdown';
+import ReactMarkdown from 'react-markdown';
 
 interface Props {
   content: {
@@ -21,18 +21,21 @@ const BulletStatsCard: React.FC<Props> = ({
       <div
         className={`flex h-full max-w-6xl flex-col items-center justify-center bg-neutral-8 bg-opacity-50 px-8 py-8 shadow-md backdrop-blur-sm backdrop-brightness-[.25] lg:bg-opacity-90 lg:px-16 lg:backdrop-brightness-100`}
       >
-        <h3 className='pb-4 text-center text-2xl text-neutral-1 lg:text-3xl'>
-          {title}
-        </h3>
+        <ReactMarkdown components={{
+            p(props) {
+            const { node, ...rest } = props;
+            return <h3 className='mb-4' {...rest} />;
+          }}} className='mb-4 text-lg text-center font-bold lg:text-3xl'>{title}</ReactMarkdown>
+          <div className='mb-8 h-[2px] w-full max-w-2xl bg-primary-md1'></div>
         <div className='w-full text-center'>
-          <Markdown
+          <ReactMarkdown
             className='py-2 text-left text-base lg:text-lg'
             components={{
               ul(props) {
                 const { node, ...rest } = props;
                 return (
                   <ul
-                    className='ms-0 grid list-none grid-cols-2 gap-x-8 py-4'
+                    className=' grid lg:grid-cols-2 gap-x-8 py-4'
                     {...rest}
                   />
                 );
@@ -40,7 +43,7 @@ const BulletStatsCard: React.FC<Props> = ({
             }}
           >
             {body}
-          </Markdown>
+          </ReactMarkdown>
         </div>
       </div>
     </div>

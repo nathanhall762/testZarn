@@ -21,7 +21,7 @@ const Sidekick: React.FC<SidekickProps> = ({
     <div className='relative'>
       <div className='z-0 absolute inset-0 h-full w-full bg-black bg-opacity-50 lg:bg-opacity-30'></div>
       <div
-        className='h-[60vh] lg:[50vh] w-full content-end bg-cover bg-center'
+        className='h-[60vh] lg:[50vh] w-full flex flex-col justify-end bg-cover bg-center'
         style={{ backgroundImage: `url(${image})` }}
       >
         <div className='relative z-10 px-4 pb-8 text-left lg:pb-16 lg:pl-16 lg:pr-64'>

@@ -183,7 +183,7 @@ const Header: React.FC<HeaderProps> = ({
             className={`absolute overflow-scroll h-fit left-0 top-full z-50 w-full transform py-4 pt-0 shadow-md transition-transform duration-fast lg:hidden ${isNavOpen ? 'scale-y-100' : 'scale-y-0'} ${isScrolled ? 'min-h-[94vh]' : 'min-h-[90vh]'} origin-top transition-transform duration-fast ease-in-out`}
           >
             <nav
-              className={`flex h-fit flex-col bg-neutral-9 px-8 pt-4 duration-md ease-in-out dark:bg-neutral-9 ${subNavOpen ? 'z-0 translate-x-[-95%]' : 'z-20 translate-x-[0]'} ${isScrolled ? 'min-h-[94vh]' : 'min-h-[90vh]'}`}
+              className={`flex h-fit pb-64 flex-col bg-neutral-9 px-8 pt-4 duration-md ease-in-out dark:bg-neutral-9 ${subNavOpen ? 'z-0 translate-x-[-95%]' : 'z-20 translate-x-[0]'} ${isScrolled ? 'min-h-[94vh]' : 'min-h-[90vh]'}`}
             >
               {navs.map((nav) => (
                 <div className='flex px-6 py-4' key={nav.name}>
@@ -213,13 +213,13 @@ const Header: React.FC<HeaderProps> = ({
                 className='flex justify-items-center self-center'
               >
                 <button className='my-2 transform rounded-xl bg-primary-md1 px-4 py-2 text-base text-neutral-1 transition duration-fast ease-in-out hover:scale-md hover:bg-primary-md2'>
-                  CONTACT US
+                  Schedule Service
                 </button>
               </a>
             </nav>
             {/* subnav for subpages */}
             <nav
-              className={`absolute inset-0 flex h-fit flex-col bg-neutral-9 px-8 pt-4 text-left duration-md ease-in-out dark:bg-neutral-9 ${subNavOpen ? 'z-20 translate-x-[0]' : 'z-0 translate-x-[95%]'}`}
+              className={`absolute pb-64 inset-0 flex h-fit flex-col bg-neutral-9 px-8 pt-4 text-left duration-md ease-in-out dark:bg-neutral-9 ${subNavOpen ? 'z-20 translate-x-[0]' : 'z-0 translate-x-[95%]'}`}
             >
               <button
                 onClick={handleSubNavClick}
@@ -254,9 +254,9 @@ const Header: React.FC<HeaderProps> = ({
                 </span>
               </a>
             </div>
-            <a href='/contact' className='flex self-center'>
+            <a href='#contact' className='flex self-center'>
               <button className='transform rounded-xl bg-primary-md1 px-4 py-2 text-neutral-1 transition duration-fast ease-in-out hover:scale-sm hover:bg-primary-md2'>
-                <span className=''>CONTACT US</span>
+                <span className=''>Schedule Service</span>
               </button>
             </a>
           </div>

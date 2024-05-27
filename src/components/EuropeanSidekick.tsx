@@ -37,6 +37,10 @@ const EuropeanSidekick: React.FC<SidekickProps> = ({
             className={`lg:no-animation slide-animation h-full w-full bg-cover bg-center bg-no-repeat`}
             style={{ backgroundImage: `url(${image})` }}
           ></div>
+          <div
+            className={`lg:hidden lg:no-animation slide-animation h-full w-full bg-cover bg-center bg-no-repeat`}
+            style={{ backgroundImage: `url(${image})` }}
+          ></div>
       </div>
       <h3 className='text-shadow-outline absolute z-20 -translate-y-[65vh] rounded-full px-2 text-center text-2xl leading-relaxed tracking-widest lg:ml-[30vw] lg:mr-[10vw] lg:mt-6 lg:-translate-y-[60vh] lg:px-0 lg:text-5xl lg:backdrop-blur-sm'>
         {welcomeText}
