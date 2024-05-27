@@ -29,11 +29,11 @@ const { pageData } = Astro.props;
         case 'bullet_stats_card':
           return <BulletStatsCard content={item.value} />;
         case 'tab_list_cards':
-          return <EuroProjectGallery content={item.value} client:idle />;
+          return <EuroProjectGallery content={item.value} client:visible />;
         case 'text_image_card':
           return <TextImagecard content={item.value} />;
         case 'accordion':
-          return <Accordion content={item.value} client:idle />;
+          return <Accordion content={item.value} client:visible />;
         case 'cta_section':
           return <Cta content={item.value} />;
         case 'testimonial':
