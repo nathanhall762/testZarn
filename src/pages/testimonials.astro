@@ -31,7 +31,6 @@ const docIds = [
 
 // Fetching services data
 const servicesArray: DocumentData[] = await fetchServiceData(docIds);
-console.log(servicesArray[0].content);
 
 // Extracting testimonials
 const testimonials = servicesArray.map(service => {

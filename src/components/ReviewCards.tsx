@@ -65,7 +65,7 @@ const ReviewCards: React.FC<Props> = ({ heading, reviews }) => {
                   {Array.from({ length: 5 }).map((_, index) => (
                     <Icon
                       icon={`material-symbols-light:${review.rating > index ? 'star' : 'star-outline'}`}
-                      className={`size-5 lg:size-7 ${review.rating > index ? 'text-primary-md2' : 'text-neutral-6 dark:text-neutral-4'}`}
+                      className={`text-2xl lg:text-3xl ${review.rating > index ? 'text-primary-md2' : 'text-neutral-6 dark:text-neutral-4'}`}
                     />
                   ))}
                 </div>

@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react';
 import { Icon } from '@iconify-icon/react';
-import menuIcon from '@iconify/icons-mdi/menu';
-import closeIcon from '@iconify/icons-mdi/close';
 import { initAnalytics } from '../../firebase';
 
 interface Nav {
@@ -177,7 +175,8 @@ const Header: React.FC<HeaderProps> = ({
             onClick={toggleNav}
             className={`z-50 flex w-20 cursor-pointer items-center justify-center text-2xl text-neutral-1 transition-transform duration-fast lg:hidden dark:text-neutral-1 ${isNavOpen ? 'rotate-180 opacity-100' : 'rotate-0 opacity-100'}`}
           >
-            {isNavOpen ? <Icon icon={closeIcon} /> : <Icon icon={menuIcon} />}
+            {/* <Icon icon='mdi:menu'></Icon> */}
+            {isNavOpen ? <Icon icon='mdi:close' /> : <Icon icon='mdi:menu' />}
           </div>
           {/* mobile nav */}
           <div

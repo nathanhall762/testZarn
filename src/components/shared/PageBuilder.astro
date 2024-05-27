@@ -10,6 +10,7 @@ import TabListCards from './sections/TabListCards';
 import TextImagecard from './sections/TextImageCard';
 import Cta from './sections/Cta';
 import Testimonial from './sections/Testimonial';
+import EuroProjectGallery from '../EuroProjectGallery';
 const { pageData } = Astro.props;
 ---
 
@@ -28,7 +29,7 @@ const { pageData } = Astro.props;
         case 'bullet_stats_card':
           return <BulletStatsCard content={item.value} />;
         case 'tab_list_cards':
-          return <TabListCards content={item.value} client:idle />;
+          return <EuroProjectGallery content={item.value} client:idle />;
         case 'text_image_card':
           return <TextImagecard content={item.value} />;
         case 'accordion':
