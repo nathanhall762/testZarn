@@ -180,10 +180,10 @@ const Header: React.FC<HeaderProps> = ({
           </div>
           {/* mobile nav */}
           <div
-            className={`absolute left-0 top-full z-50 w-full transform py-4 pt-0 shadow-md transition-transform duration-fast lg:hidden ${isNavOpen ? 'scale-y-100' : 'scale-y-0'} ${isScrolled ? 'h-[94vh]' : 'h-[90vh]'} origin-top transition-transform duration-fast ease-in-out`}
+            className={`absolute overflow-scroll h-fit left-0 top-full z-50 w-full transform py-4 pt-0 shadow-md transition-transform duration-fast lg:hidden ${isNavOpen ? 'scale-y-100' : 'scale-y-0'} ${isScrolled ? 'min-h-[94vh]' : 'min-h-[90vh]'} origin-top transition-transform duration-fast ease-in-out`}
           >
             <nav
-              className={`flex h-full flex-col bg-neutral-9 px-8 pt-4 duration-md ease-in-out dark:bg-neutral-9 ${subNavOpen ? 'z-0 translate-x-[-95%]' : 'z-20 translate-x-[0]'}`}
+              className={`flex h-fit flex-col bg-neutral-9 px-8 pt-4 duration-md ease-in-out dark:bg-neutral-9 ${subNavOpen ? 'z-0 translate-x-[-95%]' : 'z-20 translate-x-[0]'} ${isScrolled ? 'min-h-[94vh]' : 'min-h-[90vh]'}`}
             >
               {navs.map((nav) => (
                 <div className='flex px-6 py-4' key={nav.name}>
@@ -219,7 +219,7 @@ const Header: React.FC<HeaderProps> = ({
             </nav>
             {/* subnav for subpages */}
             <nav
-              className={`absolute inset-0 flex h-full flex-col bg-neutral-9 px-8 pt-4 text-left duration-md ease-in-out dark:bg-neutral-9 ${subNavOpen ? 'z-20 translate-x-[0]' : 'z-0 translate-x-[95%]'}`}
+              className={`absolute inset-0 flex h-fit flex-col bg-neutral-9 px-8 pt-4 text-left duration-md ease-in-out dark:bg-neutral-9 ${subNavOpen ? 'z-20 translate-x-[0]' : 'z-0 translate-x-[95%]'}`}
             >
               <button
                 onClick={handleSubNavClick}

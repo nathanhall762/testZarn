@@ -7,6 +7,7 @@ export const navs = [
     link: '/services',
     name: 'Our Services',
     subpages: [
+      { link: '/', name: 'All Services'},
       { link: '/ac-services', name: 'AC Services' },
       { link: '/auto-repair-estimates', name: 'Auto Repair Estimates' },
       { link: '/battery', name: 'Battery' },

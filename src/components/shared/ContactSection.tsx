@@ -34,17 +34,19 @@ const ContactSection: React.FC<Props> = ({
             title={`Map of ${businessName}`}
           ></iframe>
         </div>
-        <address className='mb-8 text-neutral-9 dark:text-neutral-1'>
-          {businessAddress}
-        </address>
-        <p className='mb-4'>
-          <a href={`tel:${businessPhone}`}>
-            {formatPhoneNumber(businessPhone)}
-          </a>
-        </p>
-        <p className='mb-8'>
-          <a href={`mailto:${businessEmail}`}>{businessEmail}</a>
-        </p>
+        <div className="flex flex-col items-center px-8 mb-4">
+          <address className='mb-8 text-neutral-9 dark:text-neutral-1'>
+            {businessAddress}
+          </address>
+          <p className='mb-4'>
+            <a href={`tel:${businessPhone}`}>
+              {formatPhoneNumber(businessPhone)}
+            </a>
+          </p>
+          <p className='mb-4'>
+            <a href={`mailto:${businessEmail}`}>{businessEmail}</a>
+          </p>
+        </div>
         <table className='text-neutral-9 dark:text-neutral-1'>
           <tbody>
             <tr>
