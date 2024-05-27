@@ -2,6 +2,43 @@
 import Layout from '../layouts/Layout.astro';
 import type { DocumentData } from 'firebase/firestore';
 import { getData } from '../firebase';
+import Testimonial from '../components/shared/sections/Testimonial';
+
+// Function to fetch data for multiple documents
+async function fetchServiceData(docIds: string[]): Promise<DocumentData[]> {
+  const servicePromises = docIds.map(docId => getData('pages', docId));
+  const serviceData = await Promise.all(servicePromises);
+  return serviceData.map(data => data[0]);
+}
+
+// Document IDs to fetch
+const docIds = [
+  'acura',
+  'audi-repair',
+  'bmw',
+  'buick',
+  'hyundai-repair',
+  'infiniti',
+  'jaguar',
+  'land-rover',
+  'lexus',
+  'mazda-repair',
+  'mercedes',
+  'porsche',
+  'volkswagen',
+  'volvo'
+];
+
+// Fetching services data
+const servicesArray: DocumentData[] = await fetchServiceData(docIds);
+console.log(servicesArray[0].content);
+
+// Extracting testimonials
+const testimonials = servicesArray.map(service => {
+  const testimonialSection = service.content.find((section: { type: string; }) => section.type === 'testimonial');
+  return testimonialSection ? testimonialSection.value : null;
+}).filter(Boolean);
+
 
 const data = await getData('pages', 'testimonials');
 const pageData: DocumentData = data[0];
@@ -11,4 +48,10 @@ const pageData: DocumentData = data[0];
   title={pageData.title}
   metaDescription={pageData.seo_metadata.meta_description}
   pageData={pageData}
-/>
+>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+    {testimonials.map(testimonial => (
+      <Testimonial content={testimonial} />
+    ))}
+  </div>
+</Layout>

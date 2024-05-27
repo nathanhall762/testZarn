@@ -23,7 +23,6 @@ export const navs = [
       { link: '/hybrid-electric-vehicles', name: 'Hybrid/Electric Vehicles' },
       { link: '/pre-purchase-inspection', name: 'Pre-Purchase Inspections' },
       { link: '/courtesy-inspection', name: 'Courtesy Inspection' },
-      { link: '/preventative-maintenance', name: 'Preventative Maintenance' },
       { link: '/oil-and-filter-change', name: 'Oil and Filter Change' },
       { link: '/tune-ups', name: 'Tune-Ups' },
       { link: '/steering-components', name: 'Steering Components' },

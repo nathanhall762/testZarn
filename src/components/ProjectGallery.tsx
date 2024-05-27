@@ -23,15 +23,15 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({
             >
               <a
                 className='flex size-full items-center justify-center  hover:scale-100'
-                href={`/${project.project_category.toLowerCase()}/${project.slug}`}
+                href={`/${project.parent_route}/${project.slug}`}
               >
                 <div
                   className='card-zoom-image group-hover:zoom-in z-0 group-hover:brightness-50 lg:brightness-100'
                   style={{
-                    backgroundImage: `url(${project.hero_section.project_hero_photo})`,
+                    backgroundImage: `url(${project.content[0].value.image})`,
                   }}
                 ></div>
-                <span className='z-50 rounded bg-white bg-opacity-50 p-2 text-xl text-black transition-all duration-300 ease-in-out hover:bg-opacity-100 group-hover:opacity-100 lg:opacity-0 dark:bg-black dark:text-white'>
+                <span className='z-50 rounded bg-white bg-opacity-50 p-2 text-xl text-black transition-all duration-300 ease-in-out hover:bg-opacity-100 group-hover:opacity-100 dark:bg-black dark:text-white'>
                   {project.title}
                 </span>
               </a>

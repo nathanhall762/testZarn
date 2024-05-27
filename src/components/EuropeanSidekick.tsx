@@ -21,7 +21,7 @@ const EuropeanSidekick: React.FC<SidekickProps> = ({
         {/* <Icon icon='simple-icons:mercedes' className='size-16 lg:size-32'></Icon> */}
         <div className='flex h-[15vh] flex-row items-center lg:h-auto lg:flex-col'>
           {/* <div className='lg:mb-4' dangerouslySetInnerHTML={logoIcon}></div> */}
-            <Icon className='text-[5rem] lg:text-[10rem] items-center' icon={logo} />
+            <Icon className='text-[5rem] lg:text-[10rem] items-center mb-4' icon={logo} />
           <h2 className='h-full flex items-center text-center text-base lg:mb-16 lg:text-2xl'>
             {tagline}
           </h2>

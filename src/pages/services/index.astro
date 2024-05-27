@@ -2,13 +2,51 @@
 import Layout from '../../layouts/Layout.astro';
 import type { DocumentData } from 'firebase/firestore';
 import { getData } from '../../firebase';
+import ProjectGallery from '../../components/ProjectGallery';
 
+// Function to fetch data for multiple documents
+async function fetchServiceData(docIds: string[]): Promise<DocumentData[]> {
+  const servicePromises = docIds.map(docId => getData('pages', docId));
+  const serviceData = await Promise.all(servicePromises);
+  return serviceData.map(data => data[0]);
+}
+
+// Document IDs to fetch
+const docIds = [
+  'ac-services',
+  'auto-repair-estimates',
+  'bg',
+  'battery',
+  'brake-system',
+  'check-engine-light',
+  'computer-diagnostics',
+  'drivetrain',
+  'electrical-concerns',
+  'engine-cooling-system',
+  'engine-performance-repair',
+  'fleet-services',
+  'fuel-system',
+  'hybrid-electric-vehicles',
+  'oil-and-filter-change',
+  'pre-purchase-inspection',
+  'steering-components',
+  'suspension',
+  'transmission',
+  'tune-ups'
+];
+
+// Fetching page data
 const data = await getData('pages', 'services');
 const pageData: DocumentData = data[0];
+
+// Fetching services data
+const servicesArray: DocumentData[] = await fetchServiceData(docIds);
 ---
 
 <Layout
   title={pageData.title}
   metaDescription={pageData.seo_metadata.meta_description}
   pageData={pageData}
-/>
+>
+  <ProjectGallery galleryHeader='Explore Our Services' projects={servicesArray}/>
+</Layout>
