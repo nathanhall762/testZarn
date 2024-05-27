@@ -98,7 +98,7 @@ const Header: React.FC<HeaderProps> = ({
             >
               <Icon
                 icon='mdi:email'
-                className='text-lg text-primary-md1 transition-all duration-fast group-hover:text-primary-md2'
+                className='text-xl text-primary-md1 transition-all duration-fast group-hover:text-primary-md2'
               />
               <span className='hidden text-center text-xs text-neutral-1 transition-all duration-fast group-hover:scale-md group-hover:underline lg:inline dark:text-neutral-1'>
                 {email}
@@ -113,7 +113,7 @@ const Header: React.FC<HeaderProps> = ({
             >
               <Icon
                 icon='mdi:map-marker'
-                className='text-lg text-primary-md1 transition-all duration-fast group-hover:text-primary-md2'
+                className='text-xl text-primary-md1 transition-all duration-fast group-hover:text-primary-md2'
               />
               <span className='hidden text-center text-xs text-neutral-1 transition-all duration-fast group-hover:scale-md group-hover:underline lg:inline dark:text-neutral-1'>
                 {address}
@@ -127,7 +127,7 @@ const Header: React.FC<HeaderProps> = ({
             >
               <Icon
                 icon='mdi:phone'
-                className='text-lg text-primary-md1 transition-all duration-fast group-hover:text-primary-md2'
+                className='text-xl text-primary-md1 transition-all duration-fast group-hover:text-primary-md2'
               />
               <span className=' text-neutral-1 transition-all duration-fast group-hover:scale-md group-hover:underline dark:text-neutral-1'>
                 {formatPhoneNumber(phone)}
@@ -176,14 +176,18 @@ const Header: React.FC<HeaderProps> = ({
             className={`z-50 flex w-20 cursor-pointer items-center justify-center text-2xl text-neutral-1 transition-transform duration-fast lg:hidden dark:text-neutral-1 ${isNavOpen ? 'rotate-180 opacity-100' : 'rotate-0 opacity-100'}`}
           >
             {/* <Icon icon='mdi:menu'></Icon> */}
-            {isNavOpen ? <Icon icon='mdi:close' /> : <Icon icon='mdi:menu' />}
+            {isNavOpen ? (
+              <Icon icon='mdi:close' className='text-3xl' />
+            ) : (
+              <Icon icon='mdi:menu' className='text-3xl' />
+            )}
           </div>
           {/* mobile nav */}
           <div
-            className={`absolute overflow-scroll h-fit left-0 top-full z-50 w-full transform py-4 pt-0 shadow-md transition-transform duration-fast lg:hidden ${isNavOpen ? 'scale-y-100' : 'scale-y-0'} ${isScrolled ? 'min-h-[94vh]' : 'min-h-[90vh]'} origin-top transition-transform duration-fast ease-in-out`}
+            className={`absolute left-0 top-full z-50 h-fit w-full transform overflow-scroll py-4 pt-0 shadow-md transition-transform duration-fast lg:hidden ${isNavOpen ? 'scale-y-100' : 'scale-y-0'} ${isScrolled ? 'min-h-[94vh]' : 'min-h-[90vh]'} origin-top transition-transform duration-fast ease-in-out`}
           >
             <nav
-              className={`flex h-fit pb-64 flex-col bg-neutral-9 px-8 pt-4 duration-md ease-in-out dark:bg-neutral-9 ${subNavOpen ? 'z-0 translate-x-[-95%]' : 'z-20 translate-x-[0]'} ${isScrolled ? 'min-h-[94vh]' : 'min-h-[90vh]'}`}
+              className={`flex h-fit flex-col bg-neutral-9 px-8 pb-64 pt-4 duration-md ease-in-out dark:bg-neutral-9 ${subNavOpen ? 'z-0 translate-x-[-95%]' : 'z-20 translate-x-[0]'} ${isScrolled ? 'min-h-[94vh]' : 'min-h-[90vh]'}`}
             >
               {navs.map((nav) => (
                 <div className='flex px-6 py-4' key={nav.name}>
@@ -219,7 +223,7 @@ const Header: React.FC<HeaderProps> = ({
             </nav>
             {/* subnav for subpages */}
             <nav
-              className={`absolute pb-64 inset-0 flex h-fit flex-col bg-neutral-9 px-8 pt-4 text-left duration-md ease-in-out dark:bg-neutral-9 ${subNavOpen ? 'z-20 translate-x-[0]' : 'z-0 translate-x-[95%]'}`}
+              className={`absolute inset-0 flex h-fit flex-col bg-neutral-9 px-8 pb-64 pt-4 text-left duration-md ease-in-out dark:bg-neutral-9 ${subNavOpen ? 'z-20 translate-x-[0]' : 'z-0 translate-x-[95%]'}`}
             >
               <button
                 onClick={handleSubNavClick}
@@ -247,7 +251,7 @@ const Header: React.FC<HeaderProps> = ({
               >
                 <Icon
                   icon='akar-icons:phone'
-                  className='text-lg text-primary-md1 transition-all duration-fast group-hover:text-primary-md2'
+                  className='text-2xl text-primary-md1 transition-all duration-fast group-hover:text-primary-md2'
                 />
                 <span className='hidden text-justify text-neutral-1 transition-all duration-fast group-hover:scale-md group-hover:underline xl:inline dark:text-neutral-1'>
                   {formatPhoneNumber(phone)}

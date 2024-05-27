@@ -1,14 +1,10 @@
 import { Icon } from '@iconify-icon/react';
-import facebookIcon from '@iconify/icons-mdi/facebook';
-import twitterIcon from '@iconify/icons-mdi/twitter';
-import instagramIcon from '@iconify/icons-mdi/instagram';
-import youtubeIcon from '@iconify/icons-mdi/youtube';
 
 const iconMap = {
-  Facebook: facebookIcon,
-  Twitter: twitterIcon,
-  Instagram: instagramIcon,
-  Youtube: youtubeIcon,
+  Facebook: 'mdi:facebook',
+  Twitter: 'mdi:twitter',
+  Instagram: 'mdi:instagram',
+  Youtube: 'mdi:youtube',
 };
 
 interface Props {
