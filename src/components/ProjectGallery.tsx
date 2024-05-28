@@ -22,7 +22,7 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({
             >
               <a
                 className='flex size-full items-center justify-center  hover:scale-100'
-                href={`/${project.parent_route}/${project.slug}`}
+                href={`/${project.parent_route ? project.parent_route + '/' : ''}${project.slug}`}
               >
                 <div
                   className='card-zoom-image group-hover:zoom-in z-0 group-hover:brightness-50 lg:brightness-100'
