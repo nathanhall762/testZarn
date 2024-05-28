@@ -34,8 +34,6 @@ const Header: React.FC<HeaderProps> = ({
   const [isScrolled, setIsScrolled] = useState(false);
   const [subNavOpen, setSubNavOpen] = useState<Nav | undefined>();
 
-  console.log(subNavOpen?.subpages);
-
   useEffect(() => {
     initAnalytics();
   }, []);
@@ -55,6 +53,13 @@ const Header: React.FC<HeaderProps> = ({
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  useEffect(() => {
+    if (isNavOpen) {
+      document.body.style.overflow = 'hidden';
+    } else document.body.style.overflow = 'scroll';
+    return () => {};
+  }, [isNavOpen]);
 
   const toggleNav = () => {
     setIsNavOpen(!isNavOpen);
@@ -184,7 +189,7 @@ const Header: React.FC<HeaderProps> = ({
           </div>
           {/* mobile nav */}
           <div
-            className={`absolute left-0 top-full z-50 h-fit w-full transform overflow-scroll py-4 pt-0 shadow-md transition-transform duration-fast lg:hidden ${isNavOpen ? 'scale-y-100' : 'scale-y-0'} ${isScrolled ? 'min-h-[94vh]' : 'min-h-[90vh]'} origin-top transition-transform duration-fast ease-in-out`}
+            className={`absolute left-0 top-full z-50 h-fit w-full transform overflow-auto py-4 pt-0 shadow-md transition-transform duration-fast lg:hidden ${isNavOpen ? 'scale-y-100' : 'scale-y-0'} ${isScrolled ? 'min-h-[94vh]' : 'min-h-[90vh]'} origin-top transition-transform duration-fast ease-in-out`}
           >
             <nav
               className={`flex h-fit flex-col bg-neutral-9 px-8 pb-64 pt-4 duration-md ease-in-out dark:bg-neutral-9 ${subNavOpen ? 'z-0 translate-x-[-95%]' : 'z-20 translate-x-[0]'} ${isScrolled ? 'min-h-[94vh]' : 'min-h-[90vh]'}`}
@@ -223,7 +228,7 @@ const Header: React.FC<HeaderProps> = ({
             </nav>
             {/* subnav for subpages */}
             <nav
-              className={`absolute inset-0 flex h-fit flex-col bg-neutral-9 px-8 pb-64 pt-4 text-left duration-md ease-in-out dark:bg-neutral-9 ${subNavOpen ? 'z-20 translate-x-[0]' : 'z-0 translate-x-[95%]'}`}
+              className={`absolute inset-0 flex h-fit min-h-screen flex-col bg-neutral-9 px-8 pb-64 pt-4 text-left duration-md ease-in-out dark:bg-neutral-9 ${subNavOpen ? 'z-20 translate-x-[0]' : 'z-0 translate-x-[95%]'}`}
             >
               <button
                 onClick={handleSubNavClick}
