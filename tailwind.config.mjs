@@ -39,6 +39,9 @@ export default {
       'primary-md3': 'hsl(0, 100%, 57%)',
       'primary-lt1': 'hsl(0, 100%, 62%)',
       'primary-lt2': 'hsl(0, 100%, 68%)',
+      'error': 'hsl(0, 100%, 50%)',
+      'success': 'hsl(120, 100%, 50%)',
+      'warning': 'hsl(45, 100%, 50%)',
     },
     textShadow: {
       sm: '1px 1px 2px hsl(0, 0%, 5%)',

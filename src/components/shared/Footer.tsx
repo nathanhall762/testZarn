@@ -40,9 +40,23 @@ const Footer: React.FC<Props> = ({
     <footer className='bg-neutral-9 pb-8 pt-16 text-center text-neutral-1 lg:px-10 dark:bg-neutral-9 dark:text-neutral-1'>
       <div className='flex flex-col items-center justify-evenly lg:flex-row lg:justify-between'>
         <div className='hidden lg:block'>
-          {address && <p className='text-left'>{address}</p>}
-          {email && <p className='text-left'>{email}</p>}
-          <p className='text-left'>{formatPhoneNumber(phone)}</p>
+          {address && 
+          <a href="https://maps.app.goo.gl/7oMSLMRF64DMPTx8A" target='_blank'>
+            <p className='text-left'>
+              {address}
+              </p>
+          </a>
+            }
+          {email && 
+          <a href={`mailto:${email}`} target='_blank'>
+            <p className='text-left'>
+              {email}
+              </p>
+          </a>
+            }
+          <a href='tel:9189407800'>
+            <p className='text-left'>{formatPhoneNumber(phone)}</p>
+          </a>
         </div>
         <div>
           <nav className='mb-8 flex flex-col items-center gap-2 lg:flex-row lg:justify-end lg:gap-8'>

@@ -63,6 +63,7 @@ const businessInformation = await getData('business_information');
     <Footer
       address={businessInformation[0].business_address}
       copyright=`${businessInformation[0].business_name} 2024`
+      email={businessInformation[0].business_contact_email}
       navs={navs}
       phone={businessInformation[0].business_phone}
       socials={businessInformation[0].socials}

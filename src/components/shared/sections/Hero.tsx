@@ -60,13 +60,13 @@ const Hero: React.FC<HeroProps> = ({
             {tagline}
           </h2>
           <div className='flex flex-col items-center justify-center gap-4 lg:flex-row lg:gap-16'>
-            <a href='/contact' className=''>
+            <a href='#contact' className=''>
               <button className='bg-other hover:bg-accent transform rounded-xl bg-primary-md1 px-12 py-4 text-lg text-neutral-2 transition duration-300 ease-in-out hover:scale-110 hover:bg-primary-md2'>
                 {call_to_action_text}
               </button>
             </a>
             <p className='text-ltbg2 text-base lg:text-2xl'>
-              <a href='tel:PHONE_NUMBER_GOES_HERE'>Call: (918) 123-1234</a>
+              <a href='tel:9189407800'>Call: (918) 940-7800</a>
             </p>
           </div>
         </div>

@@ -95,6 +95,7 @@ const Header: React.FC<HeaderProps> = ({
             <a
               className='group flex items-center justify-center gap-2 lg:gap-4'
               href={`mailto:${email}}`}
+              target='_blank'
             >
               <Icon
                 icon='mdi:email'
@@ -246,7 +247,7 @@ const Header: React.FC<HeaderProps> = ({
           <div className='hidden px-4 text-sm lg:col-span-2 lg:flex lg:justify-around xl:col-span-3'>
             <div className='group hidden cursor-pointer items-center justify-center gap-[1.4vw] self-center xl:flex'>
               <a
-                href='tel:TELEPHONE_NUMBER_GOES_HERE'
+                href={`tel:${phone}`}
                 className='group hidden cursor-pointer items-center justify-center gap-[1.4vw] self-center xl:flex'
               >
                 <Icon

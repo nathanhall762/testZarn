@@ -38,7 +38,7 @@ const ReviewCards: React.FC<Props> = ({ heading, reviews }) => {
   };
 
   return (
-    <div className='pt-8'>
+    <div className='pt-8 my-8'>
       <h2 className='pb-8 text-center text-2xl'>{heading}</h2>
       <div className='scroller-sm mx-auto flex snap-x snap-mandatory gap-8 overflow-x-scroll px-24 py-8 lg:gap-16 lg:px-16'>
         {reviews.map((review, index) => (

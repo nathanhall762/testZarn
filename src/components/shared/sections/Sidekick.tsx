@@ -40,7 +40,7 @@ const Sidekick: React.FC<SidekickProps> = ({
                   </button>
                 </a>
                 <p className='text-base text-neutral-2 opacity-100 lg:text-2xl'>
-                  <a href='tel:PHONE_NUMBER_GOES_HERE'>Call: (918) 123-1234</a>
+                  <a href='tel:9189407800'>Call: (918) 940-7800</a>
                 </p>
               </div>
             )}
