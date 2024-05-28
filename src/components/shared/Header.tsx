@@ -34,8 +34,6 @@ const Header: React.FC<HeaderProps> = ({
   const [isScrolled, setIsScrolled] = useState(false);
   const [subNavOpen, setSubNavOpen] = useState<Nav | undefined>();
 
-  console.log(subNavOpen?.subpages);
-
   useEffect(() => {
     initAnalytics();
   }, []);
@@ -56,8 +54,18 @@ const Header: React.FC<HeaderProps> = ({
     };
   }, []);
 
+  useEffect(() => {
+    if (isNavOpen) {
+      document.body.style.overflow = 'hidden';
+    } else document.body.style.overflow = 'scroll';
+    return () => {};
+  }, [isNavOpen]);
+
   const toggleNav = () => {
     setIsNavOpen(!isNavOpen);
+    if (subNavOpen) {
+      setSubNavOpen(undefined);
+    }
   };
 
   const formatPhoneNumber = (phone: string) => {
@@ -136,10 +144,10 @@ const Header: React.FC<HeaderProps> = ({
             </a>
           </div>
         </div>
-        {/* desktop nav */}
         <div
           className={`relative top-0 flex h-[9vh] justify-between text-center align-middle shadow-2xl transition-all duration-fast lg:grid lg:grid-cols-12`}
         >
+          {/* desktop nav */}
           <div className='relative flex flex-grow items-center justify-center border-r-[1px] border-neutral-6 bg-neutral-9 lg:col-span-2'>
             <a href='/'>
               <div className='hover:text-accent overflow-clip text-center text-neutral-1 transition-all duration-fast dark:text-neutral-1'>
@@ -176,7 +184,6 @@ const Header: React.FC<HeaderProps> = ({
             onClick={toggleNav}
             className={`z-50 flex w-20 cursor-pointer items-center justify-center text-2xl text-neutral-1 transition-transform duration-fast lg:hidden dark:text-neutral-1 ${isNavOpen ? 'rotate-180 opacity-100' : 'rotate-0 opacity-100'}`}
           >
-            {/* <Icon icon='mdi:menu'></Icon> */}
             {isNavOpen ? (
               <Icon icon='mdi:close' className='text-3xl' />
             ) : (
@@ -185,7 +192,7 @@ const Header: React.FC<HeaderProps> = ({
           </div>
           {/* mobile nav */}
           <div
-            className={`absolute left-0 top-full z-50 h-fit w-full transform overflow-scroll py-4 pt-0 shadow-md transition-transform duration-fast lg:hidden ${isNavOpen ? 'scale-y-100' : 'scale-y-0'} ${isScrolled ? 'min-h-[94vh]' : 'min-h-[90vh]'} origin-top transition-transform duration-fast ease-in-out`}
+            className={`absolute left-0 top-full z-50 h-fit w-full transform overflow-y-auto overflow-x-hidden py-4 pt-0 shadow-md transition-transform duration-fast lg:hidden ${isNavOpen ? 'scale-y-100' : 'scale-y-0'} ${isScrolled ? 'min-h-[94vh]' : 'min-h-[90vh]'} origin-top transition-transform duration-fast ease-in-out`}
           >
             <nav
               className={`flex h-fit flex-col bg-neutral-9 px-8 pb-64 pt-4 duration-md ease-in-out dark:bg-neutral-9 ${subNavOpen ? 'z-0 translate-x-[-95%]' : 'z-20 translate-x-[0]'} ${isScrolled ? 'min-h-[94vh]' : 'min-h-[90vh]'}`}
@@ -224,7 +231,7 @@ const Header: React.FC<HeaderProps> = ({
             </nav>
             {/* subnav for subpages */}
             <nav
-              className={`absolute inset-0 flex h-fit flex-col bg-neutral-9 px-8 pb-64 pt-4 text-left duration-md ease-in-out dark:bg-neutral-9 ${subNavOpen ? 'z-20 translate-x-[0]' : 'z-0 translate-x-[95%]'}`}
+              className={`absolute inset-0 flex h-fit min-h-screen flex-col bg-neutral-9 px-8 pb-64 pt-4 text-left duration-md ease-in-out dark:bg-neutral-9 ${subNavOpen ? 'z-20 translate-x-[0]' : 'z-0 translate-x-[95%]'}`}
             >
               <button
                 onClick={handleSubNavClick}
