@@ -1,3 +1,4 @@
+import ReactMarkdown from "react-markdown";
 import { capitalizeString } from "../../../utils/capitilizeString";
 
 interface Props {
@@ -14,7 +15,7 @@ const Cta: React.FC<Props> = ({ content }) => {
           <h2 className='text-center font-semibold text-neutral-1 text-shadow-xl lg:text-left'>
             {capitalizeString(ctaText)}
           </h2>
-          <p>{content.body_text}</p>
+          <ReactMarkdown>{content.body_text}</ReactMarkdown>
           <a href="#contact">
             <button className='bg-other hover:bg-accent transform rounded-xl bg-primary-md1 px-12 py-4 text-lg text-neutral-2 transition duration-300 ease-in-out hover:scale-110 hover:bg-primary-md2'>
               Schedule Service

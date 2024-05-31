@@ -59,7 +59,7 @@ const Footer: React.FC<Props> = ({
           </a>
         </div>
         <div>
-          <nav className='mb-8 flex flex-col items-center gap-2 lg:flex-row lg:justify-end lg:gap-8'>
+          <nav className='mb-8 flex flex-col items-center gap-4 lg:flex-row lg:justify-end lg:gap-8'>
             {navs.map((nav) => (
               <a
                 className='hover:text-primary-md1'
@@ -69,7 +69,7 @@ const Footer: React.FC<Props> = ({
                 {nav.name}
               </a>
             ))}
-            <a href='/contact' className=''>
+            <a href='/contact' className='my-4'>
               <button className='transform rounded-xl bg-primary-md2 px-4 py-2 text-lg text-neutral-1 transition duration-300 ease-in-out hover:scale-110 hover:bg-primary-md3'>
                 CONTACT US
               </button>
