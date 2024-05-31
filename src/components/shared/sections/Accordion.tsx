@@ -40,18 +40,18 @@ const Accordion: React.FC<Props> = ({
                   icon={'ep:arrow-up'}
                   className={`${
                     index === clicked ? 'text-primary scale-110' : 'rotate-180'
-                  } group-hover:text-primary cursor-pointer text-5xl font-bold text-neutral-1 transition duration-300 ease-in-out group-hover:scale-125 lg:text-3xl`}
+                  } group-hover:text-primary cursor-pointer text-3xl font-bold text-neutral-1 transition duration-300 ease-in-out group-hover:scale-125 lg:text-3xl`}
                 ></Icon>
               </div>
               <div
                 className={`${
-                  index === clicked ? 'max-h-lg' : 'max-h-0'
+                  index === clicked ? 'max-h-screen' : 'max-h-0'
                 } origin-top transform px-4 transition-all duration-fast ease-in-out lg:px-8`}
               >
                 <hr className='text-neutral-1' />
                 <ReactMarkdown
                   className={`${
-                    index === clicked ? 'max-h-lg py-4' : 'max-h-0 py-0'
+                    index === clicked ? 'max-h-screen py-4' : 'max-h-0 py-0'
                   } markdown overflow-clip px-4 transition-all duration-fast lg:px-8`}
                   components={{
                     a(props) {

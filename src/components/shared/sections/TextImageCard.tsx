@@ -31,13 +31,19 @@ const TextImagecard: React.FC<Props> = ({
           alt={image_alt_text}
           className={`${reversed && 'lg:order-1'}  box-border w-screen object-cover shadow-md lg:col-span-5 lg:row-span-1 lg:w-full`}
         />
-        <div className='items-justify-between radius-3xl flex flex-col bg-neutral-3 py-8 text-center text-neutral-8 shadow-md transition-all lg:col-span-7 lg:px-6 lg:py-16 dark:bg-neutral-7 dark:text-neutral-2'>
+        <div className='items-justify-between radius-3xl flex flex-col bg-neutral-3 px-4 py-8 text-center text-neutral-8 shadow-md transition-all lg:col-span-7 lg:px-6 lg:py-16 dark:bg-neutral-7 dark:text-neutral-2'>
           <div className='flex flex-col items-center'>
-          <ReactMarkdown components={{
-            p(props) {
-            const { node, ...rest } = props;
-            return <h3 className='mb-4' {...rest} />;
-          }}} className='mb-4 text-lg font-bold lg:text-3xl'>{heading}</ReactMarkdown>
+            <ReactMarkdown
+              components={{
+                p(props) {
+                  const { node, ...rest } = props;
+                  return <h3 className='mb-4' {...rest} />;
+                },
+              }}
+              className='mb-4 text-lg font-bold lg:text-3xl'
+            >
+              {heading}
+            </ReactMarkdown>
             <div className='mb-8 h-[2px] w-3/4 max-w-2xl bg-primary-md1'></div>
             <ReactMarkdown
               className='markdown px-6 text-left text-base  lg:px-12 lg:text-left lg:text-lg'
