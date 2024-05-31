@@ -23,12 +23,12 @@ const businessInformation = await getData('business_information');
 const { title, metaDescription, pageData } = Astro.props;
 
 const testReview: Review = {
-  name: 'fake',
-  authorAttribution: { displayName: 'fake person', photoUri: '', uri: '' },
-  originalText: { languageCode: 'en', text: 'this is great' },
-  publishTime: 'idk',
+  name: 'Customer Name',
+  authorAttribution: { displayName: 'Customer Name', photoUri: '', uri: '' },
+  originalText: { languageCode: 'en', text: 'The customer\'s review will go here' },
+  publishTime: 'publish time',
   rating: 5,
-  text: { languageCode: 'en', text: 'this is great' },
+  text: { languageCode: 'en', text: 'The customer\'s review will go here' },
   relativePublishTimeDescription: 'thsi is great',
 };
 
