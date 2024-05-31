@@ -51,12 +51,12 @@ const Hero: React.FC<HeroProps> = ({
         />
       ))}
       <div className='absolute inset-0 h-full w-full bg-black opacity-30'></div>
-      <div className='relative z-10 flex h-full flex-col justify-end text-center lg:text-left'>
-        <div className='fade-in-up  bg-opacity-80  px-4 py-16 shadow-md lg:px-32'>
-          <h1 className='text-shadow-outline pb-2 text-xl font-normal text-neutral-2 drop-shadow-xl lg:text-3xl lg:text-neutral-1'>
+      <div className='relative z-10 flex h-full flex-col justify-center text-center lg:text-left'>
+        <div className='fade-in-up  bg-opacity-80 px-2 py-16 shadow-md lg:px-32'>
+          <h1 className='pb-2 text-xl font-normal text-neutral-2 drop-shadow-xl text-shadow-outline lg:text-3xl lg:text-neutral-1'>
             {welcomeText}
           </h1>
-          <h2 className='text-shadow-outline pb-24 text-center text-2xl font-bold text-neutral-1 lg:pb-48 lg:text-left lg:text-5xl'>
+          <h2 className='pb-24 text-center text-2xl font-bold text-neutral-1 text-shadow-outline lg:pb-48 lg:text-left lg:text-5xl'>
             {tagline}
           </h2>
           <div className='flex flex-col items-center justify-center gap-4 lg:flex-row lg:gap-16'>
@@ -65,9 +65,6 @@ const Hero: React.FC<HeroProps> = ({
                 {call_to_action_text}
               </button>
             </a>
-            <p className='text-ltbg2 text-base lg:text-2xl'>
-              <a href='tel:9189407800'>Call: (918) 940-7800</a>
-            </p>
           </div>
         </div>
       </div>

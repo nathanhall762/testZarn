@@ -1,4 +1,4 @@
-import ContactForm from "./ContactForm";
+import ContactForm from './ContactForm';
 
 interface Props {
   businessName: string;
@@ -25,9 +25,9 @@ const ContactSection: React.FC<Props> = ({
   };
 
   return (
-      <div className="my-16" id="contact">
-        <h3 className="text-center mb-8">Contact Zarn Automotive</h3>
-            <div className='relative flex h-fit flex-col-reverse justify-start lg:flex-row lg:p-10'>
+    <div className='my-16' id='contact'>
+      <h3 className='mb-8 text-center'>Contact Zarn Automotive</h3>
+      <div className='relative flex h-fit flex-col-reverse justify-start lg:flex-row lg:p-10'>
         <div className='flex flex-col items-center py-10 lg:w-[40vw]'>
           <div
             className='mb-4 h-[50vh] w-[90%] rounded-3xl bg-neutral-5 bg-cover'
@@ -40,7 +40,7 @@ const ContactSection: React.FC<Props> = ({
               title={`Map of ${businessName}`}
             ></iframe>
           </div>
-          <div className="flex flex-col items-center px-8 mb-4">
+          <div className='mb-4 flex flex-col items-center px-8'>
             <address className='mb-8 text-neutral-9 dark:text-neutral-1'>
               {businessAddress}
             </address>
@@ -53,45 +53,45 @@ const ContactSection: React.FC<Props> = ({
               <a href={`mailto:${businessEmail}`}>{businessEmail}</a>
             </p>
           </div>
-          <table className='text-neutral-9 dark:text-neutral-1'>
+          <div className='text-neutral-9 dark:text-neutral-1'>
             <tbody>
               <tr>
-                <td>MONDAY</td>
+                <td className='pr-8'>MONDAY</td>
                 <td>9AM - 5PM</td>
               </tr>
               <tr>
-                <td>TUESDAY</td>
+                <td className='pr-8'>TUESDAY</td>
                 <td>9AM - 5PM</td>
               </tr>
               <tr>
-                <td>WEDNESDAY</td>
+                <td className='pr-8'>WEDNESDAY</td>
                 <td>9AM - 5PM</td>
               </tr>
               <tr>
-                <td>THURSDAY</td>
+                <td className='pr-8'>THURSDAY</td>
                 <td>9AM - 5PM</td>
               </tr>
               <tr>
-                <td>FRIDAY</td>
+                <td className='pr-8'>FRIDAY</td>
                 <td>9AM - 5PM</td>
               </tr>
               <tr>
-                <td>SATURDAY</td>
+                <td className='pr-8'>SATURDAY</td>
                 <td>CLOSED</td>
               </tr>
               <tr>
-                <td>SUNDAY</td>
+                <td className='pr-8'>SUNDAY</td>
                 <td>CLOSED</td>
               </tr>
             </tbody>
-          </table>
+          </div>
         </div>
         <div className='h-50vh lg:w-[60vw] dark:bg-neutral-7'>
           {/* contact form goes here */}
-          <ContactForm currentPath={currentPath}/>
+          <ContactForm currentPath={currentPath} />
         </div>
-            </div>
       </div>
+    </div>
   );
 };
 
