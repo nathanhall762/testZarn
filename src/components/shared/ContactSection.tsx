@@ -26,7 +26,7 @@ const ContactSection: React.FC<Props> = ({
 
   return (
     <div className='my-16' id='contact'>
-      <h3 className='mb-8 text-center'>Contact Zarn Automotive</h3>
+      <h2 className='mb-8 text-center'>Contact Zarn Automotive</h2>
       <div className='relative flex h-fit flex-col-reverse justify-start lg:flex-row lg:p-10'>
         <div className='flex flex-col items-center py-10 lg:w-[40vw]'>
           <div

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { capitalizeString } from '../../../utils/capitilizeString';
 
 interface HeroProps {
   content: {
@@ -51,15 +52,15 @@ const Hero: React.FC<HeroProps> = ({
         />
       ))}
       <div className='absolute inset-0 h-full w-full bg-black opacity-30'></div>
-      <div className='relative z-10 flex h-full flex-col justify-center text-center lg:text-left'>
+      <div className='relative z-10 flex h-full flex-col justify-center text-center p-4 lg:text-left'>
         <div className='fade-in-up  bg-opacity-80 px-2 py-16 shadow-md lg:px-32'>
-          <h1 className='pb-2 text-xl font-normal text-neutral-2 drop-shadow-xl text-shadow-outline lg:text-3xl lg:text-neutral-1'>
-            {welcomeText}
+          <h1 className='pb-2 text-2xl font-bold text-neutral-1 text-shadow-outline lg:text-left lg:text-5xl'>
+            {capitalizeString(welcomeText)}
           </h1>
-          <h2 className='pb-24 text-center text-2xl font-bold text-neutral-1 text-shadow-outline lg:pb-48 lg:text-left lg:text-5xl'>
+          <h2 className='text-xl pb-16 font-normal text-neutral-2 drop-shadow-xl lg:pb-16 text-shadow-outline lg:text-3xl lg:text-neutral-1'>
             {tagline}
           </h2>
-          <div className='flex flex-col items-center justify-center gap-4 lg:flex-row lg:gap-16'>
+          <div className='flex flex-col items-center justify-start gap-4 lg:flex-row lg:gap-16'>
             <a href='#contact' className=''>
               <button className='bg-other hover:bg-accent transform rounded-xl bg-primary-md1 px-12 py-4 text-lg text-neutral-2 transition duration-300 ease-in-out hover:scale-110 hover:bg-primary-md2'>
                 {call_to_action_text}

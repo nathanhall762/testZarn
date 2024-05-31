@@ -19,12 +19,12 @@ const AboutCard: React.FC<AboutCardProps> = ({
 }) => {
   return (
     <div className='my-8 flex px-4 lg:my-16'>
-      <div className='mx-auto flex max-w-6xl justify-center rounded-3xl bg-neutral-7 px-6 py-8 text-center shadow-md lg:px-16 lg:py-16'>
+      <div className='mx-auto flex max-w-6xl justify-center bg-neutral-7 px-6 py-8 text-center shadow-md lg:px-16 lg:py-16'>
         <div className='flex max-w-5xl flex-col items-center justify-around align-baseline'>
           <ReactMarkdown components={{
             p(props) {
             const { node, ...rest } = props;
-            return <h3 className='mb-4' {...rest} />;
+            return <h2 className='mb-4' {...rest} />;
           }}} className='mb-4 text-lg font-bold lg:text-3xl'>{aboutTitle}</ReactMarkdown>
           <div className='mb-8 h-[2px] w-full max-w-2xl bg-primary-md1'></div>
           <ReactMarkdown

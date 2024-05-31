@@ -37,7 +37,7 @@ const TextImagecard: React.FC<Props> = ({
               components={{
                 p(props) {
                   const { node, ...rest } = props;
-                  return <h3 className='mb-4' {...rest} />;
+                  return <h2 className='mb-4' {...rest} />;
                 },
               }}
               className='mb-4 text-lg font-bold lg:text-3xl'
@@ -60,7 +60,7 @@ const TextImagecard: React.FC<Props> = ({
           {link_url && (
             <a
               href={link_url}
-              className='text-tertiary mt-6 text-sm underline underline-offset-4 transition-all duration-300 hover:text-primary-md1  lg:mt-12 lg:text-xl'
+              className='text-tertiary mt-6 text-sm underline underline-offset-4 transition-all duration-300 text-primary-md2 hover:text-primary-md1  lg:mt-12 lg:text-xl'
             >
               {link_text}
             </a>
