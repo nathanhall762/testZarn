@@ -128,7 +128,7 @@ const businessInformation = await getData('business_information');
       logo={businessInformation[0].business_logo}
       client:load
     />
-    <main class='bg-neutral-8'>
+    <main class='bg-neutral-8 bg-opacity-90'>
       <slot />
     </main>
     <Footer
@@ -227,8 +227,15 @@ const businessInformation = await getData('business_information');
         scrollbar-width: none; /* Firefox */
       }
 
+      :root {
+        overflow-x: hidden;
+      }
+
       body {
         @apply text-neutral-9 dark:text-neutral-1;
+        background: url('/public/ZarnTexture.webp') no-repeat center center fixed ;
+    background-size: cover;
+    overflow: hidden !important;
       }
 
       a {
