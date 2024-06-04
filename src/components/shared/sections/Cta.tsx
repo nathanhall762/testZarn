@@ -10,7 +10,9 @@ const Cta: React.FC<Props> = ({ content }) => {
 
   return (
     <>
-      <div className='flex justify-center shadow-md bg-neutral-9 p-8'>
+      <div className='flex justify-center shadow-md bg-neutral-9 p-8 bg-right-top lg:bg-cover'
+      style={{ backgroundImage: 'url(/ZarnAutomotiveCTABackground.webp)' }}
+      >
         <div className='flex max-w-5xl flex-col items-center gap-8 '>
           <h2 className='text-center font-semibold text-neutral-1 text-shadow-xl lg:text-left'>
             {capitalizeString(ctaText)}

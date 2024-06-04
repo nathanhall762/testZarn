@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import type { DocumentData } from 'firebase/firestore';
 import { getData } from '../firebase';
 import ProjectGallery from '../components/ProjectGallery';
+import ProjectGalleryNew from '../components/ProjectGalleryNew';
 
 // Function to fetch data for multiple documents
 async function fetchServiceData(docIds: string[]): Promise<DocumentData[]> {
@@ -48,6 +49,6 @@ const pageData: DocumentData = data[0];
   pageData={pageData}
 >
   <div id="luxury-and-imports">
-    <ProjectGallery galleryHeader='Luxury and Import Pros' projects={servicesArray}/>
+    <ProjectGalleryNew galleryHeader='Luxury and Import Pros' projects={servicesArray}/>
   </div>
 </Layout>
