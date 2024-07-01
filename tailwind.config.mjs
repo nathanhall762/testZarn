@@ -1,13 +1,15 @@
 /** @type {import('tailwindcss').Config} */
 import plugin from 'tailwindcss/plugin';
+const defaultTheme = require('tailwindcss/defaultTheme');
 
 export default {
   darkMode: 'selector',
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     fontFamily: {
-      sans: ['Calibre', 'sans-serif'],
+      sans: ['Montserrat', 'sans-serif'],
       serif: ['Merriweather', 'serif'],
+      heading: ['Bai Jamjuree', ...defaultTheme.fontFamily.sans],
     },
     colors: {
       black: 'hsl(0, 0%, 5%)',
