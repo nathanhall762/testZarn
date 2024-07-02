@@ -31,7 +31,7 @@ const TextImagecard: React.FC<Props> = ({
           alt={image_alt_text}
           className={`${reversed && 'lg:order-1'} box-border w-screen object-cover shadow-md lg:col-span-5 lg:row-span-1 lg:w-full`}
         />
-        <div className='items-justify-between radius-3xl flex flex-col bg-neutral-3 px-4 py-8 text-center text-neutral-8 shadow-md transition-all lg:col-span-7 lg:px-6 lg:py-16 dark:bg-neutral-7 dark:text-neutral-2' style={{backgroundImage: `url(/${reversed ? 'Tires.webp' : 'work_mat.webp'})`, backgroundPosition: reversed ? 'right' : 'left',}}>
+        <div className='items-justify-between radius-3xl flex flex-col bg-neutral-3 px-4 py-8 text-center text-neutral-8 shadow-md transition-all lg:col-span-7 lg:px-6 lg:py-16 dark:bg-neutral-7 dark:text-neutral-2' style={{backgroundImage: `url(/${reversed ? 'Tires.webp' : 'work_mat.webp'})`, backgroundPosition: reversed ? 'left' : 'left',}}>
           <div className='flex flex-col items-center'>
             <ReactMarkdown
               components={{
