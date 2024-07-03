@@ -32,17 +32,16 @@ const AboutCard: React.FC<AboutCardProps> = ({
                 return <h2 className='mb-4' {...rest} />;
               },
             }}
-            className='mb-4 text-lg font-bold lg:text-3xl'
+            className='m2-4 text-lg font-bold lg:text-3xl'
           >
             {aboutTitle}
           </ReactMarkdown>
-          {/* <div className='mb-8 h-[2px] w-full max-w-2xl bg-primary-md1'></div> */}
-          <div>
+          <div className='mb-8'>
             {Array.from({ length: 8 }).map((_, index) => (
               <Icon
                 icon='ph:parallelogram-fill'
                 key={index}
-                className='pl-1 text-lg text-primary-md2'
+                className='text-xl text-primary-md2'
               />
             ))}
           </div>

@@ -1,3 +1,4 @@
+import { Icon } from '@iconify-icon/react/dist/iconify.mjs';
 import ReactMarkdown from 'react-markdown';
 
 interface Props {
@@ -25,22 +26,41 @@ const TextImagecard: React.FC<Props> = ({
 }) => {
   return (
     <section className='my-16 flex justify-center'>
-      <div className='flex max-w-[1200px] bg-opacity-0 flex-col transition-all lg:grid lg:grid-cols-12 lg:gap-8'>
+      <div className='flex max-w-[1200px] flex-col bg-opacity-0 transition-all lg:grid lg:grid-cols-12 lg:gap-8'>
         <img
           src={image}
           alt={image_alt_text}
           className={`${reversed && 'lg:order-1'} box-border w-screen object-cover shadow-md lg:col-span-5 lg:row-span-1 lg:w-full`}
         />
-        <div className='items-justify-between radius-3xl flex flex-col bg-neutral-3 px-4 py-8 text-center text-neutral-8 shadow-md transition-all lg:col-span-7 lg:px-6 lg:py-16 dark:bg-neutral-7 dark:text-neutral-2' style={{backgroundImage: `url(/${reversed ? 'Tires.webp' : 'work_mat.webp'})`, backgroundPosition: reversed ? 'right' : 'left',}}>
-          <div className='flex flex-col items-center'>
+        <div
+          className='relative flex flex-col bg-neutral-3 px-4 py-8 text-center text-neutral-8 shadow-md transition-all lg:col-span-7 lg:px-6 lg:py-16 dark:bg-neutral-7 dark:text-neutral-2'
+          style={{
+            backgroundImage: `url(/${reversed ? 'Tires.webp' : 'work_mat.webp'})`,
+            backgroundPosition: reversed ? 'right' : 'left',
+          }}
+        >
+          <div className='relative z-10 flex flex-col items-center'>
             <ReactMarkdown
               components={{
                 p(props) {
                   const { node, ...rest } = props;
-                  return <h2 className='mb-4' {...rest} />;
+                  return (
+                    <div className='flex'>
+                      <div className='mb-auto flex'>
+                        {Array.from({ length: 3 }).map((_, index) => (
+                          <Icon
+                            icon='fa-solid:chevron-up'
+                            key={index}
+                            className='ml-[-1rem] rotate-90 text-4xl text-primary-md2'
+                          />
+                        ))}
+                      </div>
+                      <h2 className='mb-4' {...rest} />
+                    </div>
+                  );
                 },
               }}
-              className='mb-4 text-lg font-bold lg:text-3xl'
+              className='mb-4 text-lg font-bold text-neutral-1 lg:text-3xl'
             >
               {heading}
             </ReactMarkdown>
@@ -60,7 +80,7 @@ const TextImagecard: React.FC<Props> = ({
           {link_url && (
             <a
               href={link_url}
-              className='text-tertiary mt-6 text-sm underline underline-offset-4 transition-all duration-300 text-primary-md2 hover:text-primary-md1  lg:mt-12 lg:text-xl'
+              className='text-tertiary mt-6 text-sm text-primary-md2 underline underline-offset-4 transition-all duration-300 hover:text-primary-md1  lg:mt-12 lg:text-xl'
             >
               {link_text}
             </a>
