@@ -36,7 +36,7 @@ const TextImagecard: React.FC<Props> = ({
           className='relative flex flex-col bg-neutral-3 px-4 py-8 text-center text-neutral-8 shadow-md transition-all lg:col-span-7 lg:px-6 lg:py-16 dark:bg-neutral-7 dark:text-neutral-2'
           style={{
             backgroundImage: `url(/${reversed ? 'Tires.webp' : 'work_mat.webp'})`,
-            backgroundPosition: reversed ? 'right' : 'left',
+            backgroundPosition: reversed ? 'left' : 'left',
           }}
         >
           <div className='relative z-10 flex flex-col items-center'>
