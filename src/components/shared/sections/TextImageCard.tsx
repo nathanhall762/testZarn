@@ -39,7 +39,7 @@ const TextImagecard: React.FC<Props> = ({
             backgroundPosition: reversed ? 'left' : 'left',
           }}
         >
-          <div className='relative z-10 flex flex-col items-center'>
+          <div className='flex flex-col items-center'>
             <ReactMarkdown
               components={{
                 p(props) {
