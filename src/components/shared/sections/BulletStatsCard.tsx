@@ -28,16 +28,16 @@ const BulletStatsCard: React.FC<Props> = ({
               const { node, ...rest } = props;
               return (
                 <div className='flex'>
-                  <div className=''>
+                  <div className='mb-auto flex'>
                     {Array.from({ length: 3 }).map((_, index) => (
                       <Icon
                         icon='fa-solid:chevron-up'
                         key={index}
-                        className='ml-[-1rem] rotate-90 text-4xl text-primary-md2'
+                        className='ml-[-0.5rem] rotate-90 text-2xl text-primary-md2 lg:ml-[-1rem] lg:text-4xl'
                       />
                     ))}
                   </div>
-                  <h3 className='mb-4' {...rest} />
+                  <h3 className='mb-4 text-left' {...rest} />
                 </div>
               );
             },

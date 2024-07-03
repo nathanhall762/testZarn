@@ -51,11 +51,11 @@ const TextImagecard: React.FC<Props> = ({
                           <Icon
                             icon='fa-solid:chevron-up'
                             key={index}
-                            className='ml-[-1rem] rotate-90 text-4xl text-primary-md2'
+                            className='ml-[-0.5rem] rotate-90 text-2xl text-primary-md2 lg:ml-[-1rem] lg:text-4xl'
                           />
                         ))}
                       </div>
-                      <h2 className='mb-4' {...rest} />
+                      <h2 className='mb-4 text-left' {...rest} />
                     </div>
                   );
                 },
