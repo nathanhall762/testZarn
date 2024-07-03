@@ -16,11 +16,11 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({
           {galleryHeader}
         </h3>
         <div className='mx-auto mb-8 h-[2px] w-3/4 max-w-2xl bg-primary-md1'></div>
-        <ul className='m-0 mx-auto grid max-w-7xl grid-cols-1 gap-4 text-center hover:cursor-pointer group-hover:shadow-inner sm:grid-cols-3'>
+        <ul className='m-0 mx-auto flex max-w-7xl flex-col flex-wrap items-center justify-center gap-4 text-center hover:cursor-pointer group-hover:shadow-inner sm:flex-row lg:gap-8'>
           {projects.map((project) => (
             <li
               key={project.slug} // Use the slug as a unique key for each project
-              className='card-zoom group relative z-10 flex h-64 bg-cover bg-center'
+              className='card-zoom group relative z-10 flex h-64 w-[320px] bg-cover bg-center'
             >
               <div className='size-full'>
                 <a
