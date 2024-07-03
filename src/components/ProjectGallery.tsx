@@ -12,9 +12,11 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({
   return (
     <>
       <div className='my-8 lg:my-16 lg:px-8'>
-        <h3 className='mb-4 text-center text-lg font-bold lg:text-3xl'>{galleryHeader}</h3>
-        <div className='mb-8 h-[2px] w-3/4 mx-auto max-w-2xl bg-primary-md1'></div>
-        <ul className='align-center m-0 grid grid-cols-1 text-center hover:cursor-pointer group-hover:shadow-inner sm:grid-cols-4 gap-4'>
+        <h3 className='mb-4 text-center text-lg font-bold lg:text-3xl'>
+          {galleryHeader}
+        </h3>
+        <div className='mx-auto mb-8 h-[2px] w-3/4 max-w-2xl bg-primary-md1'></div>
+        <ul className='m-0 mx-auto grid max-w-7xl grid-cols-1 gap-4 text-center hover:cursor-pointer group-hover:shadow-inner sm:grid-cols-3'>
           {projects.map((project) => (
             <li
               key={project.slug} // Use the slug as a unique key for each project
@@ -26,7 +28,7 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({
                   href={`/${project.parent_route ? project.parent_route + '/' : ''}${project.slug}`}
                 >
                   <div
-                    className='card-zoom-image group-hover:zoom-in z-0 group-hover:brightness-100 brightness-50'
+                    className='card-zoom-image group-hover:zoom-in z-0 brightness-50 group-hover:brightness-100'
                     style={{
                       backgroundImage: `url(${project.content[0].value.image})`,
                     }}
