@@ -41,7 +41,7 @@ const Footer: React.FC<Props> = ({
       <div className='flex flex-col items-center justify-evenly lg:flex-row lg:justify-between'>
         <div className='hidden lg:block'>
           {address && 
-          <a href="https://maps.app.goo.gl/7oMSLMRF64DMPTx8A" target='_blank'>
+          <a href="https://maps.app.goo.gl/1Y5cx55c5cTDJp1R6" target='_blank'>
             <p className='text-left'>
               {address}
               </p>

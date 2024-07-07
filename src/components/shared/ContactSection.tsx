@@ -34,7 +34,7 @@ const ContactSection: React.FC<Props> = ({
             style={{ border: '0' }}
           >
             <iframe
-              src='https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d178633.7464556669!2d-95.85650703773332!3d36.074828780412936!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87b68b8abffadfa9%3A0x27055814a51f3a45!2sZarn%20Automotive%20LLC!5e0!3m2!1sen!2sus!4v1715814075475!5m2!1sen!2sus'
+              src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d250143.71375332336!2d-95.95426724073786!3d36.094374174111536!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87b68c5eaf3e5dad%3A0x84a44249d67f3c69!2s2010%20N%20Yellowood%20Ave%2C%20Broken%20Arrow%2C%20OK%2074012!5e0!3m2!1sen!2sus!4v1720391218714!5m2!1sen!2sus'
               className='h-full w-full rounded-3xl'
               loading='lazy'
               title={`Map of ${businessName}`}
