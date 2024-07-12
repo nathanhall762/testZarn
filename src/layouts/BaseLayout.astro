@@ -116,9 +116,12 @@ const businessInformation = await getData('business_information');
         ]
       }
     </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel='preconnect' href='https://fonts.googleapis.com' />
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+    <link
+      href='https://fonts.googleapis.com/css2?family=Bai+Jamjuree:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap'
+      rel='stylesheet'
+    />
   </head>
   <body>
     <Header
@@ -236,9 +239,10 @@ const businessInformation = await getData('business_information');
 
       body {
         @apply text-neutral-9 dark:text-neutral-1;
-        background: url('/public/ZarnTexture.webp') no-repeat center center fixed ;
-    background-size: cover;
-    overflow: hidden !important;
+        background: url('/public/ZarnTexture.webp') no-repeat center center
+          fixed;
+        background-size: cover;
+        overflow: hidden !important;
       }
 
       a {
@@ -254,15 +258,15 @@ const businessInformation = await getData('business_information');
       }
 
       h1 {
-        @apply text-3xl font-semibold lg:text-4xl font-heading;
+        @apply font-heading text-3xl font-semibold lg:text-4xl;
       }
 
       h2 {
-        @apply text-2xl font-semibold lg:text-3xl font-heading;
+        @apply font-heading text-2xl font-semibold lg:text-3xl;
       }
 
       h3 {
-        @apply text-xl font-semibold lg:text-2xl font-heading;
+        @apply font-heading text-xl font-semibold lg:text-2xl;
       }
 
       h4 {
@@ -278,7 +282,7 @@ const businessInformation = await getData('business_information');
       }
 
       p {
-        @apply text-base leading-loose lg:text-lg lg:leading-loose;
+        @apply text-base leading-loose lg:text-xl lg:leading-loose;
       }
     </style>
   </body><!-- custom animation keyframes and other global stuffs -->

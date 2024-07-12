@@ -34,6 +34,8 @@ const Header: React.FC<HeaderProps> = ({
   const [isScrolled, setIsScrolled] = useState(false);
   const [subNavOpen, setSubNavOpen] = useState<Nav | undefined>();
 
+  console.log(socials);
+
   useEffect(() => {
     initAnalytics();
   }, []);
@@ -129,18 +131,24 @@ const Header: React.FC<HeaderProps> = ({
               </span>
             </a>
           </div>
-          <div className='flex flex-grow items-center justify-center border-neutral-6 lg:border-r-[1px]'>
+          <div className='flex flex-grow items-center justify-center gap-8 border-neutral-6 lg:border-r-[1px]'>
             <a
-              className='group flex items-center justify-center gap-2 lg:gap-4'
-              href={`tel:${phone}`}
+              className=''
+              href={socials.find((social) => social.type === 'Instagram')?.link}
             >
               <Icon
-                icon='mdi:phone'
-                className='text-xl text-primary-md1 transition-all duration-fast group-hover:text-primary-md2'
+                icon='mdi:instagram'
+                className='text-2xl text-primary-md1 transition-all duration-fast hover:text-primary-md2'
               />
-              <span className=' text-neutral-1 transition-all duration-fast group-hover:scale-md group-hover:underline dark:text-neutral-1'>
-                {formatPhoneNumber(phone)}
-              </span>
+            </a>
+            <a
+              className=''
+              href={socials.find((social) => social.type === 'Facebook')?.link}
+            >
+              <Icon
+                icon='mdi:facebook'
+                className='text-2xl text-primary-md1 transition-all duration-fast hover:text-primary-md2'
+              />
             </a>
           </div>
         </div>
