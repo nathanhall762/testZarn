@@ -11,6 +11,7 @@ import TextImagecard from './sections/TextImageCard';
 import Cta from './sections/Cta';
 import Testimonial from './sections/Testimonial';
 import EuroProjectGallery from '../EuroProjectGallery';
+import MeetTheOwner from './sections/MeetTheOwner';
 const { pageData } = Astro.props;
 ---
 
@@ -38,6 +39,8 @@ const { pageData } = Astro.props;
           return <Cta content={item.value} />;
         case 'testimonial':
           return <Testimonial content={item.value} />;
+        case 'meet_the_owner':
+          return <MeetTheOwner content={item.value} />;
         default:
           return null;
       }
