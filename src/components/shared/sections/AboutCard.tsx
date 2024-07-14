@@ -21,7 +21,7 @@ const AboutCard: React.FC<AboutCardProps> = ({
   return (
     <div className='my-8 flex px-4 lg:my-16'>
       <div
-        className='mx-auto flex max-w-7xl justify-center bg-neutral-7 bg-cover bg-center px-6 py-8 text-center shadow-md lg:px-16 lg:py-16'
+        className='mx-auto flex max-w-7xl justify-center bg-neutral-7 bg-cover bg-center px-6 py-8 text-center shadow-md lg:px-24 lg:py-24'
         style={{ backgroundImage: 'url(/aboutNeilBGImage.png)' }}
       >
         <div className='flex flex-col items-center justify-around align-baseline'>
@@ -32,7 +32,7 @@ const AboutCard: React.FC<AboutCardProps> = ({
                 return <h2 className='mb-4' {...rest} />;
               },
             }}
-            className='m2-4 text-lg font-bold lg:text-3xl'
+            className='m2-4 text-lg font-bold text-primary-md2 lg:text-3xl'
           >
             {aboutTitle}
           </ReactMarkdown>
