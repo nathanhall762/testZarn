@@ -80,9 +80,11 @@ const TextImagecard: React.FC<Props> = ({
           {link_url && (
             <a
               href={link_url}
-              className='text-tertiary mt-6 text-sm text-primary-md2 underline underline-offset-4 transition-all duration-300 hover:text-primary-md1  lg:mt-12 lg:text-xl'
+              className='flex justify-items-center self-center'
             >
-              {link_text}
+              <button className='my-2 transform rounded-xl bg-primary-md1 px-4 py-2 text-base text-neutral-1 transition duration-fast ease-in-out hover:scale-md hover:bg-primary-md2'>
+                {link_text}
+              </button>
             </a>
           )}
         </div>
