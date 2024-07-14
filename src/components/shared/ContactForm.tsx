@@ -114,6 +114,7 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
           <button
             className='size-full flex gap-4 items-center justify-center rounded-3xl py-16 outline transition-all duration-fast hover:scale-md hover:bg-primary-dk1'
             onClick={() => handleTypeSelection('schedule')}
+            style={{ backgroundImage: 'url(/Tires.webp)' }}
           >
             Schedule Service
             <Icon icon='mdi:calendar-clock' className='text-4xl' />
@@ -121,6 +122,7 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
           <button
             className='size-full flex gap-4 items-center justify-center rounded-3xl py-16 outline transition-all duration-fast hover:scale-md hover:bg-primary-dk1'
             onClick={() => handleTypeSelection('question')}
+            style={{ backgroundImage: 'url(/work_mat.webp)' }}
           >
             <span>Ask a question</span>
             <Icon icon='mdi:comment-question' className='text-4xl' />

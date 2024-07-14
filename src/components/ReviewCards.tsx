@@ -54,7 +54,7 @@ const ReviewCards: React.FC<Props> = ({ heading, reviews }) => {
                 className='size-16 rounded-full bg-contain bg-center bg-no-repeat lg:size-24'
               />
               <div className='flex flex-col justify-evenly'>
-                <p className='text-base lg:text-lg'>
+                <p className='text-lg lg:text-lg'>
                   {review.authorAttribution.displayName}
                 </p>
                 {/* <p className='text-xs lg:text-sm'>{review.count} reviews</p> */}
@@ -72,7 +72,7 @@ const ReviewCards: React.FC<Props> = ({ heading, reviews }) => {
               </div>
             </div>
             <div className='line-clamp-[8]'>
-              <p className='inline h-full text-justify text-base'>
+              <p className='inline h-full text-justify text-lg'>
                 {review.text.text}
               </p>
             </div>

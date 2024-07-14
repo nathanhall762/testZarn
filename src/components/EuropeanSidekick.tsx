@@ -1,4 +1,4 @@
-import {Icon} from '@iconify-icon/react';
+import { Icon } from '@iconify-icon/react';
 
 interface SidekickProps {
   content: {
@@ -11,40 +11,66 @@ interface SidekickProps {
 }
 
 const EuropeanSidekick: React.FC<SidekickProps> = ({
-  content: { heading: welcomeText, subheading: tagline, image, slideTime = 5000 }, logo,
+  content: {
+    heading: welcomeText,
+    subheading: tagline,
+    image,
+    slideTime = 5000,
+  },
+  logo,
 }) => {
   const logoIcon = { __html: logo };
 
   return (
-    <div className='overflow-clip'>
-      <div className='absolute z-10 flex h-[80vh] w-full flex-col items-center justify-end bg-gradient-to-t from-primary-dk1 from-15% to-40% p-[2.5vw] py-[5vw] lg:h-[70vh] lg:justify-around lg:bg-gradient-to-r lg:pr-[85vw] lg:backdrop-brightness-75 lg:backdrop-saturate-200'>
-        {/* <Icon icon='simple-icons:mercedes' className='size-16 lg:size-32'></Icon> */}
-        <div className='flex h-[15vh] flex-row items-center lg:h-auto lg:flex-col'>
-          {/* <div className='lg:mb-4' dangerouslySetInnerHTML={logoIcon}></div> */}
-            <Icon className='text-[5rem] lg:text-[10rem] items-center mb-4' icon={logo} />
-          <h2 className='h-full flex items-center text-center text-base lg:mb-16 lg:text-2xl'>
-            {tagline}
-          </h2>
+    <div className='relative'>
+      <div className='absolute inset-0 z-0 h-full w-full bg-black bg-opacity-50 lg:bg-opacity-50'></div>
+      <div
+        className='flex lg:h-[80vh] w-full flex-col justify-end py-4 lg:pb-12 bg-cover bg-center'
+        style={{ backgroundImage: `url(${image})` }}
+      >
+        <div className='relative z-10 items-center px-[25vw] text-left'>
+          <div className='fade-in-up items-center flex flex-col '>
+            <Icon
+              className='mb-4 items-center text-[5rem] lg:text-[10rem]'
+              icon={logo}
+            />
+            <h2 className='z-20 rounded-full px-2 pb-4 text-center text-2xl leading-relaxed tracking-widest text-shadow-outline lg:mt-6 lg:px-0 lg:text-5xl lg:backdrop-blur-sm'>
+              {welcomeText}
+            </h2>
+            <h3 className='flex rounded-full items-center pb-6 text-center text-base text-primary-md1 text-shadow-outline lg:mb-8 lg:text-4xl lg:backdrop-blur-sm'>
+              {tagline}
+            </h3>
+            <a href='/contact' className=''>
+              <button className='my-2 transform rounded-xl bg-primary-md1 px-8 py-4 text-lg text-neutral-1 transition duration-fast ease-in-out hover:scale-md hover:bg-primary-md2'>
+                <span>GET IN TOUCH</span>
+              </button>
+            </a>
+          </div>
         </div>
-        <a href='/contact' className=''>
-          <button className='bg-transparent transform rounded-xl px-4 py-2 text-lg text-neutral-1 outline outline-neutral-1 transition duration-300 ease-in-out hover:scale-110 hover:bg-neutral-1 hover:text-primary-md1'>
-            <span>GET IN TOUCH</span>
-          </button>
-        </a>
       </div>
-      <div className='relative z-0 flex h-[80vh] w-[300vw] lg:ml-[15vw] lg:h-[70vh] lg:w-auto'>
-          <div
-            className={`lg:no-animation slide-animation h-full w-full bg-cover bg-center bg-no-repeat`}
-            style={{ backgroundImage: `url(${image})` }}
-          ></div>
-          <div
-            className={`lg:hidden lg:no-animation slide-animation h-full w-full bg-cover bg-center bg-no-repeat`}
-            style={{ backgroundImage: `url(${image})` }}
-          ></div>
-      </div>
-      <h3 className='text-shadow-outline absolute z-20 -translate-y-[65vh] rounded-full px-2 text-center text-2xl leading-relaxed tracking-widest lg:ml-[30vw] lg:mr-[10vw] lg:mt-6 lg:-translate-y-[60vh] lg:px-0 lg:text-5xl lg:backdrop-blur-sm'>
-        {welcomeText}
-      </h3>
+      {/* <div className='absolute inset-0 z-0 h-full w-full bg-black bg-opacity-50 lg:bg-opacity-30'></div>
+      <div
+        className='lg:[50vh] flex h-[60vh] w-full flex-col justify-center lg:justify-end bg-cover bg-center'
+        style={{ backgroundImage: `url(${image})` }}
+      >
+        <div className='relative px-12 sm:mx-[25vw] flex flex-col items-center justify-around py-12 h-full backdrop-brightness-50 shadow-2xl'>
+          <Icon
+            className='mb-4 items-center text-[5rem] lg:text-[10rem]'
+            icon={logo}
+          />
+          <h2 className='z-20 rounded-full px-2 pb-4 text-center text-2xl leading-relaxed tracking-widest text-shadow-outline lg:mt-6 lg:px-0 lg:text-5xl lg:backdrop-blur-sm'>
+            {welcomeText}
+          </h2>
+          <h3 className='flex items-center pb-6 text-shadow-outline text-center text-base text-primary-md1 lg:backdrop-blur-sm lg:mb-8 lg:text-4xl'>
+            {tagline}
+          </h3>
+          <a href='/contact' className=''>
+            <button className='my-2 transform rounded-xl bg-primary-md1 px-8 py-4 text-lg text-neutral-1 transition duration-fast ease-in-out hover:scale-md hover:bg-primary-md2'>
+              <span>GET IN TOUCH</span>
+            </button>
+          </a>
+        </div>
+      </div> */}
     </div>
   );
 };

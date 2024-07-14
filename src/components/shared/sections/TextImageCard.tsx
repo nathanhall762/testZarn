@@ -26,20 +26,20 @@ const TextImagecard: React.FC<Props> = ({
 }) => {
   return (
     <section className='my-16 flex justify-center'>
-      <div className='flex max-w-[1200px] flex-col bg-opacity-0 transition-all lg:grid lg:grid-cols-12 lg:gap-8'>
+      <div className='flex lg:px-16 flex-col bg-opacity-0 transition-all lg:grid lg:grid-cols-12 lg:gap-8'>
         <img
           src={image}
           alt={image_alt_text}
           className={`${reversed && 'lg:order-1'} box-border w-screen object-cover shadow-md lg:col-span-5 lg:row-span-1 lg:w-full`}
         />
         <div
-          className='relative flex flex-col bg-neutral-3 px-4 py-8 text-center text-neutral-8 shadow-md transition-all lg:col-span-7 lg:px-6 lg:py-16 dark:bg-neutral-7 dark:text-neutral-2'
+          className='relative flex flex-col justify-around h-full bg-neutral-3 px-4 py-8 text-center text-neutral-8 shadow-md transition-all lg:col-span-7 lg:px-6 lg:py-16 dark:bg-neutral-7 dark:text-neutral-2'
           style={{
             backgroundImage: `url(/${reversed ? 'Tires.webp' : 'work_mat.webp'})`,
             backgroundPosition: reversed ? 'left' : 'left',
           }}
         >
-          <div className='flex flex-col items-center'>
+          <div className='flex flex-col items-center '>
             <ReactMarkdown
               components={{
                 p(props) {
