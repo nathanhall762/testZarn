@@ -32,7 +32,7 @@ const AboutCard: React.FC<AboutCardProps> = ({
                 return <h2 className='mb-4' {...rest} />;
               },
             }}
-            className='m2-4 text-lg font-bold text-primary-md2 lg:text-3xl'
+            className='m2-4 text-lg font-bold text-shadow-outline text-primary-md2 lg:text-3xl'
           >
             {aboutTitle}
           </ReactMarkdown>
