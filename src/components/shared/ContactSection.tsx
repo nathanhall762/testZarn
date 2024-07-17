@@ -86,7 +86,7 @@ const ContactSection: React.FC<Props> = ({
             </tbody>
           </div>
         </div>
-        <div className='h-50vh lg:w-[60vw] dark:bg-neutral-7'>
+        <div className='h-50vh lg:w-[60vw] rounded-full dark:bg-neutral-7'>
           {/* contact form goes here */}
           <ContactForm currentPath={currentPath} />
         </div>

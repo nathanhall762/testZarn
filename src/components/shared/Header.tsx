@@ -167,7 +167,7 @@ const Header: React.FC<HeaderProps> = ({
             {navs.map((nav) => (
               <div key={nav.name} className='group relative'>
                 <a
-                  className='text-bold text-sm text-neutral-1 transition duration-fast ease-in-out hover:text-primary-md2 dark:text-neutral-1'
+                  className='text-bold text-lg text-neutral-1 transition duration-fast ease-in-out hover:text-primary-md2 dark:text-neutral-1'
                   href={`${nav.link}`}
                 >
                   {nav.name}
