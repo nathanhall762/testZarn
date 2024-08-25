@@ -7,7 +7,7 @@ import {
   getDocs,
   query,
   where,
-} from 'firebase/firestore/lite';
+} from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: import.meta.env.PUBLIC_FIREBASE_API_KEY,
@@ -21,6 +21,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+export { db };
 export function initAnalytics() {
   if (window !== undefined) {
     getAnalytics(app);

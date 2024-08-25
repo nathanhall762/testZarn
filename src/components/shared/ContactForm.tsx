@@ -1,5 +1,7 @@
 import React, { useState, useEffect, type ChangeEvent, type FormEvent } from 'react';
 import { Icon } from '@iconify-icon/react';
+import { collection, addDoc } from 'firebase/firestore';
+import { db } from '../../firebase';
 
 interface FormData {
   type: string;
@@ -96,15 +98,42 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
     setStep(2);
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!isValidEmail(formData.contact) && !isValidPhoneNumber(formData.contact)) {
       alert('Please enter a valid email or phone number.');
       return;
     }
-    setFormData({ ...formData, submit: true });
-    setStep(3);
     console.log(formData);
+    // send formData as document in Firestore collection 'mail'
+    try {
+      // Structure the document according to the required format
+      await addDoc(collection(db, 'mail'), {
+        to: 'nathanhall762@gmail.com', // Use the test email address
+        message: {
+          subject: formData.type === 'schedule' ? 'Service Scheduling Request' : 'Customer Question',
+          // subject: 'Service Scheduling Request',
+          html: `
+            <h3>${formData.firstname} ${formData.lastname} has submitted a ${formData.type} request.</h3>
+            <p><strong>Vehicle Make:</strong> ${formData.make}</p>
+            <p><strong>Vehicle Model:</strong> ${formData.model}</p>
+            <p><strong>Vehicle Color:</strong> ${formData.color}</p>
+            <p><strong>Service Requested:</strong> ${formData.service}</p>
+            <p><strong>Message:</strong> ${formData.body}</p>
+            <p><strong>Contact:</strong> ${formData.contact}</p>
+          `,
+          // html: 'If you are seeing this in your email, the form submission was successful.',
+        },
+      });
+  
+      setStep(3);
+      console.log('Document successfully written!');
+      setFormData({ ...formData, submit: true });
+  
+    } catch (error) {
+      console.error('Error writing document: ', error);
+      alert('There was an error submitting your form. Please try again.');
+    }
   };
 
   return (
