@@ -12,7 +12,7 @@ export default {
       heading: ['Bai Jamjuree', ...defaultTheme.fontFamily.sans],
     },
     colors: {
-      black: 'hsl(0, 0%, 5%)',
+      black: 'hsl(0, 0%, 0%)',
       black2: 'hsl(0, 0%, 12%)',
       white: 'hsl(0, 0%, 96%)',
       white2: 'hsl(0, 0%, 90%)',
