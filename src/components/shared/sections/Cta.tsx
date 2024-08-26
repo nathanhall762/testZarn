@@ -19,7 +19,7 @@ const Cta: React.FC<Props> = ({ content }) => {
           style={{ backgroundImage: 'url(/ZarnAutomotiveCTABackground.webp)' }}
         ></div>
         <div className='flex max-w-5xl flex-col items-center gap-8 '>
-          <h2 className='text-center z-10 font-semibold text-neutral-1 text-shadow-xl'>
+          <h2 className='text-center z-10 text-3xl font-semibold text-neutral-1 text-shadow-xl'>
             {capitalizeString(ctaText)}
           </h2>
           <ReactMarkdown className='text-center z-10'>{content.body_text}</ReactMarkdown>
