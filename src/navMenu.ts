@@ -65,7 +65,7 @@ export const navs = [
   },
   {
     link: '',
-    name: 'Domestic (American) Brands',
+    name: 'Domestic Brands',
     subpages: [
       { link: '/buick', name: 'Buick' },
       { link: '/cadillac', name: 'Cadillac' },
