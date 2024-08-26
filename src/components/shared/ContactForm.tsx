@@ -44,6 +44,10 @@ const servicesOptions = [
   "Transmission"
 ];
 
+
+
+
+
 const parseServiceFromPath = (path: string): string | null => {
   const pathSegments = path.split('/').filter(Boolean);
   if (pathSegments[0] === 'services' && pathSegments[1]) {
@@ -80,6 +84,39 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
     contact: '',
     submit: false,
   });
+  const [isChecked, setIsChecked] = useState<boolean>(false);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
+const PrivacyPolicyModal: React.FC<{ onClose: () => void }> = ({ onClose }) => (
+  <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50">
+    <div className="bg-neutral-6 relative overflow-scroll p-4 rounded-lg h-full m-4 md:h-1/2 w-full md:m-24 shadow-2xl">
+      <h2 className="text-xl font-bold mb-4">Privacy Policy</h2>
+      <p>Welcome to Zarn Automotive’s Privacy Policy page. We value your privacy and are committed to protecting your personal information. This policy outlines how we collect, use, and safeguard your data when you visit our website or engage with our services.</p>
+      <h3 className="font-semibold mt-4">Information We Collect</h3>
+      <ul className="list-disc ml-6">
+        <li>Personal Information: Name, contact details, and vehicle information provided when you book an appointment or contact us.</li>
+        <li>Usage Data: Information about your interactions with our website, such as IP address, browser type, and pages visited.</li>
+      </ul>
+      <h3 className="font-semibold mt-4">How We Use Your Information</h3>
+      <ul className="list-disc ml-6">
+        <li>Provide and manage our services, including appointment scheduling and customer support.</li>
+        <li>Improve our website and services based on user feedback and usage patterns.</li>
+        <li>Communicate with you about updates, promotions, and service-related matters.</li>
+      </ul>
+      <h3 className="font-semibold mt-4">Data Security</h3>
+      <p>We implement industry-standard security measures to protect your personal information from unauthorized access, disclosure, or misuse. This includes secure servers, encryption, and regular security assessments.</p>
+      <h3 className="font-semibold mt-4">Cookies and Tracking Technologies</h3>
+      <p>Our website uses cookies and similar technologies to enhance user experience and analyze website traffic. You can manage your cookie preferences through your browser settings.</p>
+      <h3 className="font-semibold mt-4">Sharing Your Information</h3>
+      <p>We do not sell or rent your personal information to third parties. We may share information with trusted partners who assist us in operating our website or providing services, always under strict confidentiality agreements.</p>
+      <h3 className="font-semibold mt-4">Your Rights</h3>
+      <p>You have the right to access, correct, or delete your personal information. To make any changes or inquiries, please contact us directly.</p>
+      <h3 className="font-semibold mt-4">Changes to This Policy</h3>
+      <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated effective date.</p>
+      <button onClick={onClose} className="mt-4 py-2 px-4 bg-primary-dk1 text-white rounded-lg hover:bg-primary-dk2">Close</button>
+    </div>
+  </div>
+);
 
   useEffect(() => {
     const parsedService = parseServiceFromPath(currentPath);
@@ -93,9 +130,17 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
     setFormData({ ...formData, [name]: value });
   };
 
+  const handleCheckboxChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setIsChecked(e.target.checked);
+  };
+
   const handleTypeSelection = (type: string) => {
     setFormData({ ...formData, type });
     setStep(2);
+  };
+
+  const handlePrivacyPolicyClick = () => {
+    setIsModalOpen(true);
   };
 
   const handleSubmit = async (e: FormEvent) => {
@@ -238,9 +283,20 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
             required
             className='border-gray-300 rounded-lg border p-2'
           />
+          <div className="flex items-center gap-2">
+            <input
+              type="checkbox"
+              id="agree"
+              onChange={handleCheckboxChange}
+              checked={isChecked}
+              required
+            />
+            <label htmlFor="agree" className='text-white'>Your privacy is important to us. The information you provide will be used solely for the purpose of responding to your inquiry and will not be shared with third parties for marketing purposes. By checking this box, you allow Zarn Automotive to contact you through email, phone, and text messages. For more details, please <button type="button" onClick={handlePrivacyPolicyClick} className="text-primary-dk1 underline">review our Privacy Policy</button>.</label>
+          </div>
           <button
             type='submit'
-            className='bg-primary-dk1 hover:bg-primary-dk2 hover:scale-md mt-4 hover:bg-blue-700 rounded-lg p-2 text-white transition-all duration-200'
+            className={`w-full py-2 rounded-lg ${isChecked ? 'bg-primary-dk1 hover:bg-primary-dk2 cursor-pointer' : 'bg-neutral-6 cursor-not-allowed opacity-60'} transition-none`}
+            disabled={!isChecked}
           >
             Submit
           </button>
@@ -285,9 +341,20 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
             required
             className='border-gray-300 rounded-lg border p-2'
           />
+          <div className="flex items-center gap-2">
+            <input
+              type="checkbox"
+              id="agree"
+              onChange={handleCheckboxChange}
+              checked={isChecked}
+              required
+            />
+            <label htmlFor="agree" className='text-white'>Your privacy is important to us. The information you provide will be used solely for the purpose of responding to your inquiry and will not be shared with third parties for marketing purposes. By checking this box, you allow Zarn Automotive to contact you through email, phone, and text messages. For more details, please <button type="button" onClick={handlePrivacyPolicyClick} className="text-primary-dk1 underline">review our Privacy Policy</button>.</label>
+          </div>
           <button
             type='submit'
-            className='bg-primary-dk1 hover:bg-primary-dk2 hover:scale-md mt-4 hover:bg-blue-700 rounded-lg p-2 text-white transition-all duration-200'
+            className={`w-full py-2 rounded-lg ${isChecked ? 'bg-primary-dk1 hover:bg-primary-dk2 cursor-pointer' : 'bg-neutral-6 cursor-not-allowed opacity-60'} transition-none`}
+            disabled={!isChecked}
           >
             Submit
           </button>
@@ -307,7 +374,10 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
           <Icon icon='mdi:check' className='text-success' width='64' height='64' />
         </div>
       )}
+      {isModalOpen && <PrivacyPolicyModal onClose={() => setIsModalOpen(false)} />}
     </div>
+
+    
   );
 };
 

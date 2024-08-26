@@ -44,6 +44,7 @@ export const navs = [
       { link: '/land-rover', name: 'Land Rover' },
       { link: '/mercedes', name: 'Mercedes' },
       { link: '/porsche', name: 'Porsche' },
+      { link: '/volvo', name: 'Volvo' },
     ],
   },
   {
