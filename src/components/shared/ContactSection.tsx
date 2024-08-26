@@ -44,11 +44,17 @@ const ContactSection: React.FC<Props> = ({
             <address className='mb-8 text-neutral-9 dark:text-neutral-1'>
               {businessAddress}
             </address>
-            <p className='mb-4'>
-              <a href={`tel:${businessPhone}`}>
-                {formatPhoneNumber(businessPhone)}
-              </a>
-            </p>
+            <div className='flex gap-12 align-bottom'>
+              <div className='flex'>
+                <p className='mr-2'>Call:</p>
+                <p className='mb-4'>
+                  <a href={`tel:${businessPhone}`}>
+                    {formatPhoneNumber(businessPhone)}
+                  </a>
+                </p>
+              </div>
+              <a className='mb-4 font-bold' href={`sms:${businessPhone}`}><p>Click to Text Us!</p></a>
+            </div>
             <p className='mb-4'>
               <a href={`mailto:${businessEmail}`}>{businessEmail}</a>
             </p>
