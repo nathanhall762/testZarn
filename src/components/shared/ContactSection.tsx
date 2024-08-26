@@ -44,7 +44,7 @@ const ContactSection: React.FC<Props> = ({
             <address className='mb-8 text-neutral-9 dark:text-neutral-1'>
               {businessAddress}
             </address>
-            <div className='flex flex-wrap justify-center lg:gap-12 align-bottom'>
+            <div className='flex flex-col sm:flex-row flex-wrap justify-center text-center sm:text-start sm:gap-12 align-bottom'>
               <div className='flex'>
                 <p className='mr-2'>Call:</p>
                 <p className='mb-4'>
