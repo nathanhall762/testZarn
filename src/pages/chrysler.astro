@@ -1,0 +1,20 @@
+---
+import EuroLayout from '../layouts/EuroLayout.astro';
+import type { DocumentData } from 'firebase/firestore';
+import { getData } from '../firebase';
+import EuropeanSidekick from '../components/EuropeanSidekick';
+
+const data = await getData('pages', 'chrysler');
+const pageData: DocumentData = data[0];
+---
+
+<EuroLayout
+  title={pageData.title}
+  metaDescription={pageData.seo_metadata.meta_description}
+  pageData={pageData}
+>
+  <EuropeanSidekick
+    content={pageData.content[0].value}
+    logo='simple-icons:chrysler'
+  />
+</EuroLayout>

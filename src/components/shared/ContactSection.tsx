@@ -57,23 +57,23 @@ const ContactSection: React.FC<Props> = ({
             <tbody>
               <tr>
                 <td className='pr-8'>MONDAY</td>
-                <td>9AM - 5PM</td>
+                <td>8AM - 5PM</td>
               </tr>
               <tr>
                 <td className='pr-8'>TUESDAY</td>
-                <td>9AM - 5PM</td>
+                <td>8AM - 5PM</td>
               </tr>
               <tr>
                 <td className='pr-8'>WEDNESDAY</td>
-                <td>9AM - 5PM</td>
+                <td>8AM - 5PM</td>
               </tr>
               <tr>
                 <td className='pr-8'>THURSDAY</td>
-                <td>9AM - 5PM</td>
+                <td>8AM - 5PM</td>
               </tr>
               <tr>
                 <td className='pr-8'>FRIDAY</td>
-                <td>9AM - 5PM</td>
+                <td>8AM - 5PM</td>
               </tr>
               <tr>
                 <td className='pr-8'>SATURDAY</td>

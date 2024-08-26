@@ -109,7 +109,7 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
     try {
       // Structure the document according to the required format
       await addDoc(collection(db, 'mail'), {
-        to: 'nathanhall762@gmail.com', // Use the test email address
+        to: 'zarnautomotivellc@gmail.com', // Use the test email address
         message: {
           subject: formData.type === 'schedule' ? 'Service Scheduling Request' : 'Customer Question',
           // subject: 'Service Scheduling Request',
