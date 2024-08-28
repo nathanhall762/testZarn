@@ -3,6 +3,7 @@ export const navs = [
     link: '/about',
     name: 'About Us',
     subpages: [
+      { link: '/', name: 'About Us' },
       { link: '/facility', name: 'Facility' },
     ]
   },
