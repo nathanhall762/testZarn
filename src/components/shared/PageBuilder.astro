@@ -20,7 +20,7 @@ const { pageData } = Astro.props;
     pageData.content.map((item: Item) => {
       switch (item.type) {
         case 'hero_section':
-          return <Hero content={item.value} client:idle />;
+          return <Hero content={item.value} client:only />;
         case 'sidekick_section':
           return <Sidekick content={item.value} />;
         case 'welcome_message_section':

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { capitalizeString } from '../../../utils/capitilizeString';
 import ReactMarkdown from 'react-markdown';
 
 interface HeroProps {
@@ -7,6 +6,7 @@ interface HeroProps {
     heading: string;
     subheading: string;
     images: string[];
+    mobileImages: string[];
     call_to_action_text?: string;
     call_to_action_link?: string;
   };
@@ -17,6 +17,7 @@ const Hero: React.FC<HeroProps> = ({
     heading: welcomeText,
     subheading: tagline,
     images: backgroundImages,
+    mobileImages,
     call_to_action_text,
     call_to_action_link,
   },
@@ -45,38 +46,62 @@ const Hero: React.FC<HeroProps> = ({
 
   return (
     <div className='relative h-[86vh] shadow-inner'>
-      {backgroundImages.map((image, index) => (
-        <div
-          key={image}
-          className={getImageClasses(index)}
-          style={{ backgroundImage: `url(${image})` }}
-        />
-      ))}
+      {window && window.innerWidth <= 1024
+        ? mobileImages.map((image, index) => (
+            <div
+              key={image}
+              className={getImageClasses(index)}
+              style={{ backgroundImage: `url(${image})` }}
+            />
+          ))
+        : backgroundImages.map((image, index) => (
+            <div
+              key={image}
+              className={getImageClasses(index)}
+              style={{ backgroundImage: `url(${image})` }}
+            />
+          ))}
       <div className='absolute inset-0 h-full w-full bg-black opacity-30'></div>
-      <div className='relative z-10 flex h-full flex-col justify-center text-center p-4 lg:text-left'>
+      <div className='relative z-10 flex h-full flex-col justify-center p-4 text-center lg:text-left'>
         <div className='fade-in-up  bg-opacity-80 px-2 py-16 lg:px-32'>
-          <ReactMarkdown className='pb-2 text-shadow-outline' components={{
+          <ReactMarkdown
+            className='pb-2 text-shadow-outline'
+            components={{
               em(props) {
                 const { node, ...rest } = props;
                 return <span className='mb-2 text-primary-md2' {...rest} />;
               },
               h1(props) {
                 const { node, ...rest } = props;
-                return <h1 className='text-2xl font-bold text-neutral-1 lg:text-left lg:text-5xl' {...rest} />;
-              }
-            }}>
+                return (
+                  <h1
+                    className='text-2xl font-bold text-neutral-1 lg:text-left lg:text-5xl'
+                    {...rest}
+                  />
+                );
+              },
+            }}
+          >
             {welcomeText}
           </ReactMarkdown>
-          <ReactMarkdown className=' pb-16 lg:pb-16 text-shadow-outline' components={{
+          <ReactMarkdown
+            className=' pb-16 text-shadow-outline lg:pb-16'
+            components={{
               em(props) {
                 const { node, ...rest } = props;
                 return <span className='mb-2 text-primary-md2' {...rest} />;
               },
               h2(props) {
                 const { node, ...rest } = props;
-                return <h2 className='text-xl font-normal text-neutral-2 drop-shadow-xl text-shadow-outline lg:text-3xl lg:text-neutral-1' {...rest} />;
-              }
-            }}>
+                return (
+                  <h2
+                    className='text-xl font-normal text-neutral-2 drop-shadow-xl text-shadow-outline lg:text-3xl lg:text-neutral-1'
+                    {...rest}
+                  />
+                );
+              },
+            }}
+          >
             {tagline}
           </ReactMarkdown>
           <div className='flex flex-col items-center justify-start gap-4 lg:flex-row lg:gap-16'>
