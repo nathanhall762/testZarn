@@ -10,6 +10,8 @@ import TabListCards from './sections/TabListCards';
 import TextImagecard from './sections/TextImageCard';
 import Cta from './sections/Cta';
 import Testimonial from './sections/Testimonial';
+import BulletStatsCardTransparent from './sections/BulletStatsCardTransparent';
+import TextImagecardStacked from './sections/TextImageCardStacked';
 const { pageData } = Astro.props;
 ---
 
@@ -25,10 +27,14 @@ const { pageData } = Astro.props;
           return <InfoCardList content={item.value} />;
         case 'bullet_stats_card':
           return <BulletStatsCard content={item.value} />;
+        case 'bullet_stats_card_transparent':
+          return <BulletStatsCardTransparent content={item.value} />;
         case 'tab_list_cards':
           return <TabListCards content={item.value} client:idle />;
         case 'text_image_card':
           return <TextImagecard content={item.value} />;
+        case 'text_image_card_stacked':
+          return <TextImagecardStacked content={item.value} />;
         case 'accordion':
           return <Accordion content={item.value} client:idle />;
         case 'cta_section':
