@@ -38,7 +38,7 @@ const Footer: React.FC<Props> = ({
 
   return (
     <footer className='bg-neutral-9 pb-8 pt-16 text-center text-neutral-1 lg:px-10 dark:bg-neutral-9 dark:text-neutral-1 z-10 relative'>
-      <div className='flex flex-col items-center justify-evenly lg:flex-row lg:justify-between'>
+      <div className='flex flex-col items-center gap-4 justify-evenly lg:flex-row lg:justify-between'>
         <div className='hidden lg:block'>
           {address && 
           <a href="https://maps.app.goo.gl/1Y5cx55c5cTDJp1R6" target='_blank'>
@@ -59,7 +59,7 @@ const Footer: React.FC<Props> = ({
           </a>
         </div>
         <div>
-          <nav className='mb-8 flex flex-col items-center gap-4 lg:flex-row lg:justify-end lg:gap-8'>
+          <nav className='mb-8 flex flex-col items-center gap-4 lg:flex-row lg:justify-end'>
             {navs.map((nav) => (
               <a
                 className='hover:text-primary-md1'

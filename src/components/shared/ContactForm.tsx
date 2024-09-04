@@ -9,6 +9,7 @@ interface FormData {
   lastname: string;
   make: string;
   model: string;
+  vin: string;
   color: string;
   service: string;
   body: string;
@@ -78,6 +79,7 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
     lastname: '',
     make: '',
     model: '',
+    vin: '',
     color: '',
     service: '',
     body: '',
@@ -162,6 +164,7 @@ const PrivacyPolicyModal: React.FC<{ onClose: () => void }> = ({ onClose }) => (
             <h3>${formData.firstname} ${formData.lastname} has submitted a ${formData.type} request.</h3>
             <p><strong>Vehicle Make:</strong> ${formData.make}</p>
             <p><strong>Vehicle Model:</strong> ${formData.model}</p>
+            <p><strong>Vehicle VIN:</strong> ${formData.vin}</p>
             <p><strong>Vehicle Color:</strong> ${formData.color}</p>
             <p><strong>Service Requested:</strong> ${formData.service}</p>
             <p><strong>Message:</strong> ${formData.body}</p>
@@ -212,7 +215,7 @@ const PrivacyPolicyModal: React.FC<{ onClose: () => void }> = ({ onClose }) => (
           <input
             type='text'
             name='firstname'
-            placeholder='First Name'
+            placeholder='First Name*'
             value={formData.firstname}
             onChange={handleChange}
             required
@@ -247,6 +250,15 @@ const PrivacyPolicyModal: React.FC<{ onClose: () => void }> = ({ onClose }) => (
           />
           <input
             type='text'
+            name='vin'
+            placeholder='VIN (optional)'
+            maxLength={17}
+            value={formData.vin}
+            onChange={handleChange}
+            className='border-gray-300 rounded-lg border p-2' 
+          />
+          <input
+            type='text'
             name='color'
             placeholder='Color'
             value={formData.color}
@@ -277,7 +289,7 @@ const PrivacyPolicyModal: React.FC<{ onClose: () => void }> = ({ onClose }) => (
           <input
             type='text'
             name='contact'
-            placeholder='Preferred phone/email'
+            placeholder='Preferred phone/email*'
             value={formData.contact}
             onChange={handleChange}
             required
@@ -291,7 +303,7 @@ const PrivacyPolicyModal: React.FC<{ onClose: () => void }> = ({ onClose }) => (
               checked={isChecked}
               required
             />
-            <label htmlFor="agree" className='text-white'>Your privacy is important to us. The information you provide will be used solely for the purpose of responding to your inquiry and will not be shared with third parties for marketing purposes. By checking this box, you allow Zarn Automotive to contact you through email, phone, and text messages. For more details, please <button type="button" onClick={handlePrivacyPolicyClick} className="text-primary-dk1 underline">review our Privacy Policy</button>.</label>
+            <label htmlFor="agree" className='text-white'>Your privacy is important to us. The information you provide will be used solely for the purpose of responding to your inquiry and will not be shared with third parties for marketing purposes. By checking this box, you allow Zarn Automotive to contact you through email, phone, and text messages. For more details, please <button type="button" onClick={handlePrivacyPolicyClick} className="text-primary-lt2 hover:text-primary-md3 underline">review our Privacy Policy</button>.</label>
           </div>
           <button
             type='submit'
@@ -349,7 +361,7 @@ const PrivacyPolicyModal: React.FC<{ onClose: () => void }> = ({ onClose }) => (
               checked={isChecked}
               required
             />
-            <label htmlFor="agree" className='text-white'>Your privacy is important to us. The information you provide will be used solely for the purpose of responding to your inquiry and will not be shared with third parties for marketing purposes. By checking this box, you allow Zarn Automotive to contact you through email, phone, and text messages. For more details, please <button type="button" onClick={handlePrivacyPolicyClick} className="text-primary-dk1 underline">review our Privacy Policy</button>.</label>
+            <label htmlFor="agree" className='text-white'>Your privacy is important to us. The information you provide will be used solely for the purpose of responding to your inquiry and will not be shared with third parties for marketing purposes. By checking this box, you allow Zarn Automotive to contact you through email, phone, and text messages. For more details, please <button type="button" onClick={handlePrivacyPolicyClick} className="text-primary-lt2 hover:text-primary-md3 underline">review our Privacy Policy</button>.</label>
           </div>
           <button
             type='submit'
