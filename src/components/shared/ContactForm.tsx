@@ -234,6 +234,9 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
 
       setStep(3);
       setFormData({ ...formData, submit: true });
+
+      // hard code redirect to /thank-you
+      window.location.href = `/thank-you?type=${formData.type}`;
     } catch (error) {
       console.error('Error writing document: ', error);
       alert('There was an error submitting your form. Please try again.');
