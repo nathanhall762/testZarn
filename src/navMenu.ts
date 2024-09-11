@@ -5,7 +5,7 @@ export const navs = [
     subpages: [
       { link: '/', name: 'About Us' },
       { link: '/facility', name: 'Facility' },
-    ]
+    ],
   },
   {
     link: '/services',
@@ -22,7 +22,6 @@ export const navs = [
       { link: '/drivetrain', name: 'Drivetrain' },
       { link: '/electrical-concerns', name: 'Electrical Concerns' },
       { link: '/engine-cooling-system', name: 'Engine Cooling System' },
-      { link: '/engine-performance-repair', name: 'Engine Performance Repair' },
       { link: '/fleet-services', name: 'Fleet Services' },
       { link: '/fuel-system', name: 'Fuel System' },
       { link: '/hybrid-electric-vehicles', name: 'Hybrid/Electric Vehicles' },
@@ -41,9 +40,11 @@ export const navs = [
     subpages: [
       { link: '/audi', name: 'Audi' },
       { link: '/bmw', name: 'BMW' },
+      { link: '/fiat', name: 'Fiat' },
       { link: '/jaguar', name: 'Jaguar' },
       { link: '/land-rover', name: 'Land Rover' },
       { link: '/mercedes', name: 'Mercedes' },
+      { link: '/mini-cooper', name: 'Mini Cooper' },
       { link: '/porsche', name: 'Porsche' },
       { link: '/volvo', name: 'Volvo' },
     ],
