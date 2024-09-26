@@ -35,10 +35,14 @@ const testReview: Review = {
   relativePublishTimeDescription: 'thsi is great',
 };
 
-let reviews;
+let reviews = [];
 if (import.meta.env.PROD === true) {
-  const { reviewData } = await import('../googleReviews');
-  reviews = reviewData;
+  try {
+    const { reviewData } = await import('../googleReviews');
+    reviews = reviewData ?? [];
+  } catch (error) {
+    console.error('Error loading reviews:', error);
+  }
 } else {
   reviews = Array(5).fill(testReview);
 }
