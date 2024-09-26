@@ -1,0 +1,19 @@
+---
+import Layout from '../layouts/Layout.astro';
+import type { DocumentData } from 'firebase/firestore';
+
+import { getData } from '../firebase';
+
+const data = await getData('pages', 'Privacy-Policy');
+const pageData: DocumentData = data[0];
+console.log(pageData);
+---
+
+<Layout
+  title={pageData.title}
+  metaDescription={pageData.seo_metadata.meta_description}
+  pageData={pageData}
+>
+  <!-- extremely stupid hard code fixes weird bg issue -->
+  <div class='absolute top-0 z-0 h-[20vh] w-full bg-black lg:h-[23vh]'></div>
+</Layout>

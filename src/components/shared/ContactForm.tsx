@@ -379,19 +379,17 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
               required
             />
             <label htmlFor='agree' className='text-white'>
-              Your privacy is important to us. The information you provide will
-              be used solely for the purpose of responding to your inquiry and
-              will not be shared with third parties for marketing purposes. By
-              checking this box, you allow Zarn Automotive to contact you
-              through email, phone, and text messages. For more details, please{' '}
-              <button
-                type='button'
-                onClick={handlePrivacyPolicyClick}
-                className='text-primary-lt2 underline hover:text-primary-md3'
+              By submitting your information, you agree to our{' '}
+              <a
+                href='/privacy-policy'
+                className='text-primary-md3 hover:scale-150'
               >
-                review our Privacy Policy
-              </button>
-              .
+                Privacy Policy
+              </a>{' '}
+              and understand how we collect, use, and protect your personal
+              data. Your privacy is important to us, and we are committed to
+              safeguarding your information. If you have any questions, please
+              feel free to reach out.
             </label>
           </div>
           <button
@@ -454,19 +452,19 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
               required
             />
             <label htmlFor='agree' className='text-white'>
-              Your privacy is important to us. The information you provide will
-              be used solely for the purpose of responding to your inquiry and
-              will not be shared with third parties for marketing purposes. By
-              checking this box, you allow Zarn Automotive to contact you
-              through email, phone, and text messages. For more details, please{' '}
-              <button
-                type='button'
-                onClick={handlePrivacyPolicyClick}
-                className='text-primary-lt2 underline hover:text-primary-md3'
-              >
-                review our Privacy Policy
-              </button>
-              .
+              <label htmlFor='agree' className='text-white'>
+                By submitting your information, you agree to our{' '}
+                <a
+                  href='/privacy-policy'
+                  className='text-primary-md3 hover:scale-150'
+                >
+                  Privacy Policy
+                </a>{' '}
+                and understand how we collect, use, and protect your personal
+                data. Your privacy is important to us, and we are committed to
+                safeguarding your information. If you have any questions, please
+                feel free to reach out.
+              </label>
             </label>
           </div>
           <button
