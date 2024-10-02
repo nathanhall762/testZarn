@@ -300,13 +300,12 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
             placeholder='Last Name'
             value={formData.lastname}
             onChange={handleChange}
-            required
             className='border-gray-300 rounded-lg border p-2'
           />
           <input
             type='text'
             name='make'
-            placeholder='Vehicle Make'
+            placeholder='Vehicle Make*'
             value={formData.make}
             onChange={handleChange}
             required
@@ -315,7 +314,7 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
           <input
             type='text'
             name='model'
-            placeholder='Vehicle Model'
+            placeholder='Vehicle Model*'
             value={formData.model}
             onChange={handleChange}
             required
@@ -324,11 +323,12 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
           <input
             type='text'
             name='vin'
-            placeholder='VIN (optional)'
+            placeholder='VIN*'
             maxLength={17}
             value={formData.vin}
             onChange={handleChange}
-            className='border-gray-300 rounded-lg border p-2'
+            required
+            className='border-gray-300 rounded-lg border p-2' 
           />
           <input
             type='text'
@@ -336,7 +336,6 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
             placeholder='Color'
             value={formData.color}
             onChange={handleChange}
-            required
             className='border-gray-300 rounded-lg border p-2'
           />
           <select
@@ -346,7 +345,7 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
             required
             className='border-gray-300 rounded-lg border p-2'
           >
-            <option value=''>Type of Service Needed</option>
+            <option value=''>Type of Service Needed*</option>
             {servicesOptions.map((service, index) => (
               <option key={index} value={service}>
                 {service}
@@ -355,7 +354,7 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
           </select>
           <textarea
             name='body'
-            placeholder='Question or message for our team'
+            placeholder='Question or message for our team*'
             value={formData.body}
             onChange={handleChange}
             required
