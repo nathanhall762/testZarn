@@ -227,13 +227,12 @@ const PrivacyPolicyModal: React.FC<{ onClose: () => void }> = ({ onClose }) => (
             placeholder='Last Name'
             value={formData.lastname}
             onChange={handleChange}
-            required
             className='border-gray-300 rounded-lg border p-2'
           />
           <input
             type='text'
             name='make'
-            placeholder='Vehicle Make'
+            placeholder='Vehicle Make*'
             value={formData.make}
             onChange={handleChange}
             required
@@ -242,7 +241,7 @@ const PrivacyPolicyModal: React.FC<{ onClose: () => void }> = ({ onClose }) => (
           <input
             type='text'
             name='model'
-            placeholder='Vehicle Model'
+            placeholder='Vehicle Model*'
             value={formData.model}
             onChange={handleChange}
             required
@@ -251,10 +250,11 @@ const PrivacyPolicyModal: React.FC<{ onClose: () => void }> = ({ onClose }) => (
           <input
             type='text'
             name='vin'
-            placeholder='VIN (optional)'
+            placeholder='VIN*'
             maxLength={17}
             value={formData.vin}
             onChange={handleChange}
+            required
             className='border-gray-300 rounded-lg border p-2' 
           />
           <input
@@ -263,7 +263,6 @@ const PrivacyPolicyModal: React.FC<{ onClose: () => void }> = ({ onClose }) => (
             placeholder='Color'
             value={formData.color}
             onChange={handleChange}
-            required
             className='border-gray-300 rounded-lg border p-2'
           />
           <select
@@ -273,14 +272,14 @@ const PrivacyPolicyModal: React.FC<{ onClose: () => void }> = ({ onClose }) => (
             required
             className='border-gray-300 rounded-lg border p-2'
           >
-            <option value=''>Type of Service Needed</option>
+            <option value=''>Type of Service Needed*</option>
             {servicesOptions.map((service, index) => (
               <option key={index} value={service}>{service}</option>
             ))}
           </select>
           <textarea
             name='body'
-            placeholder='Question or message for our team'
+            placeholder='Question or message for our team*'
             value={formData.body}
             onChange={handleChange}
             required
