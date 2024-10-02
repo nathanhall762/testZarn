@@ -34,8 +34,6 @@ const Header: React.FC<HeaderProps> = ({
   const [isScrolled, setIsScrolled] = useState(false);
   const [subNavOpen, setSubNavOpen] = useState<Nav | undefined>();
 
-  console.log(socials);
-
   useEffect(() => {
     initAnalytics();
   }, []);

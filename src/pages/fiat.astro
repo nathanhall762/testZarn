@@ -4,7 +4,7 @@ import type { DocumentData } from 'firebase/firestore';
 import { getData } from '../firebase';
 import EuropeanSidekick from '../components/EuropeanSidekick';
 
-const data = await getData('pages', 'mercedes');
+const data = await getData('pages', 'Fiat');
 const pageData: DocumentData = data[0];
 ---
 
@@ -15,6 +15,6 @@ const pageData: DocumentData = data[0];
 >
   <EuropeanSidekick
     content={pageData.content[0].value}
-    logo='simple-icons:mercedes'
+    logo='simple-icons:fiat'
   />
 </EuroLayout>

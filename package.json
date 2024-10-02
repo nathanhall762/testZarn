@@ -5,13 +5,14 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro check && astro build",
+    "build": "astro check --minimumSeverity warning && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "lint": "prettier -w **/*.tsx"
   },
   "dependencies": {
     "@astrojs/check": "^0.4.1",
+    "@astrojs/partytown": "^2.1.2",
     "@astrojs/react": "^3.0.9",
     "@astrojs/tailwind": "^5.1.0",
     "@iconify/icons-mdi": "^1.2.48",
