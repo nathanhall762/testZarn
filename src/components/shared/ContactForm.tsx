@@ -97,12 +97,10 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
       <div className='relative m-4 h-full w-full overflow-scroll rounded-lg bg-neutral-6 p-4 shadow-2xl md:m-24 md:h-1/2'>
         <h2 className='mb-4 text-xl font-bold'>Privacy Policy</h2>
         <p>
-          Welcome to Zarn Automotive’s Privacy Policy page. We value your
-          privacy and are committed to protecting your personal information.
-          This policy outlines how we collect, use, and safeguard your data when
-          you visit our website or engage with our services.
+        At Zarn Automotive, we are committed to protecting your privacy. This Privacy Policy outlines how we collect, use, and safeguard your personal information when you visit our website or utilize our services. By accessing our site, you agree to the terms outlined in this policy.
         </p>
         <h3 className='mt-4 font-semibold'>Information We Collect</h3>
+        <p className='mt-2'>We may collect the following types of information:</p>
         <ul className='ml-6 list-disc'>
           <li>
             Personal Information: Name, contact details, and vehicle information
@@ -114,6 +112,7 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
           </li>
         </ul>
         <h3 className='mt-4 font-semibold'>How We Use Your Information</h3>
+        <p className='mt-2'>Zarn Automotive uses your information for the following purposes:</p>
         <ul className='ml-6 list-disc'>
           <li>
             Provide and manage our services, including appointment scheduling
@@ -161,6 +160,18 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
           We may update this Privacy Policy from time to time. Any changes will
           be posted on this page with an updated effective date.
         </p>
+        <h3 className='mt-4 font-semibold'>Contact Us</h3>
+        <p className='mt-2'>
+          If you have any questions or concerns about our Privacy Policy, please
+          contact us at:
+          <br />
+          Zarn Automotive
+          <br />
+918-940-7800
+<br />
+2010 N. Yellowood Ave, Broken Arrow OK 74012
+        </p>
+        <p>Thank you for choosing Zarn Automotive. Your privacy is important to us.</p>
         <button
           onClick={onClose}
           className='mt-4 rounded-lg bg-primary-dk1 px-4 py-2 text-white hover:bg-primary-dk2'
