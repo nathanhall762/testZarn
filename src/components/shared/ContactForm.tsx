@@ -89,6 +89,7 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
   });
   const [isChecked, setIsChecked] = useState<boolean>(false);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [isReady, setIsReady] = useState<boolean>(false);
 
   const PrivacyPolicyModal: React.FC<{ onClose: () => void }> = ({
     onClose,
@@ -97,10 +98,16 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
       <div className='relative m-4 h-full w-full overflow-scroll rounded-lg bg-neutral-6 p-4 shadow-2xl md:m-24 md:h-1/2'>
         <h2 className='mb-4 text-xl font-bold'>Privacy Policy</h2>
         <p>
-        At Zarn Automotive, we are committed to protecting your privacy. This Privacy Policy outlines how we collect, use, and safeguard your personal information when you visit our website or utilize our services. By accessing our site, you agree to the terms outlined in this policy.
+          At Zarn Automotive, we are committed to protecting your privacy. This
+          Privacy Policy outlines how we collect, use, and safeguard your
+          personal information when you visit our website or utilize our
+          services. By accessing our site, you agree to the terms outlined in
+          this policy.
         </p>
         <h3 className='mt-4 font-semibold'>Information We Collect</h3>
-        <p className='mt-2'>We may collect the following types of information:</p>
+        <p className='mt-2'>
+          We may collect the following types of information:
+        </p>
         <ul className='ml-6 list-disc'>
           <li>
             Personal Information: Name, contact details, and vehicle information
@@ -112,7 +119,9 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
           </li>
         </ul>
         <h3 className='mt-4 font-semibold'>How We Use Your Information</h3>
-        <p className='mt-2'>Zarn Automotive uses your information for the following purposes:</p>
+        <p className='mt-2'>
+          Zarn Automotive uses your information for the following purposes:
+        </p>
         <ul className='ml-6 list-disc'>
           <li>
             Provide and manage our services, including appointment scheduling
@@ -167,11 +176,14 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
           <br />
           Zarn Automotive
           <br />
-918-940-7800
-<br />
-2010 N. Yellowood Ave, Broken Arrow OK 74012
+          918-940-7800
+          <br />
+          2010 N. Yellowood Ave, Broken Arrow OK 74012
         </p>
-        <p>Thank you for choosing Zarn Automotive. Your privacy is important to us.</p>
+        <p>
+          Thank you for choosing Zarn Automotive. Your privacy is important to
+          us.
+        </p>
         <button
           onClick={onClose}
           className='mt-4 rounded-lg bg-primary-dk1 px-4 py-2 text-white hover:bg-primary-dk2'
@@ -194,6 +206,31 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
   ) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+    if (formData.type === 'schedule') {
+      if (
+      !formData.firstname ||
+      !formData.make ||
+      !formData.model ||
+      !formData.vin ||
+      !formData.service ||
+      !formData.body ||
+      !formData.contact
+    ) {
+      setIsReady(false);
+      } else {
+        setIsReady(true);
+      }
+    } else if (formData.type === 'question') {
+      if (
+      !formData.firstname ||
+      !formData.body ||
+      !formData.contact
+    ) {
+      setIsReady(false);
+      } else {
+        setIsReady(true);
+      }
+    }
   };
 
   const handleCheckboxChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -203,6 +240,7 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
   const handleTypeSelection = (type: string) => {
     setFormData({ ...formData, type });
     setStep(2);
+    console.log('formData:', formData.type);
   };
 
   const handlePrivacyPolicyClick = () => {
@@ -217,6 +255,31 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
     ) {
       alert('Please enter a valid email or phone number.');
       return;
+    }
+    // Check if all required fields are filled out
+    if (formData.type === 'schedule') {
+      if (
+      !formData.firstname ||
+      !formData.make ||
+      !formData.model ||
+      !formData.vin ||
+      !formData.service ||
+      !formData.body ||
+      !formData.contact
+      ) {
+      alert('Please fill out all required fields.');
+      return;
+      }
+    }
+    if (formData.type === 'question') {
+      if (
+      !formData.firstname ||
+      !formData.body ||
+      !formData.contact
+      ) {
+      alert('Please fill out all required fields.');
+      return;
+      }
     }
     // send formData as document in Firestore collection 'mail'
     try {
@@ -339,7 +402,7 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
             value={formData.vin}
             onChange={handleChange}
             required
-            className='border-gray-300 rounded-lg border p-2' 
+            className='border-gray-300 rounded-lg border p-2'
           />
           <input
             type='text'
@@ -406,8 +469,8 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
           </div>
           <button
             type='submit'
-            className={`w-full rounded-lg py-2 ${isChecked ? 'cursor-pointer bg-primary-dk1 hover:bg-primary-dk2' : 'cursor-not-allowed bg-neutral-6 opacity-60'} transition-none`}
-            disabled={!isChecked}
+            className={`w-full rounded-lg py-2 ${isChecked && isReady ? 'cursor-pointer bg-primary-dk1 hover:bg-primary-dk2 text-white' : 'cursor-not-allowed bg-neutral-6 opacity-60'} transition-none`}
+            disabled={!isChecked || !isReady}
           >
             Submit
           </button>
@@ -423,7 +486,7 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
           <input
             type='text'
             name='firstname'
-            placeholder='First Name'
+            placeholder='First Name*'
             value={formData.firstname}
             onChange={handleChange}
             required
@@ -435,12 +498,11 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
             placeholder='Last Name'
             value={formData.lastname}
             onChange={handleChange}
-            required
             className='border-gray-300 rounded-lg border p-2'
           />
           <textarea
             name='body'
-            placeholder='Question or message for our team'
+            placeholder='Question or message for our team*'
             value={formData.body}
             onChange={handleChange}
             required
@@ -449,7 +511,7 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
           <input
             type='text'
             name='contact'
-            placeholder='Preferred phone/email'
+            placeholder='Preferred phone/email*'
             value={formData.contact}
             onChange={handleChange}
             required
@@ -481,8 +543,8 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
           </div>
           <button
             type='submit'
-            className={`w-full rounded-lg py-2 ${isChecked ? 'cursor-pointer bg-primary-dk1 hover:bg-primary-dk2' : 'cursor-not-allowed bg-neutral-6 opacity-60'} transition-none`}
-            disabled={!isChecked}
+            className={`w-full rounded-lg py-2 ${isChecked && isReady ? 'cursor-pointer bg-primary-dk1 hover:bg-primary-dk2 text-white' : 'cursor-not-allowed bg-neutral-6 opacity-60'} transition-none`}
+            disabled={!isChecked || !isReady}
           >
             Submit
           </button>
