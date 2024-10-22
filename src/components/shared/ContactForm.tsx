@@ -73,9 +73,9 @@ const isValidPhoneNumber = (phone: string): boolean => {
 };
 
 const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
-  const [step, setStep] = useState<number>(1);
+  const [step, setStep] = useState<number>(2);
   const [formData, setFormData] = useState<FormData>({
-    type: '',
+    type: 'schedule',
     firstname: '',
     lastname: '',
     make: '',
@@ -209,8 +209,10 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
     if (formData.type === 'schedule') {
       if (
       !formData.firstname ||
+      !formData.lastname ||
       !formData.make ||
       !formData.model ||
+      !formData.color ||
       !formData.vin ||
       !formData.service ||
       !formData.body ||
@@ -220,28 +222,29 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
       } else {
         setIsReady(true);
       }
-    } else if (formData.type === 'question') {
-      if (
-      !formData.firstname ||
-      !formData.body ||
-      !formData.contact
-    ) {
-      setIsReady(false);
-      } else {
-        setIsReady(true);
-      }
-    }
+    } 
+    // else if (formData.type === 'question') {
+    //   if (
+    //   !formData.firstname ||
+    //   !formData.body ||
+    //   !formData.contact
+    // ) {
+    //   setIsReady(false);
+    //   } else {
+    //     setIsReady(true);
+    //   }
+    // }
   };
 
   const handleCheckboxChange = (e: ChangeEvent<HTMLInputElement>) => {
     setIsChecked(e.target.checked);
   };
 
-  const handleTypeSelection = (type: string) => {
-    setFormData({ ...formData, type });
-    setStep(2);
-    console.log('formData:', formData.type);
-  };
+  // const handleTypeSelection = (type: string) => {
+  //   setFormData({ ...formData, type });
+  //   setStep(2);
+  //   console.log('formData:', formData.type);
+  // };
 
   const handlePrivacyPolicyClick = () => {
     setIsModalOpen(true);
@@ -271,16 +274,16 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
       return;
       }
     }
-    if (formData.type === 'question') {
-      if (
-      !formData.firstname ||
-      !formData.body ||
-      !formData.contact
-      ) {
-      alert('Please fill out all required fields.');
-      return;
-      }
-    }
+    // if (formData.type === 'question') {
+    //   if (
+    //   !formData.firstname ||
+    //   !formData.body ||
+    //   !formData.contact
+    //   ) {
+    //   alert('Please fill out all required fields.');
+    //   return;
+    //   }
+    // }
     // send formData as document in Firestore collection 'mail'
     try {
       // Structure the document according to the required format
@@ -319,7 +322,7 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
 
   return (
     <div className='size-full p-2'>
-      {step === 1 && (
+      {/* {step === 1 && (
         <div className='flex size-full flex-col items-center justify-center gap-4 lg:text-3xl'>
           <button
             className='flex size-full items-center justify-center gap-4 rounded-3xl py-16 outline transition-all duration-fast hover:scale-md hover:bg-primary-dk1'
@@ -338,7 +341,7 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
             <Icon icon='mdi:comment-question' className='text-4xl' />
           </button>
         </div>
-      )}
+      )} */}
 
       {step === 2 && formData.type === 'schedule' && (
         <form
@@ -371,9 +374,10 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
           <input
             type='text'
             name='lastname'
-            placeholder='Last Name'
+            placeholder='Last Name*'
             value={formData.lastname}
             onChange={handleChange}
+            required
             className='border-gray-300 rounded-lg border p-2'
           />
           <input
@@ -407,9 +411,10 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
           <input
             type='text'
             name='color'
-            placeholder='Color'
+            placeholder='Color*'
             value={formData.color}
             onChange={handleChange}
+            required
             className='border-gray-300 rounded-lg border p-2'
           />
           <select
@@ -477,7 +482,7 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
         </form>
       )}
 
-      {step === 2 && formData.type === 'question' && (
+      {/* {step === 2 && formData.type === 'question' && (
         <form
           onSubmit={handleSubmit}
           className='flex flex-col gap-4 py-4 text-neutral-9 lg:px-8'
@@ -549,7 +554,7 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
             Submit
           </button>
         </form>
-      )}
+      )} */}
 
       {step === 3 && formData.type === 'schedule' && formData.submit && (
         <div className='m-4 lg:m-16'>
@@ -567,7 +572,7 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
         </div>
       )}
 
-      {step === 3 && formData.type === 'question' && formData.submit && (
+      {/* {step === 3 && formData.type === 'question' && formData.submit && (
         <div className='m-4 lg:m-16'>
           <p>
             Thank you for contacting Zarn Automotive! Our representative will
@@ -580,7 +585,7 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
             height='64'
           />
         </div>
-      )}
+      )} */}
       {isModalOpen && (
         <PrivacyPolicyModal onClose={() => setIsModalOpen(false)} />
       )}
