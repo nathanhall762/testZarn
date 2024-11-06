@@ -205,36 +205,37 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-    if (formData.type === 'schedule') {
-      if (
-      !formData.firstname ||
-      !formData.lastname ||
-      !formData.make ||
-      !formData.model ||
-      !formData.color ||
-      !formData.vin ||
-      !formData.service ||
-      !formData.body ||
-      !formData.contact
-    ) {
+  
+    // Update formData with the new value
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  
+    // Enforce 17-character requirement only for VIN
+    if (name === 'vin' && value.length !== 17) {
       setIsReady(false);
-      } else {
-        setIsReady(true);
-      }
-    } 
-    // else if (formData.type === 'question') {
-    //   if (
-    //   !formData.firstname ||
-    //   !formData.body ||
-    //   !formData.contact
-    // ) {
-    //   setIsReady(false);
-    //   } else {
-    //     setIsReady(true);
-    //   }
-    // }
+      return; // Exit early if VIN length isn't exactly 17
+    }
+  
+    // Check readiness for 'schedule' type forms based on required fields
+    if (formData.type === 'schedule') {
+      const isFormReady = [
+        formData.firstname,
+        formData.lastname,
+        formData.make,
+        formData.model,
+        formData.color,
+        formData.vin,
+        formData.service,
+        formData.body,
+        formData.contact,
+      ].every(Boolean); // Verifies all fields are truthy (non-empty)
+  
+      setIsReady(isFormReady);
+    }
   };
+  
 
   const handleCheckboxChange = (e: ChangeEvent<HTMLInputElement>) => {
     setIsChecked(e.target.checked);
@@ -401,7 +402,7 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
           <input
             type='text'
             name='vin'
-            placeholder='VIN*'
+            placeholder='VIN* (17 characters)'
             maxLength={17}
             value={formData.vin}
             onChange={handleChange}
