@@ -205,19 +205,19 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
-  
+
     // Update formData with the new value
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
-  
+
     // Enforce 17-character requirement only for VIN
     if (name === 'vin' && value.length !== 17) {
       setIsReady(false);
       return; // Exit early if VIN length isn't exactly 17
     }
-  
+
     // Check readiness for 'schedule' type forms based on required fields
     if (formData.type === 'schedule') {
       const isFormReady = [
@@ -231,11 +231,10 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
         formData.body,
         formData.contact,
       ].every(Boolean); // Verifies all fields are truthy (non-empty)
-  
+
       setIsReady(isFormReady);
     }
   };
-  
 
   const handleCheckboxChange = (e: ChangeEvent<HTMLInputElement>) => {
     setIsChecked(e.target.checked);
@@ -263,16 +262,16 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
     // Check if all required fields are filled out
     if (formData.type === 'schedule') {
       if (
-      !formData.firstname ||
-      !formData.make ||
-      !formData.model ||
-      !formData.vin ||
-      !formData.service ||
-      !formData.body ||
-      !formData.contact
+        !formData.firstname ||
+        !formData.make ||
+        !formData.model ||
+        !formData.vin ||
+        !formData.service ||
+        !formData.body ||
+        !formData.contact
       ) {
-      alert('Please fill out all required fields.');
-      return;
+        alert('Please fill out all required fields.');
+        return;
       }
     }
     // if (formData.type === 'question') {
@@ -297,6 +296,7 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
               : 'Customer Question',
           // subject: 'Service Scheduling Request',
           html: `
+            <strong>This is an automated message from the Zarn Automotive website. Contact the customer via their contact method below.</strong>
             <h3>${formData.firstname} ${formData.lastname} has submitted a ${formData.type} request.</h3>
             <p><strong>Vehicle Make:</strong> ${formData.make}</p>
             <p><strong>Vehicle Model:</strong> ${formData.model}</p>
@@ -475,7 +475,7 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
           </div>
           <button
             type='submit'
-            className={`w-full rounded-lg py-2 ${isChecked && isReady ? 'cursor-pointer bg-primary-dk1 hover:bg-primary-dk2 text-white' : 'cursor-not-allowed bg-neutral-6 opacity-60'} transition-none`}
+            className={`w-full rounded-lg py-2 ${isChecked && isReady ? 'cursor-pointer bg-primary-dk1 text-white hover:bg-primary-dk2' : 'cursor-not-allowed bg-neutral-6 opacity-60'} transition-none`}
             disabled={!isChecked || !isReady}
           >
             Submit
