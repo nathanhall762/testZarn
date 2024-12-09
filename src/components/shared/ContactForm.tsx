@@ -18,7 +18,8 @@ interface FormData {
   color: string;
   service: string;
   body: string;
-  contact: string;
+  phone: string;
+  email: string;
   submit: boolean;
 }
 
@@ -84,7 +85,8 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
     color: '',
     service: '',
     body: '',
-    contact: '',
+    phone: '',
+    email: '',
     submit: false,
   });
   const [isChecked, setIsChecked] = useState<boolean>(false);
@@ -229,7 +231,8 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
         formData.vin,
         formData.service,
         formData.body,
-        formData.contact,
+        formData.phone,
+        formData.email,
       ].every(Boolean); // Verifies all fields are truthy (non-empty)
 
       setIsReady(isFormReady);
@@ -252,13 +255,15 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (
-      !isValidEmail(formData.contact) &&
-      !isValidPhoneNumber(formData.contact)
-    ) {
-      alert('Please enter a valid email or phone number.');
+    if (!isValidEmail(formData.email)) {
+      alert('Please enter a valid email.');
       return;
     }
+    if (!isValidPhoneNumber(formData.phone)) {
+      alert('Please enter a valid phone number.');
+      return;
+    }
+
     // Check if all required fields are filled out
     if (formData.type === 'schedule') {
       if (
@@ -268,7 +273,8 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
         !formData.vin ||
         !formData.service ||
         !formData.body ||
-        !formData.contact
+        !formData.email ||
+        !formData.phone
       ) {
         alert('Please fill out all required fields.');
         return;
@@ -304,7 +310,8 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
             <p><strong>Vehicle Color:</strong> ${formData.color}</p>
             <p><strong>Service Requested:</strong> ${formData.service}</p>
             <p><strong>Message:</strong> ${formData.body}</p>
-            <p><strong>Contact:</strong> ${formData.contact}</p>
+            <p><strong>Email:</strong> ${formData.email}</p>
+            <p><strong>Phone:</strong> ${formData.phone}</p>
           `,
           // html: 'If you are seeing this in your email, the form submission was successful.',
         },
@@ -441,10 +448,19 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
             className='border-gray-300 rounded-lg border p-2'
           />
           <input
-            type='text'
-            name='contact'
-            placeholder='Preferred phone/email*'
-            value={formData.contact}
+            type='email'
+            name='email'
+            placeholder='Email address*'
+            value={formData.email}
+            onChange={handleChange}
+            required
+            className='border-gray-300 rounded-lg border p-2'
+          />
+          <input
+            type='tel'
+            name='phone'
+            placeholder='Phone number*'
+            value={formData.phone}
             onChange={handleChange}
             required
             className='border-gray-300 rounded-lg border p-2'
