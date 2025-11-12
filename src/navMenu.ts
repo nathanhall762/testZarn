@@ -79,6 +79,7 @@ export const navs = [
       { link: '/gmc', name: 'GMC' },
       { link: '/ram', name: 'Ram' },
       { link: '/jeep', name: 'Jeep' },
+      { link: '/tesla', name: 'Tesla' },
     ],
   },
   { link: '/testimonials', name: 'Testimonials' },
