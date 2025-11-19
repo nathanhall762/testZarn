@@ -50,7 +50,6 @@ export const navs = [
       { link: '/mini-cooper', name: 'Mini Cooper' },
       { link: '/porsche', name: 'Porsche' },
       { link: '/rolls-royce-repair', name: 'Rolls-Royce' },
-      { link: '/tesla', name: 'Tesla' },
       { link: '/volvo', name: 'Volvo' },
     ],
   },
