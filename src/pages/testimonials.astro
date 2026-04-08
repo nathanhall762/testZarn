@@ -28,10 +28,12 @@ const docIds = [
 const servicesArray: DocumentData[] = await fetchServiceData(docIds);
 
 // Extracting testimonials
-const testimonials = servicesArray.map(service => {
-  const testimonialSection = service.content.find((section: { type: string; }) => section.type === 'testimonial');
-  return testimonialSection ? testimonialSection.value : null;
-}).filter(Boolean);
+const testimonials = servicesArray
+  .filter(service => service != null && Array.isArray(service.content))
+  .map(service => {
+    const testimonialSection = service.content.find((section: { type: string; }) => section.type === 'testimonial');
+    return testimonialSection ? testimonialSection.value : null;
+  }).filter(Boolean);
 
 
 const data = await getData('pages', 'testimonials');
