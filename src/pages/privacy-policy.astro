@@ -34,10 +34,10 @@ const docIds = [
 const servicesArray: DocumentData[] = await fetchServiceData(docIds);
 
 // Extracting testimonials
-const testimonials = servicesArray.map(service => {
-  const testimonialSection = service.content.find((section: { type: string; }) => section.type === 'testimonial');
-  return testimonialSection ? testimonialSection.value : null;
-}).filter(Boolean);
+// const testimonials = servicesArray.map(service => {
+//   const testimonialSection = service.content.find((section: { type: string; }) => section.type === 'testimonial');
+//   return testimonialSection ? testimonialSection.value : null;
+// }).filter(Boolean);
 
 const data = await getData('pages', 'Privacy-Policy');
 const pageData: DocumentData = data[0];
