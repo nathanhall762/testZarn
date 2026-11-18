@@ -12,9 +12,11 @@ interface FormData {
   type: string;
   firstname: string;
   lastname: string;
+  year: string;
   make: string;
   model: string;
   vin: string;
+  tag: string;
   color: string;
   service: string;
   body: string;
@@ -79,9 +81,11 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
     type: 'schedule',
     firstname: '',
     lastname: '',
+    year: '',
     make: '',
     model: '',
     vin: '',
+    tag: '',
     color: '',
     service: '',
     body: '',
@@ -268,9 +272,11 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
     if (formData.type === 'schedule') {
       if (
         !formData.firstname ||
+        !formData.year ||
         !formData.make ||
         !formData.model ||
         !formData.vin ||
+        !formData.tag ||
         !formData.service ||
         !formData.body ||
         !formData.email ||
@@ -304,9 +310,11 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
           html: `
             <strong>This is an automated message from the Zarn Automotive website. Contact the customer via their contact method below.</strong>
             <h3>${formData.firstname} ${formData.lastname} has submitted a ${formData.type} request.</h3>
+            <p><strong>Vehicle Year:</strong> ${formData.year}</p>
             <p><strong>Vehicle Make:</strong> ${formData.make}</p>
             <p><strong>Vehicle Model:</strong> ${formData.model}</p>
             <p><strong>Vehicle VIN:</strong> ${formData.vin}</p>
+            <p><strong>Vehicle Tag:</strong> ${formData.tag}</p>
             <p><strong>Vehicle Color:</strong> ${formData.color}</p>
             <p><strong>Service Requested:</strong> ${formData.service}</p>
             <p><strong>Message:</strong> ${formData.body}</p>
@@ -390,6 +398,15 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
           />
           <input
             type='text'
+            name='year'
+            placeholder='Vehicle Year*'
+            value={formData.year}
+            onChange={handleChange}
+            required
+            className='border-gray-300 rounded-lg border p-2'
+          />
+          <input
+            type='text'
             name='make'
             placeholder='Vehicle Make*'
             value={formData.make}
@@ -412,6 +429,15 @@ const MultiStepForm: React.FC<Props> = ({ currentPath }) => {
             placeholder='VIN* (17 characters)'
             maxLength={17}
             value={formData.vin}
+            onChange={handleChange}
+            required
+            className='border-gray-300 rounded-lg border p-2'
+          />
+          <input
+            type='text'
+            name='tag'
+            placeholder='Vehicle Tag*'
+            value={formData.tag}
             onChange={handleChange}
             required
             className='border-gray-300 rounded-lg border p-2'
